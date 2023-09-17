@@ -27,7 +27,7 @@ export default function Home() {
               }}
             >
               <a
-                href="/dashboard/main"
+                href="/home/main"
                 style={{
                   textDecoration: "none",
                   color: "inherit",
