@@ -33,7 +33,7 @@ export default function Home() {
                   color: "inherit",
                 }}
               >
-                Hamster Home.
+                Hamster
               </a>
             </div>
             <div
@@ -49,7 +49,7 @@ export default function Home() {
               <Typewriter
                 onInit={(typewriter) => {
                   typewriter
-                    .typeString("一个???的家")
+                    .typeString("无用幻想家")
                     .start()
                     .callFunction(() => {
                       typewriter.pause();
