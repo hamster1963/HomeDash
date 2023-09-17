@@ -7,8 +7,8 @@ import "./style.css";
 export default function ProxySummary() {
   const { Title } = Typography;
   const { data } = useSWRSubscription(
-    "http://120.24.211.49:10401/GetNetworkDataSSE",
-    (key, { next }) => {
+    "https://120.24.211.49:10401/GetNetworkDataSSE",
+    (key: string | URL, { next }: any) => {
       const source = new EventSource(key);
       source.onmessage = (event) => {
         const parsedData = JSON.parse(event.data);
