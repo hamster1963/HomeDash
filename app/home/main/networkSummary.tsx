@@ -6,7 +6,7 @@ import "./style.css";
 export default function NetworkSummary() {
   const { Title } = Typography;
   const { data } = useSWRSubscription(
-    "https://120.24.211.49:10401/GetNetworkDataSSE",
+    "https://120.24.211.49/GetNetworkDataSSE",
     (key, { next }) => {
       const source = new EventSource(key);
       source.onmessage = (event) => {
