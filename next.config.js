@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  transpilePackages: [
+    "@douyinfe/semi-ui",
+    "@douyinfe/semi-icons",
+    "@douyinfe/semi-illustrations",
+  ],
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

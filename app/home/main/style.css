@@ -1,0 +1,13 @@
+.myDescription {
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 0;
+    background-color: transparent;
+    transition: border-radius 0.3s ease, background-color 0.3s ease;
+}
+
+.myDescription:hover {
+    border-radius: 20px;
+    background-color: rgba(var(--semi-grey-1), 1);
+}
