@@ -26,15 +26,15 @@ export default function CoffeeSummary() {
     {
       key: "已使用流量",
       value:
-        data?.proxyInfo.usedBound !== undefined
-          ? data?.proxyInfo.usedBound + "GB"
+        data?.coffeeInfo.usedBound !== undefined
+          ? data?.coffeeInfo.usedBound + "GB"
           : null,
     },
     {
       key: "剩余流量",
       value:
-        data?.proxyInfo.remainBound !== undefined
-          ? data?.proxyInfo.remainBound + "GB"
+        data?.coffeeInfo.remainBound !== undefined
+          ? data?.coffeeInfo.remainBound + "GB"
           : null,
     },
     {
@@ -46,18 +46,18 @@ export default function CoffeeSummary() {
             alignItems: "center",
           }}
         >
-          {data?.proxyInfo.remainBound !== undefined
+          {data?.coffeeInfo.remainBound !== undefined
             ? (
-                (Number(data?.proxyInfo.remainBound) /
-                  Number(data?.proxyInfo.planBound)) *
+                (Number(data?.coffeeInfo.remainBound) /
+                  Number(data?.coffeeInfo.planBound)) *
                 100
               ).toFixed(2) + "%"
             : null}
-          {data?.proxyInfo.remainBound !== undefined && (
+          {data?.coffeeInfo.remainBound !== undefined && (
             <Progress
               percent={
-                (Number(data?.proxyInfo.remainBound) /
-                  Number(data?.proxyInfo.planBound)) *
+                (Number(data?.coffeeInfo.remainBound) /
+                  Number(data?.coffeeInfo.planBound)) *
                 100
               }
               style={{
