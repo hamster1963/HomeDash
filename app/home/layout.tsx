@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Layout } from "@douyinfe/semi-ui";
 import "./styles/globals.css";
 import LeftSide from "@/app/home/leftSide";
+import FixedButton from "@/app/home/fixedButton";
 
 export default function DashboardLayout({
   children,
@@ -52,6 +53,7 @@ export default function DashboardLayout({
       <Layout>
         <Content>{children}</Content>
       </Layout>
+      <FixedButton />
     </Layout>
   );
 }

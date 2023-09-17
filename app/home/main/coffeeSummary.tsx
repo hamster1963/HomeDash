@@ -78,7 +78,7 @@ export default function CoffeeSummary() {
         className="myDescription"
         data={networkSummaryData}
         row
-        size="large"
+        size="medium"
       />
     </>
   );
