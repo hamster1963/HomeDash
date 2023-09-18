@@ -34,7 +34,6 @@ export default function DashboardLayout({
   useEffect(() => {
     // Firstly, apply theme from localStorage or fallback to system preference
     const savedTheme = localStorage.getItem("theme-mode");
-    console.log(savedTheme);
     if (savedTheme) {
       setTheme(savedTheme);
     } else {

@@ -28,11 +28,12 @@ function LeftSide({ callbackWidth }: LeftSideProps) {
     return selectedKey ? [selectedKey] : [];
   }, [pathname]);
 
-  // 添加状态来控制导航栏的收缩和展开
-  const [isNavCollapsed, setIsNavCollapsed] = useState(() => {
+  /// 初始化为默认值，后续在effect中从localStorage更新
+  const [isNavCollapsed, setIsNavCollapsed] = useState(false);
+  useEffect(() => {
     const savedState = localStorage.getItem("navCollapsed");
-    return savedState ? JSON.parse(savedState) : false;
-  });
+    setIsNavCollapsed(savedState ? JSON.parse(savedState) : false);
+  }, []);
 
   const toggleNav = useCallback(
     (isCollapse: boolean) => {
