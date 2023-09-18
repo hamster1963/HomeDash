@@ -11,3 +11,12 @@
     border-radius: 20px;
     background-color: rgba(var(--semi-grey-1), 1);
 }
+
+.serverDescription{
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: rgba(var(--semi-grey-0), 1);
+}

@@ -4,6 +4,7 @@ import { Divider, Typography } from "@douyinfe/semi-ui";
 import NetworkSummary from "@/app/home/main/networkSummary";
 import ProxySummary from "@/app/home/main/proxySummary";
 import CoffeeSummary from "@/app/home/main/coffeeSummary";
+import Server from "@/app/home/main/server";
 
 export default function DashboardPage() {
   const { Title } = Typography;
@@ -63,6 +64,7 @@ export default function DashboardPage() {
           系统状态
         </div>
       </Divider>
+      <Server />
     </>
   );
 }
