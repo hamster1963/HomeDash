@@ -133,7 +133,7 @@ function ServerCard(props: ServerCardProps) {
           </div>
         </Descriptions.Item>
         <Descriptions.Item itemKey="在线天数">
-          {props.uptime}天
+          {props.uptime.toFixed(0)}天
         </Descriptions.Item>
       </Descriptions>
     </>
