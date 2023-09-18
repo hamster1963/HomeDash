@@ -1,3 +1,4 @@
+"use client";
 import { Nav } from "@douyinfe/semi-ui";
 import {
   IconHistogram,
@@ -28,8 +29,14 @@ function LeftSide({ callbackWidth }: LeftSideProps) {
     return selectedKey ? [selectedKey] : [];
   }, [pathname]);
 
-  /// 初始化为默认值，后续在effect中从localStorage更新
-  const [isNavCollapsed, setIsNavCollapsed] = useState(false);
+  // 添加状态来控制导航栏的收缩和展开
+  const [isNavCollapsed, setIsNavCollapsed] = useState(() => {
+    const savedState =
+      typeof window !== "undefined"
+        ? localStorage.getItem("navCollapsed")
+        : false;
+    return savedState ? JSON.parse(savedState) : false;
+  });
 
   const toggleNav = useCallback(
     (isCollapse: boolean) => {
@@ -39,11 +46,6 @@ function LeftSide({ callbackWidth }: LeftSideProps) {
     },
     [callbackWidth],
   );
-  useEffect(() => {
-    const savedState = localStorage.getItem("navCollapsed");
-    setIsNavCollapsed(savedState ? JSON.parse(savedState) : false);
-    toggleNav(savedState ? JSON.parse(savedState) : false);
-  }, [toggleNav]);
 
   // 根据导航栏的收缩状态来设置宽度
   const navWidth = isNavCollapsed ? 60 : 220;
@@ -60,6 +62,11 @@ function LeftSide({ callbackWidth }: LeftSideProps) {
       window.removeEventListener("resize", handleResize);
     };
   }, [toggleNav]);
+  // 使用useEffect监听状态更改并保存到localStorage
+  useEffect(() => {
+    localStorage.setItem("navCollapsed", JSON.stringify(isNavCollapsed));
+    toggleNav(isNavCollapsed);
+  }, [isNavCollapsed, toggleNav]);
 
   return (
     <div style={{ position: "fixed", top: 0, left: 0, bottom: 0 }}>
