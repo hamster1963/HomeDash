@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Layout } from "@douyinfe/semi-ui";
 import "./styles/globals.css";
 import LeftSide from "@/app/home/leftSide";
@@ -11,32 +11,54 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const { Sider, Content } = Layout;
-  function matchMode(e: { matches: any }) {
+
+  function setTheme(theme: string) {
     const body = document.body;
-    if (e.matches) {
-      if (!body.hasAttribute("theme-mode")) {
-        body.setAttribute("theme-mode", "dark");
-      }
+    if (theme === "dark") {
+      body.setAttribute("theme-mode", "dark");
+      localStorage.setItem("theme-mode", "dark");
     } else {
-      if (body.hasAttribute("theme-mode")) {
-        body.removeAttribute("theme-mode");
-      }
+      body.removeAttribute("theme-mode");
+      localStorage.setItem("theme-mode", "light");
     }
   }
-  useEffect(() => {
-    const mql = window.matchMedia("(prefers-color-scheme: dark)");
 
+  const matchMode = useCallback((e: { matches: any }) => {
+    if (e.matches) {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  }, []);
+
+  useEffect(() => {
+    // Firstly, apply theme from localStorage or fallback to system preference
+    const savedTheme = localStorage.getItem("theme-mode");
+    console.log(savedTheme);
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else {
+      const prefersDarkScheme = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+      if (prefersDarkScheme) {
+        setTheme("dark");
+      } else {
+        setTheme("light");
+      }
+    }
+
+    // Then, setup the event listener to track system preference changes
+    const mql = window.matchMedia("(prefers-color-scheme: dark)");
     const handleMatchMode = (e: MediaQueryListEvent) => matchMode(e);
     mql.addEventListener("change", handleMatchMode);
-    matchMode(mql);
 
     return () => {
       mql.removeEventListener("change", handleMatchMode);
     };
-  }, []);
+  }, [matchMode]);
 
   const [navWidth, setNavWidth] = useState("220px");
-
   const callbackNavWidth = (width: string) => {
     setNavWidth(width);
   };
