@@ -11,6 +11,7 @@ export default function DashboardPage() {
   return (
     <>
       <Title
+        heading={2}
         style={{ marginTop: "30px", marginLeft: "30px", marginBottom: "30px" }}
       >
         👋 你好, 欢迎来到 HomeDash
@@ -19,7 +20,7 @@ export default function DashboardPage() {
         <div
           style={{
             marginLeft: "-10px",
-            fontWeight: "bold",
+            fontWeight: "normal",
             fontSize: "35px",
           }}
         >
@@ -31,7 +32,7 @@ export default function DashboardPage() {
         <div
           style={{
             marginLeft: "-10px",
-            fontWeight: "bold",
+            fontWeight: "normal",
             fontSize: "35px",
           }}
         >
@@ -43,7 +44,7 @@ export default function DashboardPage() {
         <div
           style={{
             marginLeft: "-10px",
-            fontWeight: "bold",
+            fontWeight: "normal",
             fontSize: "35px",
           }}
         >
@@ -51,6 +52,17 @@ export default function DashboardPage() {
         </div>
       </Divider>
       <CoffeeSummary />
+      <Divider margin="12px" align="left">
+        <div
+          style={{
+            marginLeft: "-10px",
+            fontWeight: "normal",
+            fontSize: "35px",
+          }}
+        >
+          系统状态
+        </div>
+      </Divider>
     </>
   );
 }
