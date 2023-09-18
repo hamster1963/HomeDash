@@ -104,7 +104,7 @@ function ServerCard(props: ServerCardProps) {
         </Descriptions.Item>
         <Descriptions.Item
           style={{
-            minWidth: "140px",
+            minWidth: "160px",
           }}
           itemKey="存储占用"
         >
