@@ -154,7 +154,11 @@ export default function Server() {
     },
   );
   return (
-    <>
+    <div
+      style={{
+        marginBottom: "20px",
+      }}
+    >
       {data?.serverInfo.map((server: ServerCardProps) => (
         <ServerCard
           key={server.id}
@@ -167,6 +171,6 @@ export default function Server() {
           uptime={server.uptime}
         />
       ))}
-    </>
+    </div>
   );
 }
