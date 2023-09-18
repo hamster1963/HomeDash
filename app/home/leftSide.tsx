@@ -30,18 +30,20 @@ function LeftSide({ callbackWidth }: LeftSideProps) {
 
   /// 初始化为默认值，后续在effect中从localStorage更新
   const [isNavCollapsed, setIsNavCollapsed] = useState(false);
-  useEffect(() => {
-    const savedState = localStorage.getItem("navCollapsed");
-    setIsNavCollapsed(savedState ? JSON.parse(savedState) : false);
-  }, []);
 
   const toggleNav = useCallback(
     (isCollapse: boolean) => {
       setIsNavCollapsed(isCollapse);
+      localStorage.setItem("navCollapsed", JSON.stringify(isCollapse));
       callbackWidth(isCollapse ? "60px" : "220px");
     },
     [callbackWidth],
   );
+  useEffect(() => {
+    const savedState = localStorage.getItem("navCollapsed");
+    setIsNavCollapsed(savedState ? JSON.parse(savedState) : false);
+    toggleNav(savedState ? JSON.parse(savedState) : false);
+  }, [toggleNav]);
 
   // 根据导航栏的收缩状态来设置宽度
   const navWidth = isNavCollapsed ? 60 : 220;
@@ -58,12 +60,6 @@ function LeftSide({ callbackWidth }: LeftSideProps) {
       window.removeEventListener("resize", handleResize);
     };
   }, [toggleNav]);
-
-  // 使用useEffect监听状态更改并保存到localStorage
-  useEffect(() => {
-    localStorage.setItem("navCollapsed", JSON.stringify(isNavCollapsed));
-    toggleNav(isNavCollapsed);
-  }, [isNavCollapsed, toggleNav]);
 
   return (
     <div style={{ position: "fixed", top: 0, left: 0, bottom: 0 }}>
