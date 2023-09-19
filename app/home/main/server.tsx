@@ -1,7 +1,7 @@
 "use client";
 
-import useSWRSubscription from "swr/subscription";
 import { Descriptions, Progress } from "@douyinfe/semi-ui";
+import { SSEDataFetch } from "@/app/home/utils/sse";
 
 type ServerCardProps = {
   id: number;
@@ -141,18 +141,7 @@ function ServerCard(props: ServerCardProps) {
 }
 
 export default function Server() {
-  const { data } = useSWRSubscription(
-    "https://120.24.211.49/GetNetworkDataSSE",
-    (key, { next }) => {
-      const source = new EventSource(key);
-      source.onmessage = (event) => {
-        const parsedData = JSON.parse(event.data);
-        next(null, parsedData);
-      };
-      source.onerror = () => next(new Error("EventSource error"));
-      return () => source.close();
-    },
-  );
+  const data = SSEDataFetch("https://120.24.211.49/GetNetworkDataSSE");
   return (
     <div
       style={{
