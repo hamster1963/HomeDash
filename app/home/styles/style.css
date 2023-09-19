@@ -28,3 +28,9 @@
     border-radius: 10px;
     background-color: rgba(var(--semi-grey-0), 1);
 }
+
+
+
+.semi-descriptions-double-medium .semi-descriptions-item {
+    padding-right: 20px;
+}
