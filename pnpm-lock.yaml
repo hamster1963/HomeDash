@@ -23,6 +23,9 @@ dependencies:
   '@types/react-dom':
     specifier: 18.2.7
     version: 18.2.7
+  '@vercel/analytics':
+    specifier: ^1.0.2
+    version: 1.0.2
   eslint:
     specifier: 8.49.0
     version: 8.49.0
@@ -1578,6 +1581,10 @@ packages:
     dependencies:
       '@typescript-eslint/types': 6.7.0
       eslint-visitor-keys: 3.4.3
+    dev: false
+
+  /@vercel/analytics@1.0.2:
+    resolution: {integrity: sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==}
     dev: false
 
   /acorn-jsx@5.3.2(acorn@8.10.0):
