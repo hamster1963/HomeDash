@@ -150,18 +150,31 @@ export default function Server() {
         marginBottom: "20px",
       }}
     >
-      {data?.serverInfo.map((server: ServerCardProps) => (
+      {data ? (
+        data?.serverInfo.map((server: ServerCardProps) => (
+          <ServerCard
+            key={server.id}
+            id={server.id}
+            name={server.name}
+            status={server.status}
+            cpu={server.cpu}
+            memory={server.memory}
+            disk={server.disk}
+            uptime={server.uptime}
+          />
+        ))
+      ) : (
         <ServerCard
-          key={server.id}
-          id={server.id}
-          name={server.name}
-          status={server.status}
-          cpu={server.cpu}
-          memory={server.memory}
-          disk={server.disk}
-          uptime={server.uptime}
+          key={"server.id"}
+          id={0}
+          name={"加载中"}
+          status={"加载中"}
+          cpu={0}
+          memory={0}
+          disk={0}
+          uptime={0}
         />
-      ))}
+      )}
     </div>
   );
 }

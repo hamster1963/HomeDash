@@ -1,5 +1,5 @@
 "use client";
-import { Descriptions, Typography } from "@douyinfe/semi-ui";
+import { Descriptions, Typography, Skeleton } from "@douyinfe/semi-ui";
 import "../styles/style.css";
 import { SSEDataFetch } from "@/app/home/utils/sse";
 
@@ -8,6 +8,12 @@ export default function NetworkSummary() {
 
   const data = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetNetworkDataSSE",
+  );
+
+  const placeholder = (
+    <div>
+      <Skeleton.Title style={{ width: 50 }} />
+    </div>
   );
 
   const networkSummaryData = [
@@ -25,21 +31,29 @@ export default function NetworkSummary() {
     },
     {
       key: "设备数",
-      value: data?.homeNetwork.deviceCount,
+      value: data?.homeNetwork.deviceCount ? (
+        data?.homeNetwork.deviceCount
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+      ),
     },
     {
       key: "上传速率",
       value:
-        data?.homeNetwork.rxSpeedMbps !== undefined
-          ? data?.homeNetwork.rxSpeedMbps + "mb/s"
-          : null,
+        data?.homeNetwork.rxSpeedMbps !== undefined ? (
+          data?.homeNetwork.rxSpeedMbps + "mb/s"
+        ) : (
+          <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+        ),
     },
     {
       key: "下载速率",
       value:
-        data?.homeNetwork.txSpeedMbps !== undefined
-          ? data?.homeNetwork.txSpeedMbps + "mb/s"
-          : null,
+        data?.homeNetwork.txSpeedMbps !== undefined ? (
+          data?.homeNetwork.txSpeedMbps + "mb/s"
+        ) : (
+          <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+        ),
     },
   ];
 

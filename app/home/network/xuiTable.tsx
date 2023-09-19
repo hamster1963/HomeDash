@@ -88,6 +88,7 @@ export default function XuiTable() {
         minWidth: "600px",
         maxWidth: "95%",
       }}
+      loading={data === undefined}
       columns={columns}
       dataSource={data?.xuiData.user_list}
       pagination={false}

@@ -1,5 +1,5 @@
 import { SSEDataFetch } from "@/app/home/utils/sse";
-import { Descriptions, Typography } from "@douyinfe/semi-ui";
+import { Descriptions, Skeleton, Typography } from "@douyinfe/semi-ui";
 import "../styles/style.css";
 import React from "react";
 
@@ -7,6 +7,11 @@ export default function XuiSummary() {
   const { Title } = Typography;
   const data = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetXuiDataSSE",
+  );
+  const placeholder = (
+    <div>
+      <Skeleton.Title style={{ width: 50 }} />
+    </div>
   );
   const networkSummaryData = [
     {
@@ -23,21 +28,29 @@ export default function XuiSummary() {
     },
     {
       key: "代理用户数",
-      value: data?.xuiData.user_count,
+      value: data?.xuiData.user_count ? (
+        data?.xuiData.user_count
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+      ),
     },
     {
       key: "总上传流量",
       value:
-        data?.xuiData.up_total !== undefined
-          ? data?.xuiData.up_total.toFixed(2) + "GB"
-          : null,
+        data?.xuiData.up_total !== undefined ? (
+          data?.xuiData.up_total.toFixed(2) + "GB"
+        ) : (
+          <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+        ),
     },
     {
       key: "总下载流量",
       value:
-        data?.xuiData.down_total !== undefined
-          ? data?.xuiData.down_total.toFixed(2) + "GB"
-          : null,
+        data?.xuiData.down_total !== undefined ? (
+          data?.xuiData.down_total.toFixed(2) + "GB"
+        ) : (
+          <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+        ),
     },
   ];
 
