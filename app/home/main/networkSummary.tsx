@@ -1,6 +1,6 @@
 "use client";
 import { Descriptions, Typography } from "@douyinfe/semi-ui";
-import "./style.css";
+import "../styles/style.css";
 import { SSEDataFetch } from "@/app/home/utils/sse";
 
 export default function NetworkSummary() {

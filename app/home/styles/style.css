@@ -20,3 +20,11 @@
     border-radius: 10px;
     background-color: rgba(var(--semi-grey-0), 1);
 }
+
+.xuiDescription {
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    background-color: rgba(var(--semi-grey-0), 1);
+}
