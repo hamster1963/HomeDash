@@ -12,8 +12,8 @@ import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
 const routerMap: Record<string, string> = {
   Home: "/home/main",
-  Service: "/home/service",
   Network: "/home/network",
+  Service: "/home/service",
   System: "/home/system",
 };
 
