@@ -22,7 +22,7 @@ export default function DashboardPage() {
           style={{
             marginLeft: "-10px",
             fontWeight: "normal",
-            fontSize: "35px",
+            fontSize: "30px",
           }}
         >
           家庭网络
@@ -34,7 +34,7 @@ export default function DashboardPage() {
           style={{
             marginLeft: "-10px",
             fontWeight: "normal",
-            fontSize: "35px",
+            fontSize: "30px",
           }}
         >
           科学上网
@@ -46,7 +46,7 @@ export default function DashboardPage() {
           style={{
             marginLeft: "-10px",
             fontWeight: "normal",
-            fontSize: "35px",
+            fontSize: "30px",
           }}
         >
           代理服务
@@ -58,7 +58,7 @@ export default function DashboardPage() {
           style={{
             marginLeft: "-10px",
             fontWeight: "normal",
-            fontSize: "35px",
+            fontSize: "30px",
           }}
         >
           系统状态
