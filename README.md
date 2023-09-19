@@ -4,7 +4,7 @@ HomeDash 是一个基于 [Next.js](https://nextjs.org/) 和 [Semi-design](https:
 ## 填入配置文件
     
 ```bash
-cp .env.example .env
+cp .env.local.example .env.local
 ```
 
 ## 运行前端
