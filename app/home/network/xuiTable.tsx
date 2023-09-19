@@ -3,7 +3,9 @@ import { Progress, Table, Tag } from "@douyinfe/semi-ui";
 import { SSEDataFetch } from "@/app/home/utils/sse";
 
 export default function XuiTable() {
-  const data = SSEDataFetch("https://120.24.211.49/GetXuiDataSSE");
+  const data = SSEDataFetch(
+    process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetXuiDataSSE",
+  );
   const columns = [
     {
       title: "名称",

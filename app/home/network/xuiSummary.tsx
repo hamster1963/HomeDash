@@ -5,7 +5,9 @@ import React from "react";
 
 export default function XuiSummary() {
   const { Title } = Typography;
-  const data = SSEDataFetch("https://120.24.211.49/GetXuiDataSSE");
+  const data = SSEDataFetch(
+    process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetXuiDataSSE",
+  );
   const networkSummaryData = [
     {
       key: "状态",

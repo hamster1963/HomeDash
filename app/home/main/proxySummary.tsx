@@ -6,7 +6,9 @@ import { SSEDataFetch } from "@/app/home/utils/sse";
 
 export default function ProxySummary() {
   const { Title } = Typography;
-  const data = SSEDataFetch("https://120.24.211.49/GetNetworkDataSSE");
+  const data = SSEDataFetch(
+    process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetNetworkDataSSE",
+  );
   const networkSummaryData = [
     {
       key: "状态",
