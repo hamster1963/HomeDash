@@ -14,7 +14,6 @@ const routerMap: Record<string, string> = {
   Home: "/home/main",
   Network: "/home/network",
   Service: "/home/service",
-  System: "/home/system",
 };
 
 type LeftSideProps = {
@@ -94,7 +93,6 @@ function LeftSide({ callbackWidth }: LeftSideProps) {
           { itemKey: "Home", text: "概览", icon: <IconHome /> },
           { itemKey: "Network", text: "网络状态", icon: <IconSignal /> },
           { itemKey: "Service", text: "服务监控", icon: <IconHistogram /> },
-          { itemKey: "System", text: "系统监测", icon: <IconServer /> },
         ]}
         defaultSelectedKeys={selectedKeys}
       >
