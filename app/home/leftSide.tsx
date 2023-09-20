@@ -4,7 +4,6 @@ import {
   IconHistogram,
   IconHome,
   IconSemiLogo,
-  IconServer,
   IconSignal,
 } from "@douyinfe/semi-icons";
 import Link from "next/link";
