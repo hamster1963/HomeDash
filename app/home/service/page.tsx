@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  Card,
-  Descriptions,
-  Divider,
-  Progress,
-  Typography,
-} from "@douyinfe/semi-ui";
+import { Divider, Typography } from "@douyinfe/semi-ui";
 import "../styles/style.css";
 import ServiceSummary from "@/app/home/service/serviceSummary";
 
