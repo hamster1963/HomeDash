@@ -1,17 +1,18 @@
 import { Card, Descriptions, Progress } from "@douyinfe/semi-ui";
+import { SSEDataFetch } from "@/app/home/utils/sse";
 
 type ServiceCardProps = {
   title: string;
-  value: string;
-  percent: number;
+  totalValue: number;
+  runningValue: number;
 };
 
-function ServiceCard(props: ServiceCardProps) {
-  const { title, value, percent } = props;
+export function ServiceCard(props: ServiceCardProps) {
+  const { title, totalValue, runningValue } = props;
   const data = [
     {
       key: title,
-      value: value,
+      value: runningValue ? runningValue + "/" + totalValue : "0/0",
       style: { paddingRight: "0px" },
     },
   ];
@@ -32,8 +33,22 @@ function ServiceCard(props: ServiceCardProps) {
         }}
       >
         <Progress
-          percent={percent}
+          percent={
+            runningValue
+              ? Number(((runningValue / totalValue) * 100).toFixed(0))
+              : 0
+          }
           showInfo={true}
+          format={(percent) => (
+            <div style={{ fontWeight: "bolder" }}>{percent}%</div>
+          )}
+          stroke={
+            Number(((runningValue / totalValue) * 100).toFixed(0)) < 80
+              ? "rgba(var(--semi-orange-5), 1)"
+              : Number(((runningValue / totalValue) * 100).toFixed(0)) < 50
+              ? "rgba(var(--semi-red-5), 1)"
+              : "rgba(var(--semi-green-5), 1)"
+          }
           type="circle"
           strokeWidth={10}
           aria-label={title}
@@ -52,6 +67,27 @@ function ServiceCard(props: ServiceCardProps) {
 }
 
 export default function ServiceSummary() {
+  const data = SSEDataFetch(
+    process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetDockerMonitorSSE",
+  );
+  function getDaysBetweenDates(date1: string, date2: string): number {
+    const oneDay = 24 * 60 * 60 * 1000; // 一天的毫秒数
+    const firstDate = new Date(date1);
+    const secondDate = new Date(date2);
+
+    // 计算两个日期之间的天数差异
+    return Math.round(
+      Math.abs((firstDate.getTime() - secondDate.getTime()) / oneDay),
+    );
+  }
+
+  // 获取今天的日期
+  const today: string = new Date().toISOString().split("T")[0];
+
+  // 示例用法
+  const date2: string = "2023-12-16";
+  const daysBetween: number = getDaysBetweenDates(today, date2);
+  console.log(daysBetween);
   return (
     <div
       style={{
@@ -67,10 +103,34 @@ export default function ServiceSummary() {
         backgroundColor: "rgba(var(--semi-grey-0), 1)",
       }}
     >
-      <ServiceCard title={"核心服务"} value={"4/4"} percent={100} />
-      <ServiceCard title={"分布式终端"} value={"4/4"} percent={100} />
-      <ServiceCard title={"Docker存活"} value={"4/4"} percent={100} />
-      <ServiceCard title={"证书有效期"} value={"4/4"} percent={100} />
+      <ServiceCard
+        title={"核心服务"}
+        totalValue={data?.dockerData.serverCount}
+        runningValue={
+          data?.dockerData.serverCount - data?.dockerData.errorCount
+        }
+      />
+      <ServiceCard
+        title={"分布式终端"}
+        totalValue={data?.dockerData.dockerStatus?.ServerCount}
+        runningValue={
+          data?.dockerData.dockerStatus?.ServerCount -
+          data?.dockerData.dockerStatus?.ErrorServer
+        }
+      />
+      <ServiceCard
+        title={"Docker存活"}
+        totalValue={data?.dockerData?.dockerStatus?.DockerCount}
+        runningValue={
+          data?.dockerData?.dockerStatus?.DockerCount -
+          data?.dockerData?.dockerStatus?.ErrorDocker
+        }
+      />
+      <ServiceCard
+        title={"证书有效期"}
+        totalValue={90}
+        runningValue={daysBetween}
+      />
     </div>
   );
 }
