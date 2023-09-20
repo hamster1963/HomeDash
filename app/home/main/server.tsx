@@ -1,6 +1,6 @@
 "use client";
 
-import { Descriptions, Progress } from "@douyinfe/semi-ui";
+import { Descriptions, Progress, Skeleton } from "@douyinfe/semi-ui";
 import { SSEDataFetch } from "@/app/home/utils/sse";
 
 type ServerCardProps = {
@@ -12,6 +12,12 @@ type ServerCardProps = {
   disk: number;
   uptime: number;
 };
+
+const placeholder = (
+  <div>
+    <Skeleton.Title style={{ width: 50 }} />
+  </div>
+);
 
 function ServerCard(props: ServerCardProps) {
   return (
@@ -48,29 +54,37 @@ function ServerCard(props: ServerCardProps) {
           }}
           itemKey="CPU占用"
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Progress
+          {props.status === "online" ? (
+            <div
               style={{
-                marginRight: "4px",
+                display: "flex",
+                alignItems: "center",
               }}
-              stroke={
-                props.cpu > 80
-                  ? "rgba(var(--semi-red-5), 1)"
-                  : props.cpu > 50
-                  ? "rgba(var(--semi-orange-5), 1)"
-                  : "rgba(var(--semi-green-5), 1)"
-              }
-              percent={props.cpu}
-              type="circle"
-              size="small"
-            />
-            {props.cpu}%
-          </div>
+            >
+              <Progress
+                style={{
+                  marginRight: "4px",
+                }}
+                stroke={
+                  props.cpu > 80
+                    ? "rgba(var(--semi-red-5), 1)"
+                    : props.cpu > 50
+                    ? "rgba(var(--semi-orange-5), 1)"
+                    : "rgba(var(--semi-green-5), 1)"
+                }
+                percent={props.cpu}
+                type="circle"
+                size="small"
+              />
+              {props.cpu}%
+            </div>
+          ) : (
+            <Skeleton
+              placeholder={placeholder}
+              loading={true}
+              active
+            ></Skeleton>
+          )}
         </Descriptions.Item>
         <Descriptions.Item
           style={{
@@ -78,29 +92,37 @@ function ServerCard(props: ServerCardProps) {
           }}
           itemKey="内存占用"
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Progress
+          {props.status === "online" ? (
+            <div
               style={{
-                marginRight: "4px",
+                display: "flex",
+                alignItems: "center",
               }}
-              stroke={
-                props.memory > 80
-                  ? "rgba(var(--semi-red-5), 1)"
-                  : props.memory > 50
-                  ? "rgba(var(--semi-orange-5), 1)"
-                  : "rgba(var(--semi-green-5), 1)"
-              }
-              percent={props.memory}
-              type="circle"
-              size="small"
-            />
-            {props.memory}%
-          </div>
+            >
+              <Progress
+                style={{
+                  marginRight: "4px",
+                }}
+                stroke={
+                  props.memory > 80
+                    ? "rgba(var(--semi-red-5), 1)"
+                    : props.memory > 50
+                    ? "rgba(var(--semi-orange-5), 1)"
+                    : "rgba(var(--semi-green-5), 1)"
+                }
+                percent={props.memory}
+                type="circle"
+                size="small"
+              />
+              {props.memory}%
+            </div>
+          ) : (
+            <Skeleton
+              placeholder={placeholder}
+              loading={true}
+              active
+            ></Skeleton>
+          )}
         </Descriptions.Item>
         <Descriptions.Item
           style={{
@@ -108,32 +130,48 @@ function ServerCard(props: ServerCardProps) {
           }}
           itemKey="存储占用"
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Progress
+          {props.status === "online" ? (
+            <div
               style={{
-                marginRight: "4px",
+                display: "flex",
+                alignItems: "center",
               }}
-              stroke={
-                props.disk > 80
-                  ? "rgba(var(--semi-red-5), 1)"
-                  : props.disk > 50
-                  ? "rgba(var(--semi-orange-5), 1)"
-                  : "rgba(var(--semi-green-5), 1)"
-              }
-              percent={props.disk}
-              type="circle"
-              size="small"
-            />
-            {props.disk}%
-          </div>
+            >
+              <Progress
+                style={{
+                  marginRight: "4px",
+                }}
+                stroke={
+                  props.disk > 80
+                    ? "rgba(var(--semi-red-5), 1)"
+                    : props.disk > 50
+                    ? "rgba(var(--semi-orange-5), 1)"
+                    : "rgba(var(--semi-green-5), 1)"
+                }
+                percent={props.disk}
+                type="circle"
+                size="small"
+              />
+              {props.disk}%
+            </div>
+          ) : (
+            <Skeleton
+              placeholder={placeholder}
+              loading={true}
+              active
+            ></Skeleton>
+          )}
         </Descriptions.Item>
         <Descriptions.Item itemKey="在线天数">
-          {props.uptime.toFixed(0)}天
+          {props.status === "online" ? (
+            props.uptime.toFixed(0) + "天"
+          ) : (
+            <Skeleton
+              placeholder={placeholder}
+              loading={true}
+              active
+            ></Skeleton>
+          )}
         </Descriptions.Item>
       </Descriptions>
     </>
