@@ -40,8 +40,8 @@ export default function NetworkSummary() {
     {
       key: "上传速率",
       value:
-        data?.homeNetwork.rxSpeedMbps !== undefined ? (
-          data?.homeNetwork.rxSpeedMbps + "mb/s"
+        data?.homeNetwork.txSpeedMbps !== undefined ? (
+          data?.homeNetwork.txSpeedMbps + "mb/s"
         ) : (
           <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
         ),
@@ -49,8 +49,8 @@ export default function NetworkSummary() {
     {
       key: "下载速率",
       value:
-        data?.homeNetwork.txSpeedMbps !== undefined ? (
-          data?.homeNetwork.txSpeedMbps + "mb/s"
+        data?.homeNetwork.rxSpeedMbps !== undefined ? (
+          data?.homeNetwork.rxSpeedMbps + "mb/s"
         ) : (
           <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
         ),
