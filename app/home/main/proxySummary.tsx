@@ -17,7 +17,7 @@ export default function ProxySummary() {
   const networkSummaryData = [
     {
       key: "状态",
-      value: data ? (
+      value: data?.nodeInfo ? (
         <Title heading={2} type="success">
           在线
         </Title>
@@ -37,21 +37,19 @@ export default function ProxySummary() {
     },
     {
       key: "上传速率",
-      value:
-        data?.proxyNetwork.txSpeedMbps !== undefined ? (
-          data?.proxyNetwork.txSpeedMbps + "mb/s"
-        ) : (
-          <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
-        ),
+      value: data?.proxyNetwork ? (
+        data?.proxyNetwork.txSpeedMbps + "mb/s"
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+      ),
     },
     {
       key: "下载速率",
-      value:
-        data?.proxyNetwork.rxSpeedMbps !== undefined ? (
-          data?.proxyNetwork.rxSpeedMbps + "mb/s"
-        ) : (
-          <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
-        ),
+      value: data?.proxyNetwork ? (
+        data?.proxyNetwork.rxSpeedMbps + "mb/s"
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+      ),
     },
   ];
   return (

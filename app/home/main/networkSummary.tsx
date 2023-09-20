@@ -39,21 +39,19 @@ export default function NetworkSummary() {
     },
     {
       key: "上传速率",
-      value:
-        data?.homeNetwork.txSpeedMbps !== undefined ? (
-          data?.homeNetwork.txSpeedMbps + "mb/s"
-        ) : (
-          <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
-        ),
+      value: data?.homeNetwork ? (
+        data?.homeNetwork.txSpeedMbps + "mb/s"
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+      ),
     },
     {
       key: "下载速率",
-      value:
-        data?.homeNetwork.rxSpeedMbps !== undefined ? (
-          data?.homeNetwork.rxSpeedMbps + "mb/s"
-        ) : (
-          <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
-        ),
+      value: data?.homeNetwork ? (
+        data?.homeNetwork.rxSpeedMbps + "mb/s"
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+      ),
     },
   ];
 

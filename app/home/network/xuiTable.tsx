@@ -90,7 +90,7 @@ export default function XuiTable() {
       }}
       loading={data === undefined}
       columns={columns}
-      dataSource={data?.xuiData.user_list}
+      dataSource={data?.xuiData ? data?.xuiData.user_list : []}
       pagination={false}
       sticky={true}
     />

@@ -16,7 +16,7 @@ export default function XuiSummary() {
   const networkSummaryData = [
     {
       key: "状态",
-      value: data ? (
+      value: data?.xuiData ? (
         <Title heading={2} type="success">
           在线
         </Title>
@@ -28,7 +28,7 @@ export default function XuiSummary() {
     },
     {
       key: "代理用户数",
-      value: data?.xuiData.user_count ? (
+      value: data?.xuiData ? (
         data?.xuiData.user_count
       ) : (
         <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
@@ -36,21 +36,19 @@ export default function XuiSummary() {
     },
     {
       key: "总上传流量",
-      value:
-        data?.xuiData.up_total !== undefined ? (
-          data?.xuiData.up_total.toFixed(2) + "GB"
-        ) : (
-          <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
-        ),
+      value: data?.xuiData ? (
+        data?.xuiData.up_total.toFixed(2) + "GB"
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+      ),
     },
     {
       key: "总下载流量",
-      value:
-        data?.xuiData.down_total !== undefined ? (
-          data?.xuiData.down_total.toFixed(2) + "GB"
-        ) : (
-          <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
-        ),
+      value: data?.xuiData ? (
+        data?.xuiData.down_total.toFixed(2) + "GB"
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+      ),
     },
   ];
 
