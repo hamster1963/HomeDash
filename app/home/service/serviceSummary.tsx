@@ -83,11 +83,8 @@ export default function ServiceSummary() {
 
   // 获取今天的日期
   const today: string = new Date().toISOString().split("T")[0];
-
-  // 示例用法
   const date2: string = "2023-12-16";
   const daysBetween: number = getDaysBetweenDates(today, date2);
-  console.log(daysBetween);
   return (
     <div
       style={{
@@ -100,7 +97,7 @@ export default function ServiceSummary() {
         minWidth: "250px",
         padding: "10px",
         flexWrap: "wrap",
-        backgroundColor: "rgba(var(--semi-grey-0), 1)",
+        // backgroundColor: "rgba(var(--semi-grey-0), 1)",
       }}
     >
       <ServiceCard
