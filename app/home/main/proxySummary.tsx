@@ -2,7 +2,7 @@
 
 import { Descriptions, Skeleton, Typography } from "@douyinfe/semi-ui";
 import "../styles/style.css";
-import { SSEDataFetch } from "@/app/home/utils/sse";
+import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
 export default function ProxySummary() {
   const { Title } = Typography;

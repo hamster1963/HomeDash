@@ -1,5 +1,5 @@
 import { Card, Descriptions, Progress } from "@douyinfe/semi-ui";
-import { SSEDataFetch } from "@/app/home/utils/sse";
+import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
 type ServiceCardProps = {
   title: string;

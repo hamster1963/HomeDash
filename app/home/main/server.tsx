@@ -1,7 +1,7 @@
 "use client";
 
 import { Descriptions, Progress, Skeleton } from "@douyinfe/semi-ui";
-import { SSEDataFetch } from "@/app/home/utils/sse";
+import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
 type ServerCardProps = {
   id: number;

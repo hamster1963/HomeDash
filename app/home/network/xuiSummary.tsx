@@ -1,4 +1,4 @@
-import { SSEDataFetch } from "@/app/home/utils/sse";
+import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 import { Descriptions, Skeleton, Typography } from "@douyinfe/semi-ui";
 import "../styles/style.css";
 import React from "react";
