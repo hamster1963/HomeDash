@@ -1,5 +1,6 @@
 import { Card, Tag, Typography } from "@douyinfe/semi-ui";
 import Image from "next/image";
+import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
 type HomeCardProps = {
   type: string;
@@ -77,6 +78,9 @@ function HomeCard({ type, status, value, img }: HomeCardProps) {
 }
 
 export default function HomeSummary() {
+  const data = SSEDataFetch(
+    process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetHomeDataSSE",
+  );
   return (
     <>
       <div
@@ -89,28 +93,32 @@ export default function HomeSummary() {
           borderRadius: "20px",
           padding: "10px",
           flexWrap: "wrap",
-          // backgroundColor: "rgba(var(--semi-grey-0), 1)",
         }}
       >
-        <HomeCard type={"空调"} status={true} value={"22°C"} img={"/air.png"} />
+        <HomeCard
+          type={"空调"}
+          status={data ? data?.homeData.AirConditioner.state : false}
+          value={data ? data?.homeData.AirConditioner.temp + "°C" : "离线中"}
+          img={"/air.png"}
+        />
 
         <HomeCard
           type={"加湿器"}
-          status={true}
-          value={"22%"}
+          status={data ? data?.homeData.Humidifier.state : false}
+          value={data ? data?.homeData.Humidifier.humidity + "%" : "离线中"}
           img={"/wet.png"}
         />
 
         <HomeCard
           type={"空气净化器"}
-          status={false}
-          value={"36ug/m³"}
+          status={data ? data?.homeData.AirPurifier.state : false}
+          value={data ? data?.homeData.AirPurifier.pm25 + "ug/m³" : "离线中"}
           img={"/tree.png"}
         />
         <HomeCard
-          type={"当前电量"}
-          status={true}
-          value={"2.0w"}
+          type={"卧室床头灯"}
+          status={data ? data?.homeData.Light.state : false}
+          value={data ? data?.homeData.Light.brightness + "%" : "离线中"}
           img={"/light.png"}
         />
       </div>
