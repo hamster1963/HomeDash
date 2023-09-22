@@ -38,21 +38,19 @@ export default function CoffeeSummary() {
     },
     {
       key: "已使用流量",
-      value:
-        data?.coffeeInfo.usedBound !== undefined ? (
-          data?.coffeeInfo.usedBound + "GB"
-        ) : (
-          <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
-        ),
+      value: data?.coffeeInfo ? (
+        data?.coffeeInfo.usedBound + "GB"
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+      ),
     },
     {
       key: "剩余流量",
-      value:
-        data?.coffeeInfo.remainBound !== undefined ? (
-          data?.coffeeInfo.remainBound + "GB"
-        ) : (
-          <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
-        ),
+      value: data?.coffeeInfo ? (
+        data?.coffeeInfo.remainBound + "GB"
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+      ),
     },
     {
       key: "剩余占比",
@@ -63,7 +61,7 @@ export default function CoffeeSummary() {
             alignItems: "center",
           }}
         >
-          {data?.coffeeInfo.remainBound !== undefined ? (
+          {data?.coffeeInfo ? (
             (
               (Number(data?.coffeeInfo.remainBound) /
                 Number(data?.coffeeInfo.planBound)) *
@@ -76,7 +74,7 @@ export default function CoffeeSummary() {
               active
             ></Skeleton>
           )}
-          {data?.coffeeInfo.remainBound !== undefined && (
+          {data?.coffeeInfo && (
             <Progress
               percent={
                 (Number(data?.coffeeInfo.remainBound) /
