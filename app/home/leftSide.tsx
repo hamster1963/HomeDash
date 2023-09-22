@@ -1,9 +1,9 @@
 "use client";
 import { Nav } from "@douyinfe/semi-ui";
 import {
-  IconHistogram,
   IconHome,
   IconSemiLogo,
+  IconServer,
   IconSignal,
 } from "@douyinfe/semi-icons";
 import Link from "next/link";
@@ -90,8 +90,8 @@ function LeftSide({ callbackWidth }: LeftSideProps) {
         }}
         items={[
           { itemKey: "Home", text: "概览", icon: <IconHome /> },
+          { itemKey: "Service", text: "服务监控", icon: <IconServer /> },
           { itemKey: "Network", text: "网络状态", icon: <IconSignal /> },
-          { itemKey: "Service", text: "服务监控", icon: <IconHistogram /> },
         ]}
         defaultSelectedKeys={selectedKeys}
       >
