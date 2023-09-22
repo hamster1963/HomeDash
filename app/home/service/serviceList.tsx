@@ -143,7 +143,6 @@ export default function ServiceList() {
           borderRadius: "20px",
           padding: "10px",
           flexWrap: "wrap",
-          backgroundColor: "rgba(var(--semi-grey-0), 1)",
         }}
       >
         <ServerDetailCard
@@ -175,11 +174,9 @@ export default function ServiceList() {
           alignItems: "center",
           marginLeft: "30px",
           marginRight: "30px",
-          marginTop: "10px",
           borderRadius: "20px",
           padding: "10px",
           flexWrap: "wrap",
-          backgroundColor: "rgba(var(--semi-grey-0), 1)",
         }}
       >
         <ServerDetailCard
