@@ -97,6 +97,7 @@ export default function PaySummary() {
         alignItems: "center",
         marginLeft: "40px",
         marginRight: "40px",
+        marginTop: "10px",
       }}
     >
       <PayDetailCard service="阿里云服务器" expireDate={"2024-09-15"} />

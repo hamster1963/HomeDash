@@ -97,7 +97,6 @@ export default function ServiceSummary() {
         minWidth: "250px",
         padding: "10px",
         flexWrap: "wrap",
-        // backgroundColor: "rgba(var(--semi-grey-0), 1)",
       }}
     >
       <ServiceCard
