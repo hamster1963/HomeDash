@@ -92,6 +92,7 @@ export default function PaySummary() {
     <div
       style={{
         display: "flex",
+        flexWrap: "wrap",
         justifyContent: "space-between",
         alignItems: "center",
         marginLeft: "40px",
