@@ -95,8 +95,8 @@ export default function PaySummary() {
         flexWrap: "wrap",
         justifyContent: "space-between",
         alignItems: "center",
-        marginLeft: "40px",
-        marginRight: "40px",
+        marginLeft: "20px",
+        marginRight: "20px",
         marginTop: "10px",
       }}
     >
