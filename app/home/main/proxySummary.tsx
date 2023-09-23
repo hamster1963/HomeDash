@@ -58,7 +58,7 @@ export default function ProxySummary() {
         className="myDescription"
         data={networkSummaryData}
         row
-        size="large"
+        size="medium"
       />
     </>
   );

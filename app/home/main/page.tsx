@@ -5,6 +5,7 @@ import NetworkSummary from "@/app/home/main/networkSummary";
 import ProxySummary from "@/app/home/main/proxySummary";
 import CoffeeSummary from "@/app/home/main/coffeeSummary";
 import Server from "@/app/home/main/server";
+import XuiInfoSummary from "@/app/home/main/xuiSummary";
 
 export default function DashboardPage() {
   const { Title } = Typography;
@@ -17,53 +18,112 @@ export default function DashboardPage() {
       >
         👋 你好, 欢迎来到 HomeDash
       </Title>
-      <Divider margin="12px" align="left">
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          flexWrap: "wrap",
+          justifyContent: "start",
+        }}
+      >
         <div
           style={{
-            marginLeft: "-10px",
-            fontWeight: "normal",
-            fontSize: "30px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "start",
           }}
         >
-          家庭网络
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              padding: "10px",
+            }}
+          >
+            <Title
+              heading={3}
+              style={{
+                marginLeft: "20px",
+              }}
+            >
+              家庭网络
+            </Title>
+            <NetworkSummary />
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              padding: "10px",
+            }}
+          >
+            <Title
+              heading={3}
+              style={{
+                marginLeft: "20px",
+              }}
+            >
+              代理服务
+            </Title>
+            <CoffeeSummary />
+          </div>
         </div>
-      </Divider>
-      <NetworkSummary />
-      <Divider margin="12px" align="left">
         <div
           style={{
-            marginLeft: "-10px",
-            fontWeight: "normal",
-            fontSize: "30px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "start",
           }}
         >
-          科学上网
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              padding: "10px",
+            }}
+          >
+            <Title
+              heading={3}
+              style={{
+                marginLeft: "20px",
+              }}
+            >
+              科学上网
+            </Title>
+            <ProxySummary />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              padding: "10px",
+            }}
+          >
+            <Title
+              heading={3}
+              style={{
+                marginLeft: "20px",
+              }}
+            >
+              x-ui
+            </Title>
+            <XuiInfoSummary />
+          </div>
         </div>
-      </Divider>
-      <ProxySummary />
-      <Divider margin="12px" align="left">
-        <div
-          style={{
-            marginLeft: "-10px",
-            fontWeight: "normal",
-            fontSize: "30px",
-          }}
-        >
-          代理服务
-        </div>
-      </Divider>
-      <CoffeeSummary />
-      <Divider margin="12px" align="left">
-        <div
-          style={{
-            marginLeft: "-10px",
-            fontWeight: "normal",
-            fontSize: "30px",
-          }}
-        >
-          系统状态
-        </div>
-      </Divider>
+      </div>
+
+      <Title
+        heading={3}
+        style={{
+          marginLeft: "30px",
+          marginBottom: "10px",
+        }}
+      >
+        系统状态
+      </Title>
       <Server />
     </>
   );

@@ -23,7 +23,7 @@ export default function CoffeeSummary() {
     {
       key: "服务商",
       value: (
-        <Title heading={2}>
+        <Title heading={3}>
           {data ? (
             "CoffeeCloud"
           ) : (
@@ -99,7 +99,7 @@ export default function CoffeeSummary() {
         className="myDescription"
         data={networkSummaryData}
         row
-        size="large"
+        size="medium"
       />
     </>
   );

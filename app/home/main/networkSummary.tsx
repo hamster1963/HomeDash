@@ -61,7 +61,7 @@ export default function NetworkSummary() {
         className="myDescription"
         data={networkSummaryData}
         row
-        size="large"
+        size="medium"
       />
     </>
   );
