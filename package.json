@@ -9,13 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@douyinfe/semi-icons": "^2.43.2",
-    "@douyinfe/semi-ui": "^2.43.2",
+    "@douyinfe/semi-icons": "^2.44.0",
+    "@douyinfe/semi-ui": "^2.44.0",
     "@types/node": "20.6.3",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
     "@vercel/analytics": "^1.0.2",
-    "eslint": "8.49.0",
+    "eslint": "8.50.0",
     "eslint-config-next": "13.5.2",
     "next": "13.5.2",
     "prettier": "^3.0.3",
