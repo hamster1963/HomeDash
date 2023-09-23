@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Divider, Typography } from "@douyinfe/semi-ui";
+import { Typography } from "@douyinfe/semi-ui";
 import NetworkSummary from "@/app/home/main/networkSummary";
 import ProxySummary from "@/app/home/main/proxySummary";
 import CoffeeSummary from "@/app/home/main/coffeeSummary";
