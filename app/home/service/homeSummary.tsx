@@ -9,7 +9,7 @@ type HomeCardProps = {
   img: string;
 };
 
-function HomeCard({ type, status, value, img }: HomeCardProps) {
+const HomeCard = ({ type, status, value, img }: HomeCardProps) => {
   const { Title } = Typography;
   return (
     <Card
@@ -75,7 +75,7 @@ function HomeCard({ type, status, value, img }: HomeCardProps) {
       </div>
     </Card>
   );
-}
+};
 
 export default function HomeSummary() {
   const data = SSEDataFetch(
