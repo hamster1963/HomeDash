@@ -1,6 +1,5 @@
 .myDescription {
     padding: 20px;
-    margin-right: 20px;
     border-radius: 10px;
     background-color: transparent;
     transition: border-radius 0.5s ease, background-color 0.3s ease;

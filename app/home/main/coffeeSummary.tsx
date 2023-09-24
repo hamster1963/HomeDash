@@ -23,7 +23,7 @@ export default function CoffeeSummary() {
     {
       key: "服务商",
       value: (
-        <Title heading={3}>
+        <Title heading={4}>
           {data ? (
             "CoffeeCloud"
           ) : (

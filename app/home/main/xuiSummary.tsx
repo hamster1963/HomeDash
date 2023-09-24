@@ -17,11 +17,11 @@ export default function XuiInfoSummary() {
     {
       key: "状态",
       value: data?.xuiData ? (
-        <Title heading={2} type="success">
+        <Title heading={3} type="success">
           在线
         </Title>
       ) : (
-        <Title heading={2} type="danger">
+        <Title heading={3} type="danger">
           离线
         </Title>
       ),
