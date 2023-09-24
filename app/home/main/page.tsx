@@ -14,7 +14,7 @@ export default function DashboardPage() {
     <>
       <Title
         heading={2}
-        style={{ marginTop: "30px", marginLeft: "30px", marginBottom: "30px" }}
+        style={{ marginTop: "30px", marginLeft: "30px", marginBottom: "10px" }}
       >
         👋 你好, 欢迎来到 HomeDash
       </Title>
