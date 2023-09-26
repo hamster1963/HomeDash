@@ -1,5 +1,5 @@
 # HomeDash
-HomeDash 是一个基于 [Next.js](https://nextjs.org/) 和 [Semi-design](https://semi.design/zh-CN/start) 的仪表盘。
+### HomeDash 是一个基于 [Next.js](https://nextjs.org/) 和 [Semi-design](https://semi.design/zh-CN/start) 的仪表盘
 访问地址: https://home.buycoffee.top
 
 ![screen-shot-one](/CleanShot%202023-09-23%20at%2011.04.22@2x.png)
