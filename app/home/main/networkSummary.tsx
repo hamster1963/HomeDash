@@ -31,7 +31,7 @@ export default function NetworkSummary() {
     },
     {
       key: "设备数",
-      value: data?.homeNetwork.deviceCount ? (
+      value: data?.homeNetwork ? (
         data?.homeNetwork.deviceCount
       ) : (
         <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
