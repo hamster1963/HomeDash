@@ -11,17 +11,17 @@
   "dependencies": {
     "@douyinfe/semi-icons": "^2.44.0",
     "@douyinfe/semi-ui": "^2.44.0",
-    "@types/node": "20.6.3",
+    "@types/node": "20.7.0",
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
     "@vercel/analytics": "^1.0.2",
     "eslint": "8.50.0",
-    "eslint-config-next": "13.5.2",
-    "next": "13.5.2",
+    "eslint-config-next": "13.5.3",
+    "next": "13.5.3",
     "prettier": "^3.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "swr": "^2.2.2",
+    "swr": "^2.2.4",
     "typescript": "5.2.2",
     "typewriter-effect": "^2.21.0"
   }
