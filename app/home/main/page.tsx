@@ -23,7 +23,7 @@ export default function DashboardPage() {
           display: "flex",
           flexDirection: "row",
           flexWrap: "wrap",
-          justifyContent: "start",
+          justifyContent: "flex-start",
         }}
       >
         <div
@@ -32,6 +32,7 @@ export default function DashboardPage() {
             flexDirection: "column",
             justifyContent: "flex-start",
             alignItems: "start",
+            marginRight: "-50px",
           }}
         >
           <div
