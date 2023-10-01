@@ -76,6 +76,7 @@ export default function DashboardPage() {
             flexDirection: "column",
             justifyContent: "flex-start",
             alignItems: "start",
+            marginLeft: "-20px",
           }}
         >
           <div
