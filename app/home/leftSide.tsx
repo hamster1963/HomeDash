@@ -77,12 +77,15 @@ function LeftSide({ callbackWidth }: LeftSideProps) {
           const itemKey = props.itemKey as string;
           const href = routerMap[itemKey];
           return (
-            <Link
-              style={{ textDecoration: "none", margin: "0 10px" }}
-              href={href}
+            <div
+              style={{
+                marginBottom: "15px",
+              }}
             >
-              {itemElement}
-            </Link>
+              <Link style={{ textDecoration: "none" }} href={href}>
+                {itemElement}
+              </Link>
+            </div>
           );
         }}
         footer={{
