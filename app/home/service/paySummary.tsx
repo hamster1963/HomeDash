@@ -102,6 +102,7 @@ export default function PaySummary() {
     >
       <PayDetailCard service="阿里云服务器" expireDate={"2024-09-15"} />
       <PayDetailCard service="buycoffee.top 域名" expireDate={"2024-05-19"} />
+      <PayDetailCard service="XGP 会员" expireDate={"2024-09-25"} />
     </div>
   );
 }
