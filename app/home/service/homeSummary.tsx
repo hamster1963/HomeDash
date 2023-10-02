@@ -15,7 +15,7 @@ const HomeCard = ({ type, status, value, img }: HomeCardProps) => {
     <Card
       style={{
         flex: 1,
-        minWidth: "240px",
+        minWidth: "230px",
         margin: "10px",
         borderRadius: "20px",
         background: status ? "rgba(var(--semi-green-0), 1)" : "",
