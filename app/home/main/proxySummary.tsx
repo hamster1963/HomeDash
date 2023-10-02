@@ -20,7 +20,13 @@ export default function ProxySummary() {
   useEffect(() => {
     if (data?.proxyNetwork.rxSpeedMbps !== undefined) {
       setRxSpeedList((prevList) => {
-        const newList = [...prevList, { speed: data.proxyNetwork.rxSpeedMbps }];
+        const newList = [
+          ...prevList,
+          {
+            speed:
+              data.proxyNetwork.rxSpeedMbps + data.proxyNetwork.txSpeedMbps,
+          },
+        ];
         if (newList.length > 10) {
           newList.shift(); // 删除最旧的数据
         }

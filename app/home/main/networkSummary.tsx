@@ -1,5 +1,5 @@
 "use client";
-import { Descriptions, Typography, Skeleton } from "@douyinfe/semi-ui";
+import { Descriptions, Skeleton } from "@douyinfe/semi-ui";
 import "../styles/style.css";
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 import React, { useEffect, useState } from "react";
@@ -19,7 +19,12 @@ export default function NetworkSummary() {
   useEffect(() => {
     if (data?.homeNetwork?.rxSpeedMbps !== undefined) {
       setRxSpeedList((prevList) => {
-        const newList = [...prevList, { speed: data.homeNetwork.rxSpeedMbps }];
+        const newList = [
+          ...prevList,
+          {
+            speed: data.homeNetwork.rxSpeedMbps + data.homeNetwork.txSpeedMbps,
+          },
+        ];
         if (newList.length > 10) {
           newList.shift(); // 删除最旧的数据
         }
