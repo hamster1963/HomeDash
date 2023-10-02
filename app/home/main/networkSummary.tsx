@@ -2,6 +2,8 @@
 import { Descriptions, Typography, Skeleton } from "@douyinfe/semi-ui";
 import "../styles/style.css";
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
+import React, { useEffect, useState } from "react";
+import NetworkChart from "@/app/home/main/networkChart";
 
 export default function NetworkSummary() {
   const { Title } = Typography;
@@ -9,6 +11,24 @@ export default function NetworkSummary() {
   const data = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetNetworkDataSSE",
   );
+
+  type SpeedData = { speed: number };
+
+  // 1. 使用 useState 设置状态
+  const [rxSpeedList, setRxSpeedList] = useState<SpeedData[]>([]);
+
+  // 2. 使用 useEffect 监视数据的变化
+  useEffect(() => {
+    if (data?.homeNetwork?.rxSpeedMbps !== undefined) {
+      setRxSpeedList((prevList) => {
+        const newList = [...prevList, { speed: data.homeNetwork.rxSpeedMbps }];
+        if (newList.length > 10) {
+          newList.shift(); // 删除最旧的数据
+        }
+        return newList;
+      });
+    }
+  }, [data]);
 
   const placeholder = (
     <div>
@@ -63,6 +83,7 @@ export default function NetworkSummary() {
         row
         size="medium"
       />
+      <NetworkChart data={rxSpeedList} keyString={"speed"} />
     </>
   );
 }

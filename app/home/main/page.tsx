@@ -39,7 +39,10 @@ export default function DashboardPage() {
             style={{
               display: "flex",
               flexDirection: "column",
-              padding: "10px",
+              paddingTop: "10px",
+              border: "1px solid rgba(var(--semi-grey-1), 1)",
+              borderRadius: "15px",
+              marginLeft: "30px",
             }}
           >
             <Title
