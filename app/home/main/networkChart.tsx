@@ -1,13 +1,21 @@
 "use client";
-import { Area, AreaChart, ResponsiveContainer } from "recharts";
+import { Area, AreaChart, ResponsiveContainer, YAxis } from "recharts";
 import React from "react";
 
 type NetworkChartProps = {
   data: any;
   keyString: string;
+  colorToken: string;
 };
 
-export default function NetworkChart({ data, keyString }: NetworkChartProps) {
+export default function NetworkChart({
+  data,
+  keyString,
+  colorToken,
+}: NetworkChartProps) {
+  const backgroundColor = `rgba(var(--semi-${colorToken}-0), 1)`;
+  const strokeColor = `rgba(var(--semi-${colorToken}-5), 1)`;
+  const fill = `url(#${colorToken})`;
   return (
     <div
       style={{
@@ -18,38 +26,30 @@ export default function NetworkChart({ data, keyString }: NetworkChartProps) {
         style={{
           width: "100%",
           height: "100px",
-          backgroundColor: "rgba(var(--semi-blue-0), 1)",
+          backgroundColor: backgroundColor,
           borderRadius: "10px",
         }}
       >
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             data={data}
-            margin={{ top: 20, right: -10, left: -10, bottom: 0 }}
+            margin={{ top: 10, right: -10, left: -10, bottom: 6 }}
           >
             <defs>
-              <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-                <stop
-                  offset="5%"
-                  stopColor="rgba(var(--semi-blue-5), 1)"
-                  stopOpacity={0.8}
-                />
-                <stop
-                  offset="95%"
-                  stopColor="rgba(var(--semi-blue-5), 1)"
-                  stopOpacity={0}
-                />
+              <linearGradient id={colorToken} x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor={strokeColor} stopOpacity={0.8} />
+                <stop offset="95%" stopColor={strokeColor} stopOpacity={0} />
               </linearGradient>
             </defs>
-            {/*<YAxis />*/}
+            <YAxis domain={[0, "dataMax + 1"]} hide={true} />
             {/*<Tooltip />*/}
             <Area
               type="linear"
               dataKey={keyString?.toString()}
-              stroke="rgba(var(--semi-blue-5), 1)"
+              stroke={strokeColor}
               isAnimationActive={false}
               fillOpacity={1}
-              fill="url(#colorUv)"
+              fill={fill}
             />
           </AreaChart>
         </ResponsiveContainer>

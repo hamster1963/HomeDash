@@ -4,7 +4,6 @@ import "../styles/style.css";
 import React from "react";
 
 export default function XuiInfoSummary() {
-  const { Title } = Typography;
   const data = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetXuiDataSSE",
   );
@@ -14,18 +13,6 @@ export default function XuiInfoSummary() {
     </div>
   );
   const networkSummaryData = [
-    {
-      key: "状态",
-      value: data?.xuiData ? (
-        <Title heading={3} type="success">
-          在线
-        </Title>
-      ) : (
-        <Title heading={3} type="danger">
-          离线
-        </Title>
-      ),
-    },
     {
       key: "代理用户数",
       value: data?.xuiData ? (

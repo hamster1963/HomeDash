@@ -6,8 +6,6 @@ import React, { useEffect, useState } from "react";
 import NetworkChart from "@/app/home/main/networkChart";
 
 export default function NetworkSummary() {
-  const { Title } = Typography;
-
   const data = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetNetworkDataSSE",
   );
@@ -37,18 +35,6 @@ export default function NetworkSummary() {
   );
 
   const networkSummaryData = [
-    {
-      key: "状态",
-      value: data ? (
-        <Title heading={3} type="success">
-          在线
-        </Title>
-      ) : (
-        <Title heading={3} type="danger">
-          离线
-        </Title>
-      ),
-    },
     {
       key: "设备数",
       value: data?.homeNetwork ? (
@@ -83,7 +69,11 @@ export default function NetworkSummary() {
         row
         size="medium"
       />
-      <NetworkChart data={rxSpeedList} keyString={"speed"} />
+      <NetworkChart
+        data={rxSpeedList}
+        keyString={"speed"}
+        colorToken={"blue"}
+      />
     </>
   );
 }

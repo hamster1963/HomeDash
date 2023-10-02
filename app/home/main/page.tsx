@@ -21,101 +21,93 @@ export default function DashboardPage() {
       <div
         style={{
           display: "flex",
-          flexDirection: "row",
           flexWrap: "wrap",
-          justifyContent: "flex-start",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginLeft: "20px",
         }}
       >
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "start",
-            marginRight: "-50px",
+            paddingTop: "10px",
+            border: "1px solid rgba(var(--semi-grey-1), 1)",
+            borderRadius: "15px",
+            minWidth: "200px",
+            marginRight: "20px",
+            marginBottom: "20px",
+            flex: 1,
           }}
         >
-          <div
+          <Title
+            heading={3}
             style={{
-              display: "flex",
-              flexDirection: "column",
-              paddingTop: "10px",
-              border: "1px solid rgba(var(--semi-grey-1), 1)",
-              borderRadius: "15px",
-              marginLeft: "30px",
+              marginLeft: "20px",
             }}
           >
-            <Title
-              heading={3}
-              style={{
-                marginLeft: "20px",
-              }}
-            >
-              家庭网络
-            </Title>
-            <NetworkSummary />
-          </div>
+            家庭网络
+          </Title>
+          <NetworkSummary />
+        </div>
 
-          <div
+        <div
+          style={{
+            paddingTop: "10px",
+            border: "1px solid rgba(var(--semi-grey-1), 1)",
+            borderRadius: "15px",
+            flex: 1,
+            marginRight: "20px",
+            marginBottom: "20px",
+            minWidth: "200px",
+          }}
+        >
+          <Title
+            heading={3}
             style={{
-              display: "flex",
-              flexDirection: "column",
-              padding: "10px",
+              marginLeft: "20px",
             }}
           >
-            <Title
-              heading={3}
-              style={{
-                marginLeft: "20px",
-              }}
-            >
-              代理服务
-            </Title>
-            <CoffeeSummary />
-          </div>
+            科学上网
+          </Title>
+          <ProxySummary />
+        </div>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "flex-start",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            padding: "10px",
+          }}
+        >
+          <Title
+            heading={3}
+            style={{
+              marginLeft: "20px",
+            }}
+          >
+            代理服务
+          </Title>
+          <CoffeeSummary />
         </div>
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-start",
-            alignItems: "start",
+            padding: "10px",
           }}
         >
-          <div
+          <Title
+            heading={3}
             style={{
-              display: "flex",
-              flexDirection: "column",
-              padding: "10px",
+              marginLeft: "20px",
             }}
           >
-            <Title
-              heading={3}
-              style={{
-                marginLeft: "20px",
-              }}
-            >
-              科学上网
-            </Title>
-            <ProxySummary />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              padding: "10px",
-            }}
-          >
-            <Title
-              heading={3}
-              style={{
-                marginLeft: "20px",
-              }}
-            >
-              x-ui
-            </Title>
-            <XuiInfoSummary />
-          </div>
+            x-ui
+          </Title>
+          <XuiInfoSummary />
         </div>
       </div>
 
