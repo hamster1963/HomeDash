@@ -15,9 +15,10 @@ const HomeCard = ({ type, status, value, img }: HomeCardProps) => {
     <Card
       style={{
         flex: 1,
-        minWidth: "270px",
+        minWidth: "260px",
         margin: "10px",
         borderRadius: "20px",
+        background: status ? "rgba(var(--semi-green-0), 1)" : "",
       }}
     >
       <div
@@ -35,7 +36,7 @@ const HomeCard = ({ type, status, value, img }: HomeCardProps) => {
           }}
         >
           <Title
-            heading={5}
+            heading={6}
             style={{
               color: "rgba(var(--semi-grey-9), 1)",
             }}
