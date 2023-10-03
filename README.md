@@ -7,7 +7,7 @@
 
 ## 一键部署前端
 ### 在环境变量中填入后端 API 地址
-#### 测试后端地址: https://119.29.207.162:10401
+#### 测试后端地址: https://119.29.207.162
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhamster1963%2FHomeDash%3Ftab%3Dreadme-ov-file&env=NEXT_PUBLIC_GO_API_BASE_URL&envDescription=%E5%A1%AB%E5%85%A5%E5%90%8E%E7%AB%AF%20API%20%E5%9C%B0%E5%9D%80)
 
 ## 后端仓库
