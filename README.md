@@ -1,29 +1,38 @@
 # HomeDash
 ### HomeDash 是一个基于 [Next.js](https://nextjs.org/) 和 [Semi-design](https://semi.design/zh-CN/start) 的仪表盘
-访问地址: https://home.buycoffee.top
+#### Demo地址: https://home.buycoffee.top
 
 ![screen-shot-one](/.github/CleanShot%202023-10-03%20at%2016.03.14@2x.png)
 ![screen-shot-two](/.github/CleanShot%202023-09-23%20at%2011.04.38@2x.png)
 
-## 配置文件填入后端地址
+## 一键部署前端
+### 在环境变量中填入后端 API 地址
+#### 测试后端地址: http://119.29.207.162:10401
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fhamster1963%2FHomeDash%3Ftab%3Dreadme-ov-file&env=NEXT_PUBLIC_GO_API_BASE_URL&envDescription=%E5%A1%AB%E5%85%A5%E5%90%8E%E7%AB%AF%20API%20%E5%9C%B0%E5%9D%80)
+
+## 后端仓库
+[HomeDash-Backend](https://github.com/hamster1963/HomeDash-Backend)
+
+## 本地开发
+
+### 配置文件填入后端地址
     
 ```bash
 cp .env.example .env.local
 ```
 
-## 安装依赖
+### 安装依赖
 
 ```bash
 pnpm install
 ```
 
-
-## 运行前端
+### 运行前端
 
 ```bash
 pnpm dev
 ```
 
-### 同时也兼容了黑色模式！
+## 同时也兼容了黑色模式！
 ![screen-shot-three](/.github/CleanShot%202023-10-03%20at%2016.05.55@2x.png)
 ![screen-shot-four](/.github/CleanShot%202023-10-03%20at%2016.05.49@2x.png)
