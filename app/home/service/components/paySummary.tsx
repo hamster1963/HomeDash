@@ -60,15 +60,14 @@ function PayDetailCard(props: PayCardProps) {
               color: "rgba(var(--semi-grey-9), 1)",
             }}
           >
-            <Title
-              heading={6}
+            <div
               style={{
                 fontSize: "0.8rem",
                 color: "rgba(var(--semi-grey-7), 1)",
               }}
             >
               {daysRemain}天
-            </Title>
+            </div>
             {remainPercent}%
           </Title>
         </div>
