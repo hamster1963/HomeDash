@@ -6,6 +6,7 @@ import React, { useCallback, useEffect, useState } from "react";
 
 import FixedButton from "@/app/home/utils/fixedButton";
 import LeftSide from "@/app/home/utils/leftSide";
+import { SSEConnectProvider } from "@/app/home/utils/sseContext";
 
 export default function DashboardLayout({
   children,
@@ -73,9 +74,13 @@ export default function DashboardLayout({
       >
         <LeftSide callbackWidth={callbackNavWidth} />
       </Sider>
+
       <Layout>
-        <Content>{children}</Content>
+        <Content>
+          <SSEConnectProvider>{children}</SSEConnectProvider>
+        </Content>
       </Layout>
+
       <FixedButton />
     </Layout>
   );

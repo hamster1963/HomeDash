@@ -1,5 +1,10 @@
 "use client";
-import { Typography } from "@douyinfe/semi-ui";
+import {
+  IconGithubLogo,
+  IconTick,
+  IconUploadError,
+} from "@douyinfe/semi-icons";
+import { Tag, Typography } from "@douyinfe/semi-ui";
 import React from "react";
 
 import CoffeeSummary from "@/app/home/main/components/coffeeSummary";
@@ -7,9 +12,11 @@ import NetworkSummary from "@/app/home/main/components/networkSummary";
 import ProxySummary from "@/app/home/main/components/proxySummary";
 import Server from "@/app/home/main/components/serverList";
 import XuiInfoSummary from "@/app/home/main/components/xuiSummary";
+import { useSSEConnect } from "@/app/home/utils/sseContext";
 
 export default function DashboardPage() {
   const { Title } = Typography;
+  const { SSEConnect } = useSSEConnect();
 
   return (
     <>

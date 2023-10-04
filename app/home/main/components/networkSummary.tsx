@@ -4,6 +4,7 @@ import { Descriptions, Skeleton } from "@douyinfe/semi-ui";
 import React, { useEffect, useState } from "react";
 
 import NetworkChart from "@/app/home/main/components/networkChart";
+import { useSSEConnect } from "@/app/home/utils/sseContext";
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
 export default function NetworkSummary() {
@@ -13,12 +14,15 @@ export default function NetworkSummary() {
 
   type SpeedData = { speed: number };
 
+  const { setSSEConnect } = useSSEConnect();
+
   // 1. 使用 useState 设置状态
   const [rxSpeedList, setRxSpeedList] = useState<SpeedData[]>([]);
 
   // 2. 使用 useEffect 监视数据的变化
   useEffect(() => {
     if (data?.homeNetwork?.rxSpeedMbps !== undefined) {
+      setSSEConnect(true);
       setRxSpeedList((prevList) => {
         const newList = [
           ...prevList,
@@ -32,7 +36,7 @@ export default function NetworkSummary() {
         return newList;
       });
     }
-  }, [data]);
+  }, [data, setSSEConnect]);
 
   const placeholder = (
     <div>
