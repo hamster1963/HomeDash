@@ -14,7 +14,7 @@ export default function NetWork() {
         heading={2}
         style={{ marginTop: "30px", marginLeft: "30px", marginBottom: "30px" }}
       >
-        💻 代理服务状态
+        👨‍👨‍👧‍👦 代理用户列表
       </Title>
       <XuiSummary />
       <XuiTable />
