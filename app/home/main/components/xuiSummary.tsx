@@ -1,7 +1,9 @@
-import { SSEDataFetch } from "@/app/home/utils/sseFetch";
-import { Descriptions, Skeleton } from "@douyinfe/semi-ui";
 import "../../style.css";
+
+import { Descriptions, Skeleton } from "@douyinfe/semi-ui";
 import React from "react";
+
+import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
 export default function XuiInfoSummary() {
   const data = SSEDataFetch(

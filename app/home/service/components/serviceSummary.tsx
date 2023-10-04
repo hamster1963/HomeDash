@@ -1,4 +1,5 @@
 import { Card, Descriptions, Progress } from "@douyinfe/semi-ui";
+
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
 type ServiceCardProps = {
@@ -82,9 +83,9 @@ export default function ServiceSummary() {
   }
 
   // 获取今天的日期
-  const today: string = new Date().toISOString().split("T")[0];
+  const today = new Date().toISOString().split("T")[0];
   const date2: string = "2023-12-16";
-  const daysBetween: number = getDaysBetweenDates(today, date2);
+  const daysBetween: number = getDaysBetweenDates(today!.toString(), date2);
   return (
     <div
       style={{

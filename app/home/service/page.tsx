@@ -1,11 +1,13 @@
 "use client";
 
-import { Typography } from "@douyinfe/semi-ui";
 import "../style.css";
-import ServiceSummary from "@/app/home/service/components/serviceSummary";
-import ServiceList from "@/app/home/service/components/serviceList";
+
+import { Typography } from "@douyinfe/semi-ui";
+
 import HomeSummary from "@/app/home/service/components/homeSummary";
 import PaySummary from "@/app/home/service/components/paySummary";
+import ServiceList from "@/app/home/service/components/serviceList";
+import ServiceSummary from "@/app/home/service/components/serviceSummary";
 
 export default function Service() {
   const { Title } = Typography;

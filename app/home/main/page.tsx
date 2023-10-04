@@ -1,9 +1,10 @@
 "use client";
-import React from "react";
 import { Typography } from "@douyinfe/semi-ui";
+import React from "react";
+
+import CoffeeSummary from "@/app/home/main/components/coffeeSummary";
 import NetworkSummary from "@/app/home/main/components/networkSummary";
 import ProxySummary from "@/app/home/main/components/proxySummary";
-import CoffeeSummary from "@/app/home/main/components/coffeeSummary";
 import Server from "@/app/home/main/components/serverList";
 import XuiInfoSummary from "@/app/home/main/components/xuiSummary";
 

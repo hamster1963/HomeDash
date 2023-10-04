@@ -1,4 +1,4 @@
-"use client";
+import "../../style.css";
 
 import {
   Descriptions,
@@ -6,7 +6,7 @@ import {
   Skeleton,
   Typography,
 } from "@douyinfe/semi-ui";
-import "../../style.css";
+
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
 export default function CoffeeSummary() {

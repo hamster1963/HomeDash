@@ -1,9 +1,11 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
-import { Layout } from "@douyinfe/semi-ui";
 import "./globals.css";
-import LeftSide from "@/app/home/utils/leftSide";
+
+import { Layout } from "@douyinfe/semi-ui";
+import React, { useCallback, useEffect, useState } from "react";
+
 import FixedButton from "@/app/home/utils/fixedButton";
+import LeftSide from "@/app/home/utils/leftSide";
 
 export default function DashboardLayout({
   children,

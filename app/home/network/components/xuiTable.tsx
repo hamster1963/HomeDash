@@ -1,5 +1,6 @@
-import React from "react";
 import { Progress, Table, Tag } from "@douyinfe/semi-ui";
+import React from "react";
+
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
 export default function XuiTable() {

@@ -1,9 +1,10 @@
-"use client";
-import { Descriptions, Skeleton } from "@douyinfe/semi-ui";
 import "../../style.css";
-import { SSEDataFetch } from "@/app/home/utils/sseFetch";
+
+import { Descriptions, Skeleton } from "@douyinfe/semi-ui";
 import React, { useEffect, useState } from "react";
+
 import NetworkChart from "@/app/home/main/components/networkChart";
+import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
 export default function NetworkSummary() {
   const data = SSEDataFetch(

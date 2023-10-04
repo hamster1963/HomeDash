@@ -1,5 +1,6 @@
 import { Card, Tag, Typography } from "@douyinfe/semi-ui";
 import Image from "next/image";
+
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
 type HomeCardProps = {

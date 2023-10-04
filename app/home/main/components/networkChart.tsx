@@ -1,6 +1,5 @@
-"use client";
-import { Area, AreaChart, ResponsiveContainer, YAxis } from "recharts";
 import React from "react";
+import { Area, AreaChart, ResponsiveContainer, YAxis } from "recharts";
 
 type NetworkChartProps = {
   data: any;
