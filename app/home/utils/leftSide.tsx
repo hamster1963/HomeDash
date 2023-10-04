@@ -4,7 +4,7 @@ import {
   IconHome,
   IconSemiLogo,
   IconServer,
-  IconSignal,
+  IconUserGroup,
 } from "@douyinfe/semi-icons";
 import { Nav } from "@douyinfe/semi-ui";
 import Link from "next/link";
@@ -97,7 +97,7 @@ function LeftSide({ callbackWidth }: LeftSideProps) {
         items={[
           { itemKey: "Home", text: "概览", icon: <IconHome /> },
           { itemKey: "Service", text: "服务监控", icon: <IconServer /> },
-          { itemKey: "Network", text: "网络状态", icon: <IconSignal /> },
+          { itemKey: "Network", text: "用户列表", icon: <IconUserGroup /> },
         ]}
         defaultSelectedKeys={selectedKeys}
       >
