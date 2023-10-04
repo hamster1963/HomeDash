@@ -1,6 +1,6 @@
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 import { Descriptions, Skeleton, Typography } from "@douyinfe/semi-ui";
-import "../styles/style.css";
+import "../../style.css";
 import React from "react";
 
 export default function XuiSummary() {

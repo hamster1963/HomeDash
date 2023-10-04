@@ -2,8 +2,8 @@
 
 import { Typography } from "@douyinfe/semi-ui";
 import React from "react";
-import XuiSummary from "@/app/home/network/xuiSummary";
-import XuiTable from "@/app/home/network/xuiTable";
+import XuiSummary from "@/app/home/network/components/xuiSummary";
+import XuiTable from "@/app/home/network/components/xuiTable";
 
 export default function NetWork() {
   const { Title } = Typography;

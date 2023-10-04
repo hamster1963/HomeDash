@@ -1,7 +1,7 @@
 "use client";
 
 import { Descriptions, Skeleton, Typography } from "@douyinfe/semi-ui";
-import "../../styles/style.css";
+import "../../style.css";
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 import NetworkChart from "@/app/home/main/components/networkChart";
 import React, { useEffect, useState } from "react";
