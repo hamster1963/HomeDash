@@ -22,7 +22,6 @@ export default function NetworkSummary() {
   // 2. 使用 useEffect 监视数据的变化
   useEffect(() => {
     if (data?.homeNetwork?.rxSpeedMbps !== undefined) {
-      setSSEConnect(true);
       setRxSpeedList((prevList) => {
         const newList = [
           ...prevList,
@@ -35,6 +34,12 @@ export default function NetworkSummary() {
         }
         return newList;
       });
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (data?.homeNetwork?.rxSpeedMbps !== undefined) {
+      setSSEConnect(true);
     }
   }, [data, setSSEConnect]);
 
