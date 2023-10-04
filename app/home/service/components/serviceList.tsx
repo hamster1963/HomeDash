@@ -106,7 +106,7 @@ function ServerDetailCard(props: ServiceCardProps) {
         </div>
 
         <Progress
-          percent={availability}
+          percent={Number(availability)}
           stroke={
             status
               ? "rgba(var(--semi-green-0), 1)"
