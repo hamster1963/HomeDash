@@ -19,8 +19,8 @@ function PayDetailCard(props: PayCardProps) {
   }
 
   // 获取今天的日期
-  const today: string = new Date().toISOString().split("T")[0];
-  const daysRemain: number = getDaysBetweenDates(today, expireDate);
+  const today = new Date().toISOString().split("T")[0];
+  const daysRemain: number = getDaysBetweenDates(today!.toString(), expireDate);
   const remainPercent: string = ((daysRemain / 365) * 100).toFixed(2);
   const { Title } = Typography;
   return (
