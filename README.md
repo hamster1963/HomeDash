@@ -2,8 +2,8 @@
 ### HomeDash 是一个基于 [Next.js](https://nextjs.org/) 和 [Semi-design](https://semi.design/zh-CN/start) 的仪表盘
 #### Demo地址: https://home.buycoffee.top
 
-![screen-shot-one](/.github/CleanShot%202023-10-03%20at%2016.03.14@2x.png)
-![screen-shot-two](/.github/CleanShot%202023-09-23%20at%2011.04.38@2x.png)
+![screen-shot-one](/.github/CleanShot2.png)
+![screen-shot-two](/.github/CleanShot1.png)
 
 ## 一键部署前端
 ### 在环境变量中填入后端 API 地址
@@ -34,5 +34,5 @@ pnpm dev
 ```
 
 ## 同时也兼容了黑色模式！
-![screen-shot-three](/.github/CleanShot%202023-10-03%20at%2016.05.55@2x.png)
-![screen-shot-four](/.github/CleanShot%202023-10-03%20at%2016.05.49@2x.png)
+![screen-shot-three](/.github/CleanShot3.png)
+![screen-shot-four](/.github/CleanShot4.png)
