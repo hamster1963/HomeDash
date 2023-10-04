@@ -1,5 +1,5 @@
 "use client";
-import { IconSimilarity } from "@douyinfe/semi-icons";
+import { IconMoon, IconSun } from "@douyinfe/semi-icons";
 import { Button } from "@douyinfe/semi-ui";
 import { useEffect, useState } from "react";
 
@@ -36,10 +36,10 @@ const FixedButton = () => {
     >
       <Button
         style={{ marginBottom: "10px" }}
-        icon={<IconSimilarity />}
+        icon={dark ? <IconSun /> : <IconMoon />}
         type="tertiary"
         theme="solid"
-        aria-label="暗黑模式"
+        aria-label="切换模式"
         onClick={switchMode}
       >
         {dark ? "早安" : "晚安"}
