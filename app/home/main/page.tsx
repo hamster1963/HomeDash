@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
 import { Typography } from "@douyinfe/semi-ui";
-import NetworkSummary from "@/app/home/main/networkSummary";
-import ProxySummary from "@/app/home/main/proxySummary";
-import CoffeeSummary from "@/app/home/main/coffeeSummary";
-import Server from "@/app/home/main/server";
-import XuiInfoSummary from "@/app/home/main/xuiSummary";
+import NetworkSummary from "@/app/home/main/components/networkSummary";
+import ProxySummary from "@/app/home/main/components/proxySummary";
+import CoffeeSummary from "@/app/home/main/components/coffeeSummary";
+import Server from "@/app/home/main/components/serverList";
+import XuiInfoSummary from "@/app/home/main/components/xuiSummary";
 
 export default function DashboardPage() {
   const { Title } = Typography;
