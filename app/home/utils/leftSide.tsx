@@ -1,11 +1,12 @@
 "use client";
-import { Nav } from "@douyinfe/semi-ui";
+
 import {
   IconHome,
   IconSemiLogo,
   IconServer,
   IconSignal,
 } from "@douyinfe/semi-icons";
+import { Nav } from "@douyinfe/semi-ui";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -23,17 +24,19 @@ function LeftSide({ callbackWidth }: LeftSideProps) {
   const pathname = usePathname();
   const selectedKeys = useMemo(() => {
     const keys = Object.keys(routerMap);
-    const selectedKey = keys.find((key) => pathname.startsWith(routerMap[key]));
+    const selectedKey = keys.find((key) =>
+      pathname.startsWith(routerMap[key] as string),
+    );
     return selectedKey ? [selectedKey] : [];
   }, [pathname]);
 
   // 添加状态来控制导航栏的收缩和展开
-  const [isNavCollapsed, setIsNavCollapsed] = useState(() => {
+  const [isNavCollapsed, setIsNavCollapsed] = useState<boolean>(() => {
     const savedState =
       typeof window !== "undefined"
         ? localStorage.getItem("navCollapsed")
         : false;
-    return savedState ? JSON.parse(savedState) : false;
+    return savedState ? (JSON.parse(savedState) as boolean) : false;
   });
 
   const toggleNav = useCallback(
@@ -75,7 +78,7 @@ function LeftSide({ callbackWidth }: LeftSideProps) {
         style={{ height: "100vh", width: navWidth }}
         renderWrapper={({ itemElement, props }) => {
           const itemKey = props.itemKey as string;
-          const href = routerMap[itemKey];
+          const href = routerMap[itemKey] as string;
           return (
             <div
               style={{
