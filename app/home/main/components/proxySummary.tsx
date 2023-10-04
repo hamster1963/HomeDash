@@ -43,7 +43,7 @@ export default function ProxySummary() {
     {
       key: "当前节点",
       value: data?.nodeInfo ? (
-        <Title heading={6}>{data?.nodeInfo.nodeName.slice(1, -1)}</Title>
+        <Title heading={5}>{data?.nodeInfo.nodeName.slice(1, -1)}</Title>
       ) : (
         <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
       ),
