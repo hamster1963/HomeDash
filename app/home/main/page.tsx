@@ -15,9 +15,59 @@ export default function DashboardPage() {
     <>
       <Title
         heading={2}
-        style={{ marginTop: "30px", marginLeft: "30px", marginBottom: "10px" }}
+        style={{ marginTop: "30px", marginLeft: "30px", marginBottom: "20px" }}
       >
-        👋 你好, 欢迎来到 HomeDash
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "flex-start",
+            alignItems: "baseline",
+          }}
+        >
+          👋 你好, 欢迎来到 HomeDash
+          {SSEConnect ? (
+            <Tag
+              type={"light"}
+              color="green"
+              prefixIcon={<IconTick />}
+              size="large"
+              shape="circle"
+              style={{
+                marginLeft: "5px",
+              }}
+            >
+              SSE 已连接
+            </Tag>
+          ) : (
+            <Tag
+              type={"light"}
+              color="red"
+              prefixIcon={<IconUploadError />}
+              size="large"
+              shape="circle"
+              style={{
+                marginLeft: "5px",
+              }}
+            >
+              SSE 未连接
+            </Tag>
+          )}
+          <Tag
+            color="grey"
+            prefixIcon={<IconGithubLogo />}
+            size="large"
+            shape="circle"
+            onClick={() => {
+              window.open("https://github.com/hamster1963/HomeDash");
+            }}
+            style={{
+              marginLeft: "5px",
+            }}
+          >
+            GitHub
+          </Tag>
+        </div>
       </Title>
       <div
         style={{
