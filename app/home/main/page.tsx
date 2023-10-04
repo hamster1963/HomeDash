@@ -22,7 +22,11 @@ export default function DashboardPage() {
     <>
       <Title
         heading={2}
-        style={{ marginTop: "30px", marginLeft: "30px", marginBottom: "20px" }}
+        style={{
+          marginTop: "30px",
+          marginLeft: "30px",
+          marginBottom: "20px",
+        }}
       >
         <div
           style={{

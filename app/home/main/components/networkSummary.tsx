@@ -41,7 +41,8 @@ export default function NetworkSummary() {
     if (data) {
       setSSEConnect(true);
     }
-  }, [data, setSSEConnect]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   const placeholder = (
     <div>

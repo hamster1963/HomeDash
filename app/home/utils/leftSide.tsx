@@ -86,7 +86,7 @@ function LeftSide({ callbackWidth }: LeftSideProps) {
               }}
             >
               <Link style={{ textDecoration: "none" }} href={href}>
-                {itemElement}
+                <div>{itemElement}</div>
               </Link>
             </div>
           );
