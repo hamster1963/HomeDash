@@ -1,9 +1,15 @@
-import useSWRSubscription from "swr/subscription";
+import useSWRSubscription, {
+  type SWRSubscriptionOptions,
+} from "swr/subscription";
 
-export function SSEDataFetch(url: string) {
-  const { data } = useSWRSubscription(
+type LooseObject = {
+  [key: string]: any;
+};
+
+export function SSEDataFetch(url: string): LooseObject | undefined {
+  const { data } = useSWRSubscription<LooseObject>(
     url,
-    (key: string | URL, { next }: any) => {
+    (key: string | URL, { next }: SWRSubscriptionOptions<LooseObject>) => {
       const source = new EventSource(key);
       source.onmessage = (event) => {
         const parsedData = JSON.parse(event.data);
