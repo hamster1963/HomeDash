@@ -38,7 +38,7 @@ export default function NetworkSummary() {
   }, [data]);
 
   useEffect(() => {
-    if (data?.homeNetwork?.rxSpeedMbps !== undefined) {
+    if (data) {
       setSSEConnect(true);
     }
   }, [data, setSSEConnect]);
