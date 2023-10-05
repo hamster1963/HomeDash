@@ -84,7 +84,9 @@ export default function ServiceSummary() {
   const data = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetDockerMonitorSSE",
   );
-  const serviceSummaryValidation = serviceSummarySchema.safeParse(data);
+  const serviceSummaryValidation = serviceSummarySchema.safeParse(
+    data?.dockerData,
+  );
 
   const today = new Date().toISOString().split("T")[0];
   const date2: string = "2023-12-16";

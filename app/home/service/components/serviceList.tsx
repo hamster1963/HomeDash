@@ -131,32 +131,32 @@ function ServerDetailCard(props: ServiceCardProps) {
 const serviceInfoSchema = z.object({
   xui: z.object({
     status: z.boolean(),
-    uptime: z.number(),
+    uptime: z.string(),
     ping: z.number(),
   }),
   v2raya: z.object({
     status: z.boolean(),
-    uptime: z.number(),
+    uptime: z.string(),
     ping: z.number(),
   }),
   proxy: z.object({
     status: z.boolean(),
-    uptime: z.number(),
+    uptime: z.string(),
     ping: z.number(),
   }),
   nginx: z.object({
     status: z.boolean(),
-    uptime: z.number(),
+    uptime: z.string(),
     ping: z.number(),
   }),
   home: z.object({
     status: z.boolean(),
-    uptime: z.number(),
+    uptime: z.string(),
     ping: z.number(),
   }),
   netflix: z.object({
     status: z.boolean(),
-    uptime: z.number(),
+    uptime: z.string(),
     ping: z.number(),
   }),
 });
@@ -165,7 +165,7 @@ export default function ServiceList() {
   const data = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetUptimeDataSSE",
   );
-  const uptimeValidation = serviceInfoSchema.safeParse(data);
+  const uptimeValidation = serviceInfoSchema.safeParse(data?.uptimeData);
   return (
     <>
       <div
@@ -188,7 +188,9 @@ export default function ServiceList() {
             uptimeValidation.success ? uptimeValidation.data.xui.status : false
           }
           availability={
-            uptimeValidation.success ? uptimeValidation.data.xui.uptime : 0
+            uptimeValidation.success
+              ? Number(uptimeValidation.data.xui.uptime)
+              : 0
           }
           ping={uptimeValidation.success ? uptimeValidation.data.xui.ping : 0}
         />
@@ -201,7 +203,9 @@ export default function ServiceList() {
               : false
           }
           availability={
-            uptimeValidation.success ? uptimeValidation.data.v2raya?.uptime : 0
+            uptimeValidation.success
+              ? Number(uptimeValidation.data.v2raya?.uptime)
+              : 0
           }
           ping={
             uptimeValidation.success ? uptimeValidation.data.v2raya?.ping : 0
@@ -216,7 +220,9 @@ export default function ServiceList() {
               : false
           }
           availability={
-            uptimeValidation.success ? uptimeValidation.data.proxy?.uptime : 0
+            uptimeValidation.success
+              ? Number(uptimeValidation.data.proxy?.uptime)
+              : 0
           }
           ping={
             uptimeValidation.success ? uptimeValidation.data.proxy?.ping : 0
@@ -244,7 +250,9 @@ export default function ServiceList() {
               : false
           }
           availability={
-            uptimeValidation.success ? uptimeValidation.data.nginx?.uptime : 0
+            uptimeValidation.success
+              ? Number(uptimeValidation.data.nginx?.uptime)
+              : 0
           }
           ping={
             uptimeValidation.success ? uptimeValidation.data.nginx?.ping : 0
@@ -257,7 +265,9 @@ export default function ServiceList() {
             uptimeValidation.success ? uptimeValidation.data.home.status : false
           }
           availability={
-            uptimeValidation.success ? uptimeValidation.data.home.uptime : 0
+            uptimeValidation.success
+              ? Number(uptimeValidation.data.home.uptime)
+              : 0
           }
           ping={uptimeValidation.success ? uptimeValidation.data.home.ping : 0}
         />
@@ -270,7 +280,9 @@ export default function ServiceList() {
               : false
           }
           availability={
-            uptimeValidation.success ? uptimeValidation.data.netflix.uptime : 0
+            uptimeValidation.success
+              ? Number(uptimeValidation.data.netflix.uptime)
+              : 0
           }
           ping={
             uptimeValidation.success ? uptimeValidation.data.netflix.ping : 0
