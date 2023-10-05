@@ -37,8 +37,7 @@ const FixedButton = () => {
       <Button
         style={{ marginBottom: "10px" }}
         icon={dark ? <IconSun /> : <IconMoon />}
-        type="tertiary"
-        theme="solid"
+        theme="light"
         aria-label="切换模式"
         onClick={switchMode}
       >
