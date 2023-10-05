@@ -1,4 +1,5 @@
 import { Card, Progress, Tag, Typography } from "@douyinfe/semi-ui";
+import { z } from "zod";
 
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
@@ -127,10 +128,44 @@ function ServerDetailCard(props: ServiceCardProps) {
   );
 }
 
+const serviceInfoSchema = z.object({
+  xui: z.object({
+    status: z.boolean(),
+    uptime: z.number(),
+    ping: z.number(),
+  }),
+  v2raya: z.object({
+    status: z.boolean(),
+    uptime: z.number(),
+    ping: z.number(),
+  }),
+  proxy: z.object({
+    status: z.boolean(),
+    uptime: z.number(),
+    ping: z.number(),
+  }),
+  nginx: z.object({
+    status: z.boolean(),
+    uptime: z.number(),
+    ping: z.number(),
+  }),
+  home: z.object({
+    status: z.boolean(),
+    uptime: z.number(),
+    ping: z.number(),
+  }),
+  netflix: z.object({
+    status: z.boolean(),
+    uptime: z.number(),
+    ping: z.number(),
+  }),
+});
+
 export default function ServiceList() {
   const data = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetUptimeDataSSE",
   );
+  const uptimeValidation = serviceInfoSchema.safeParse(data);
   return (
     <>
       <div
@@ -149,23 +184,43 @@ export default function ServiceList() {
         <ServerDetailCard
           type={"核心服务"}
           service={"X-UI面板"}
-          status={data ? data?.uptimeData?.xui?.status : false}
-          availability={data ? data?.uptimeData?.xui?.uptime : 0}
-          ping={data ? data?.uptimeData?.xui?.ping : 0}
+          status={
+            uptimeValidation.success ? uptimeValidation.data.xui.status : false
+          }
+          availability={
+            uptimeValidation.success ? uptimeValidation.data.xui.uptime : 0
+          }
+          ping={uptimeValidation.success ? uptimeValidation.data.xui.ping : 0}
         />
         <ServerDetailCard
           type={"核心服务"}
           service={"V2raya"}
-          status={data ? data?.uptimeData?.v2raya?.status : false}
-          availability={data ? data?.uptimeData?.v2raya?.uptime : 0}
-          ping={data ? data?.uptimeData?.v2raya?.ping : 0}
+          status={
+            uptimeValidation.success
+              ? uptimeValidation.data.v2raya?.status
+              : false
+          }
+          availability={
+            uptimeValidation.success ? uptimeValidation.data.v2raya?.uptime : 0
+          }
+          ping={
+            uptimeValidation.success ? uptimeValidation.data.v2raya?.ping : 0
+          }
         />
         <ServerDetailCard
           type={"核心服务"}
           service={"科学上网"}
-          status={data ? data?.uptimeData?.proxy?.status : false}
-          availability={data ? data?.uptimeData?.proxy?.uptime : 0}
-          ping={data ? data?.uptimeData?.proxy?.ping : 0}
+          status={
+            uptimeValidation.success
+              ? uptimeValidation.data.proxy?.status
+              : false
+          }
+          availability={
+            uptimeValidation.success ? uptimeValidation.data.proxy?.uptime : 0
+          }
+          ping={
+            uptimeValidation.success ? uptimeValidation.data.proxy?.ping : 0
+          }
         />
       </div>
       <div
@@ -183,23 +238,43 @@ export default function ServiceList() {
         <ServerDetailCard
           type={"核心服务"}
           service={"NGINX"}
-          status={data ? data?.uptimeData?.nginx?.status : false}
-          availability={data ? data?.uptimeData?.nginx?.uptime : 0}
-          ping={data ? data?.uptimeData?.nginx?.ping : 0}
+          status={
+            uptimeValidation.success
+              ? uptimeValidation.data.nginx?.status
+              : false
+          }
+          availability={
+            uptimeValidation.success ? uptimeValidation.data.nginx?.uptime : 0
+          }
+          ping={
+            uptimeValidation.success ? uptimeValidation.data.nginx?.ping : 0
+          }
         />
         <ServerDetailCard
           type={"核心服务"}
           service={"智能家居"}
-          status={data ? data?.uptimeData?.home?.status : false}
-          availability={data ? data?.uptimeData?.home?.uptime : 0}
-          ping={data ? data?.uptimeData?.home?.ping : 0}
+          status={
+            uptimeValidation.success ? uptimeValidation.data.home.status : false
+          }
+          availability={
+            uptimeValidation.success ? uptimeValidation.data.home.uptime : 0
+          }
+          ping={uptimeValidation.success ? uptimeValidation.data.home.ping : 0}
         />
         <ServerDetailCard
           type={"核心服务"}
           service={"Netflix 连通性"}
-          status={data ? data?.uptimeData?.netflix?.status : false}
-          availability={data ? data?.uptimeData?.netflix?.uptime : 0}
-          ping={data ? data?.uptimeData?.netflix?.ping : 0}
+          status={
+            uptimeValidation.success
+              ? uptimeValidation.data.netflix.status
+              : false
+          }
+          availability={
+            uptimeValidation.success ? uptimeValidation.data.netflix.uptime : 0
+          }
+          ping={
+            uptimeValidation.success ? uptimeValidation.data.netflix.ping : 0
+          }
         />
       </div>
     </>

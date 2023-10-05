@@ -1,5 +1,7 @@
 import { Card, Descriptions, Progress } from "@douyinfe/semi-ui";
+import { z } from "zod";
 
+import { getDaysBetweenDates } from "@/app/home/utils/functions";
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
 type ServiceCardProps = {
@@ -67,25 +69,27 @@ export function ServiceCard(props: ServiceCardProps) {
   );
 }
 
+const serviceSummarySchema = z.object({
+  serverCount: z.number(),
+  errorCount: z.number(),
+  dockerStatus: z.object({
+    ServerCount: z.number(),
+    ErrorServer: z.number(),
+    DockerCount: z.number(),
+    ErrorDocker: z.number(),
+  }),
+});
+
 export default function ServiceSummary() {
   const data = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetDockerMonitorSSE",
   );
-  function getDaysBetweenDates(date1: string, date2: string): number {
-    const oneDay = 24 * 60 * 60 * 1000; // 一天的毫秒数
-    const firstDate = new Date(date1);
-    const secondDate = new Date(date2);
+  const serviceSummaryValidation = serviceSummarySchema.safeParse(data);
 
-    // 计算两个日期之间的天数差异
-    return Math.round(
-      Math.abs((firstDate.getTime() - secondDate.getTime()) / oneDay),
-    );
-  }
-
-  // 获取今天的日期
   const today = new Date().toISOString().split("T")[0];
   const date2: string = "2023-12-16";
   const daysBetween: number = getDaysBetweenDates(today!.toString(), date2);
+
   return (
     <div
       style={{
@@ -102,25 +106,44 @@ export default function ServiceSummary() {
     >
       <ServiceCard
         title={"核心服务"}
-        totalValue={data?.dockerData.serverCount}
+        totalValue={
+          serviceSummaryValidation.success
+            ? serviceSummaryValidation.data.serverCount
+            : 0
+        }
         runningValue={
-          data?.dockerData.serverCount - data?.dockerData.errorCount
+          serviceSummaryValidation.success
+            ? serviceSummaryValidation.data.serverCount -
+              serviceSummaryValidation.data.errorCount
+            : 0
         }
       />
       <ServiceCard
         title={"分布式终端"}
-        totalValue={data?.dockerData.dockerStatus?.ServerCount}
+        totalValue={
+          serviceSummaryValidation.success
+            ? serviceSummaryValidation.data.dockerStatus.ServerCount
+            : 0
+        }
         runningValue={
-          data?.dockerData.dockerStatus?.ServerCount -
-          data?.dockerData.dockerStatus?.ErrorServer
+          serviceSummaryValidation.success
+            ? serviceSummaryValidation.data.dockerStatus.ServerCount -
+              serviceSummaryValidation.data.dockerStatus.ErrorServer
+            : 0
         }
       />
       <ServiceCard
         title={"Docker存活"}
-        totalValue={data?.dockerData?.dockerStatus?.DockerCount}
+        totalValue={
+          serviceSummaryValidation.success
+            ? serviceSummaryValidation.data.dockerStatus.DockerCount
+            : 0
+        }
         runningValue={
-          data?.dockerData?.dockerStatus?.DockerCount -
-          data?.dockerData?.dockerStatus?.ErrorDocker
+          serviceSummaryValidation.success
+            ? serviceSummaryValidation.data.dockerStatus.DockerCount -
+              serviceSummaryValidation.data.dockerStatus.ErrorDocker
+            : 0
         }
       />
       <ServiceCard

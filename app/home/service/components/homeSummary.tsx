@@ -1,5 +1,6 @@
 import { Card, Tag, Typography } from "@douyinfe/semi-ui";
 import Image from "next/image";
+import { z } from "zod";
 
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
@@ -79,10 +80,31 @@ const HomeCard = ({ type, status, value, img }: HomeCardProps) => {
   );
 };
 
+const homeCardDataSchema = z.object({
+  AirConditioner: z.object({
+    state: z.boolean(),
+    temp: z.number(),
+  }),
+  Humidifier: z.object({
+    state: z.boolean(),
+    humidity: z.number(),
+  }),
+  AirPurifier: z.object({
+    state: z.boolean(),
+    pm25: z.number(),
+  }),
+  Light: z.object({
+    state: z.boolean(),
+    brightness: z.number(),
+  }),
+});
+
 export default function HomeSummary() {
   const data = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetHomeDataSSE",
   );
+  const homeCardValidation = homeCardDataSchema.safeParse(data?.homeData);
+
   return (
     <>
       <div
@@ -99,28 +121,60 @@ export default function HomeSummary() {
       >
         <HomeCard
           type={"空调"}
-          status={data ? data?.homeData.AirConditioner.state : false}
-          value={data ? data?.homeData.AirConditioner.temp + "°C" : "离线中"}
+          status={
+            homeCardValidation.success
+              ? homeCardValidation.data.AirConditioner.state
+              : false
+          }
+          value={
+            homeCardValidation.success
+              ? homeCardValidation.data.AirConditioner.temp + "°C"
+              : "离线中"
+          }
           img={"/air.png"}
         />
 
         <HomeCard
           type={"加湿器"}
-          status={data ? data?.homeData.Humidifier.state : false}
-          value={data ? data?.homeData.Humidifier.humidity + "%" : "离线中"}
+          status={
+            homeCardValidation.success
+              ? homeCardValidation.data.Humidifier.state
+              : false
+          }
+          value={
+            homeCardValidation.success
+              ? homeCardValidation.data.Humidifier.humidity + "%"
+              : "离线中"
+          }
           img={"/wet.png"}
         />
 
         <HomeCard
           type={"空气净化器"}
-          status={data ? data?.homeData.AirPurifier.state : false}
-          value={data ? data?.homeData.AirPurifier.pm25 + "ug/m³" : "离线中"}
+          status={
+            homeCardValidation.success
+              ? homeCardValidation.data.AirPurifier.state
+              : false
+          }
+          value={
+            homeCardValidation.success
+              ? homeCardValidation.data.AirPurifier.pm25 + "ug/m³"
+              : "离线中"
+          }
           img={"/tree.png"}
         />
         <HomeCard
           type={"卧室床头灯"}
-          status={data ? data?.homeData.Light.state : false}
-          value={data ? data?.homeData.Light.brightness + "%" : "离线中"}
+          status={
+            homeCardValidation.success
+              ? homeCardValidation.data.Light.state
+              : false
+          }
+          value={
+            homeCardValidation.success
+              ? homeCardValidation.data.Light.brightness + "%"
+              : "离线中"
+          }
           img={"/light.png"}
         />
       </div>

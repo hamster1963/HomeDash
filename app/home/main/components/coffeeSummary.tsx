@@ -6,14 +6,23 @@ import {
   Skeleton,
   Typography,
 } from "@douyinfe/semi-ui";
+import { z } from "zod";
 
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
+
+const CoffeeInfoSchema = z.object({
+  usedBound: z.string(),
+  remainBound: z.string(),
+  planBound: z.string(),
+});
 
 export default function CoffeeSummary() {
   const { Title } = Typography;
   const data = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetNetworkDataSSE",
   );
+  const coffeeValidation = CoffeeInfoSchema.safeParse(data?.coffeeInfo);
+
   const placeholder = (
     <div>
       <Skeleton.Title style={{ width: 50 }} />
@@ -38,16 +47,16 @@ export default function CoffeeSummary() {
     },
     {
       key: "已使用流量",
-      value: data?.coffeeInfo ? (
-        data?.coffeeInfo.usedBound + "GB"
+      value: coffeeValidation.success ? (
+        coffeeValidation.data.usedBound + "GB"
       ) : (
         <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
       ),
     },
     {
       key: "剩余流量",
-      value: data?.coffeeInfo ? (
-        data?.coffeeInfo.remainBound + "GB"
+      value: coffeeValidation.success ? (
+        coffeeValidation.data.remainBound + "GB"
       ) : (
         <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
       ),
@@ -61,10 +70,10 @@ export default function CoffeeSummary() {
             alignItems: "center",
           }}
         >
-          {data?.coffeeInfo ? (
+          {coffeeValidation.success ? (
             (
-              (Number(data?.coffeeInfo.remainBound) /
-                Number(data?.coffeeInfo.planBound)) *
+              (Number(coffeeValidation.data.remainBound) /
+                Number(coffeeValidation.data.planBound)) *
               100
             ).toFixed(2) + "%"
           ) : (
@@ -74,11 +83,11 @@ export default function CoffeeSummary() {
               active
             ></Skeleton>
           )}
-          {data?.coffeeInfo && (
+          {coffeeValidation.success && (
             <Progress
               percent={
-                (Number(data?.coffeeInfo.remainBound) /
-                  Number(data?.coffeeInfo.planBound)) *
+                (Number(coffeeValidation.data.remainBound) /
+                  Number(coffeeValidation.data.planBound)) *
                 100
               }
               style={{
@@ -96,7 +105,7 @@ export default function CoffeeSummary() {
   return (
     <>
       <Descriptions
-        className="myDescription"
+        className="mainDescription"
         data={networkSummaryData}
         row
         size="medium"
