@@ -1,4 +1,9 @@
-import { IconCode, IconGithubLogo, IconResso } from "@douyinfe/semi-icons";
+import {
+  IconCode,
+  IconConnectionPoint2,
+  IconGithubLogo,
+  IconGlobeStroke,
+} from "@douyinfe/semi-icons";
 import { Card, Progress, Typography } from "@douyinfe/semi-ui";
 import React from "react";
 import { z } from "zod";
@@ -151,6 +156,7 @@ const CoffeeInfoSchema = z.object({
   usedBound: z.string(),
   remainBound: z.string(),
   planBound: z.string(),
+  resetDay: z.string(),
 });
 
 const XuiInfoSchema = z.object({
@@ -174,7 +180,7 @@ export default function InfoCardList() {
     <>
       <InfoCard
         backgroundColor={"rgba(var(--semi-blue-0), 0.5)"}
-        icon={<IconResso />}
+        icon={<IconGlobeStroke />}
         title={"代理服务"}
         moreIcon={<IconCode />}
         value={
@@ -185,11 +191,15 @@ export default function InfoCardList() {
         total={
           coffeeValidation.success ? Number(coffeeValidation.data.planBound) : 0
         }
-        moreInfo={"重置: " + "12 天"}
+        moreInfo={
+          "重置: " +
+          (coffeeValidation.success ? coffeeValidation.data.resetDay : 0) +
+          "天"
+        }
       />
       <InfoCard
         backgroundColor={"rgba(var(--semi-purple-0), 0.5)"}
-        icon={<IconResso />}
+        icon={<IconConnectionPoint2 />}
         title={"x-ui 面板"}
         moreIcon={<IconCode />}
         value={xuiValidation.success ? xuiValidation.data.down_total : 0}
@@ -202,15 +212,25 @@ export default function InfoCardList() {
         }
       />
       <InfoCard
-        backgroundColor={"rgba(var(--semi-green-0), 0.5)"}
+        backgroundColor={"rgba(var(--semi-orange-0), 0.5)"}
         icon={<IconGithubLogo />}
         title={"Actions"}
         moreIcon={<IconCode />}
-        value={xuiValidation.success ? 65 : 0}
+        value={
+          githubValidation.success
+            ? githubValidation.data.total_minutes_used
+            : 0
+        }
         unit={"Minutes"}
         name={"已用构建时间"}
-        total={xuiValidation.success ? 2400 : 0}
-        moreInfo={"构建次数: " + (xuiValidation.success ? 254 : 0)}
+        total={
+          githubValidation.success ? githubValidation.data.included_minutes : 0
+        }
+        moreInfo={
+          "重置: " +
+          (githubValidation.success ? githubValidation.data.next_bill_day : 0) +
+          "天"
+        }
       />
     </>
   );
