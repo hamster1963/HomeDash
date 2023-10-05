@@ -36,8 +36,8 @@ export default function NetworkChart({
           >
             <defs>
               <linearGradient id={colorToken} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor={strokeColor} stopOpacity={0.8} />
-                <stop offset="95%" stopColor={strokeColor} stopOpacity={0} />
+                <stop offset="5%" stopColor={strokeColor} stopOpacity={0.6} />
+                <stop offset="100%" stopColor={strokeColor} stopOpacity={0} />
               </linearGradient>
             </defs>
             <YAxis domain={[0, "dataMax + 1"]} hide={true} />

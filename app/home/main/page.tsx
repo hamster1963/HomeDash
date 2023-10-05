@@ -1,17 +1,16 @@
 "use client";
 import {
   IconGithubLogo,
-  IconTick,
+  IconTickCircle,
   IconUploadError,
 } from "@douyinfe/semi-icons";
 import { Tag, Typography } from "@douyinfe/semi-ui";
 import React from "react";
 
-import CoffeeSummary from "@/app/home/main/components/coffeeSummary";
+import InfoCardList from "@/app/home/main/components/infoCard";
 import NetworkSummary from "@/app/home/main/components/networkSummary";
 import ProxySummary from "@/app/home/main/components/proxySummary";
 import Server from "@/app/home/main/components/serverList";
-import XuiInfoSummary from "@/app/home/main/components/xuiSummary";
 import { useSSEContext } from "@/app/home/utils/sseContext";
 
 export default function DashboardPage() {
@@ -41,7 +40,7 @@ export default function DashboardPage() {
             <Tag
               type={"light"}
               color="green"
-              prefixIcon={<IconTick />}
+              prefixIcon={<IconTickCircle />}
               size="large"
               shape="circle"
               style={{
@@ -96,7 +95,7 @@ export default function DashboardPage() {
             borderRadius: "15px",
             minWidth: "200px",
             marginRight: "20px",
-            marginBottom: "20px",
+            marginBottom: "10px",
             flex: 1,
           }}
         >
@@ -118,7 +117,7 @@ export default function DashboardPage() {
             borderRadius: "15px",
             flex: 1,
             marginRight: "20px",
-            marginBottom: "20px",
+            marginBottom: "10px",
             minWidth: "200px",
           }}
         >
@@ -137,42 +136,14 @@ export default function DashboardPage() {
         style={{
           display: "flex",
           flexWrap: "wrap",
-          justifyContent: "flex-start",
+          justifyContent: "space-between",
           alignItems: "center",
+          marginLeft: "10px",
+          marginRight: "10px",
         }}
       >
-        <div
-          style={{
-            padding: "10px",
-          }}
-        >
-          <Title
-            heading={3}
-            style={{
-              marginLeft: "20px",
-            }}
-          >
-            代理服务
-          </Title>
-          <CoffeeSummary />
-        </div>
-        <div
-          style={{
-            padding: "10px",
-          }}
-        >
-          <Title
-            heading={3}
-            style={{
-              marginLeft: "20px",
-            }}
-          >
-            x-ui
-          </Title>
-          <XuiInfoSummary />
-        </div>
+        <InfoCardList />
       </div>
-
       <Title
         heading={3}
         style={{
