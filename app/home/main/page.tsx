@@ -12,11 +12,11 @@ import NetworkSummary from "@/app/home/main/components/networkSummary";
 import ProxySummary from "@/app/home/main/components/proxySummary";
 import Server from "@/app/home/main/components/serverList";
 import XuiInfoSummary from "@/app/home/main/components/xuiSummary";
-import { useSSEConnect } from "@/app/home/utils/sseContext";
+import { useSSEContext } from "@/app/home/utils/sseContext";
 
 export default function DashboardPage() {
   const { Title } = Typography;
-  const { SSEConnect } = useSSEConnect();
+  const { SSEConnect } = useSSEContext();
 
   return (
     <>

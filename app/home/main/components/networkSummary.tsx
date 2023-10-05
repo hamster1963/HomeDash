@@ -1,10 +1,10 @@
 import "../../style.css";
 
 import { Descriptions, Skeleton } from "@douyinfe/semi-ui";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import NetworkChart from "@/app/home/main/components/networkChart";
-import { useSSEConnect } from "@/app/home/utils/sseContext";
+import { useSSEContext } from "@/app/home/utils/sseContext";
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
 export default function NetworkSummary() {
@@ -12,29 +12,30 @@ export default function NetworkSummary() {
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetNetworkDataSSE",
   );
 
-  type SpeedData = { speed: number };
+  const { setSSEConnect, HomeNetworkSpeedList, setHomeNetworkSpeedList } =
+    useSSEContext();
 
-  const { setSSEConnect } = useSSEConnect();
-
-  // 1. 使用 useState 设置状态
-  const [rxSpeedList, setRxSpeedList] = useState<SpeedData[]>([]);
-
-  // 2. 使用 useEffect 监视数据的变化
   useEffect(() => {
     if (data?.homeNetwork?.rxSpeedMbps !== undefined) {
-      setRxSpeedList((prevList) => {
-        const newList = [
-          ...prevList,
-          {
-            speed: data.homeNetwork.rxSpeedMbps + data.homeNetwork.txSpeedMbps,
-          },
-        ];
-        if (newList.length > 10) {
-          newList.shift(); // 删除最旧的数据
-        }
-        return newList;
+      // 获取当前的速度列表
+      const currentList = [...HomeNetworkSpeedList];
+
+      // 添加新的速度数据到列表中
+      currentList.push({
+        speed: Number(
+          data.homeNetwork.rxSpeedMbps + data.homeNetwork.txSpeedMbps,
+        ),
       });
+
+      // 如果长度大于10，删除第一个元素
+      if (currentList.length > 10) {
+        currentList.shift();
+      }
+
+      // 更新速度列表
+      setHomeNetworkSpeedList(currentList);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   useEffect(() => {
@@ -86,7 +87,7 @@ export default function NetworkSummary() {
         size="medium"
       />
       <NetworkChart
-        data={rxSpeedList}
+        data={HomeNetworkSpeedList}
         keyString={"speed"}
         colorToken={"blue"}
       />

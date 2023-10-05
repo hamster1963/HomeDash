@@ -5,41 +5,54 @@ import React, {
   useReducer,
 } from "react";
 
-interface SSEConnectContextType {
+type SpeedData = { speed: number };
+
+interface SSEContextType {
   SSEConnect: boolean;
   setSSEConnect: (value: boolean) => void;
+  HomeNetworkSpeedList: SpeedData[];
+  setHomeNetworkSpeedList: (value: SpeedData[]) => void;
 }
 
-const SSEConnectContext = createContext<SSEConnectContextType>({
+const SSEContext = createContext<SSEContextType>({
   SSEConnect: false,
   setSSEConnect: () => {},
+  HomeNetworkSpeedList: [],
+  setHomeNetworkSpeedList: () => {},
 });
 
-const initialState = {
+const initialState: {
+  SSEConnect: boolean;
+  HomeNetworkSpeedList: SpeedData[];
+} = {
   SSEConnect: false,
+  HomeNetworkSpeedList: [],
 };
 
-const reducer = (
-  state: typeof initialState,
-  action: { type: string; payload: boolean },
-) => {
+type Actions =
+  | { type: "SET_SSE_CONNECT"; payload: boolean }
+  | { type: "SET_HOME_NETWORK_SPEED_LIST"; payload: SpeedData[] };
+
+const reducer = (state: typeof initialState, action: Actions) => {
   switch (action.type) {
     case "SET_SSE_CONNECT":
       return { ...state, SSEConnect: action.payload };
+    case "SET_HOME_NETWORK_SPEED_LIST":
+      return { ...state, HomeNetworkSpeedList: action.payload };
     default:
       return state;
   }
 };
 
-export const useSSEConnect = () => {
-  return useContext(SSEConnectContext);
+export const useSSEContext = () => {
+  return useContext(SSEContext);
 };
 
-interface SSEConnectProviderProps {
+interface SSEContextProviderProps {
   children: ReactNode;
 }
 
-export const SSEConnectProvider: React.FC<SSEConnectProviderProps> = ({
+export const SSEConnectProvider: React.FC<SSEContextProviderProps> = ({
   children,
 }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -48,9 +61,15 @@ export const SSEConnectProvider: React.FC<SSEConnectProviderProps> = ({
     dispatch({ type: "SET_SSE_CONNECT", payload: value });
   };
 
+  const setHomeNetworkSpeedList = (value: SpeedData[]) => {
+    dispatch({ type: "SET_HOME_NETWORK_SPEED_LIST", payload: value });
+  };
+
   return (
-    <SSEConnectContext.Provider value={{ ...state, setSSEConnect }}>
+    <SSEContext.Provider
+      value={{ ...state, setSSEConnect, setHomeNetworkSpeedList }}
+    >
       {children}
-    </SSEConnectContext.Provider>
+    </SSEContext.Provider>
   );
 };
