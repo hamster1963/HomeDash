@@ -165,6 +165,12 @@ const XuiInfoSchema = z.object({
   down_total: z.number(),
 });
 
+const GitHubInfoSchema = z.object({
+  included_minutes: z.number(),
+  next_bill_day: z.number(),
+  total_minutes_used: z.number(),
+});
+
 export default function InfoCardList() {
   const coffeeGetData = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetNetworkDataSSE",
@@ -176,6 +182,14 @@ export default function InfoCardList() {
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetXuiDataSSE",
   );
   const xuiValidation = XuiInfoSchema.safeParse(xuiGetData?.xuiData);
+
+  const githubGetData = SSEDataFetch(
+    process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetGitHubActionDataSSE",
+  );
+  const githubValidation = GitHubInfoSchema.safeParse(
+    githubGetData?.GitHubActionData,
+  );
+
   return (
     <>
       <InfoCard
@@ -213,6 +227,27 @@ export default function InfoCardList() {
       />
       <InfoCard
         backgroundColor={"rgba(var(--semi-orange-0), 0.5)"}
+        icon={<IconGithubLogo />}
+        title={"Actions"}
+        moreIcon={<IconCode />}
+        value={
+          githubValidation.success
+            ? githubValidation.data.total_minutes_used
+            : 0
+        }
+        unit={"Minutes"}
+        name={"已用构建时间"}
+        total={
+          githubValidation.success ? githubValidation.data.included_minutes : 0
+        }
+        moreInfo={
+          "重置: " +
+          (githubValidation.success ? githubValidation.data.next_bill_day : 0) +
+          "天"
+        }
+      />
+      <InfoCard
+        backgroundColor={"rgba(var(--semi-lime-0), 0.5)"}
         icon={<IconGithubLogo />}
         title={"Actions"}
         moreIcon={<IconCode />}
