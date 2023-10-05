@@ -5,8 +5,8 @@
 <strong>Demo地址: https://home.buycoffee.top</strong>
 
 
-![screen-shot-one](/.github/CleanShot0.png)
-![screen-shot-two](/.github/CleanShot2.png)
+![screen-shot-one](/.github/CleanShot1.png)
+![screen-shot-two](/.github/CleanShot2-new.png)
 </div>
 
 ## 一键部署前端
