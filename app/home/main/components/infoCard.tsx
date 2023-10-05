@@ -22,7 +22,7 @@ export function InfoCard(props: InfoCardProps) {
   return (
     <Card
       style={{
-        flex: 1,
+        flex: "1",
         minWidth: "220px",
         margin: "10px",
         borderRadius: "10px",
@@ -110,7 +110,7 @@ export function InfoCard(props: InfoCardProps) {
           style={{
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "center",
+            alignItems: "baseline",
           }}
         >
           <div
