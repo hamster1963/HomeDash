@@ -136,7 +136,7 @@ export function InfoCard(props: InfoCardProps) {
         </div>
         <Progress
           stroke={"rgba(var(--semi-grey-9), 1)"}
-          orbitStroke={"rgba(var(--semi-grey-1), 1)"}
+          orbitStroke={"rgba(var(--semi-grey-2), 0.5)"}
           style={{
             height: "8px",
           }}
