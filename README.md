@@ -5,7 +5,7 @@
 <strong>Demo地址: https://home.buycoffee.top</strong>
 
 
-![screen-shot-one](/.github/CleanShot1.png)
+![screen-shot-one](/.github/CleanShot1-new.png)
 ![screen-shot-two](/.github/CleanShot2-new.png)
 </div>
 
