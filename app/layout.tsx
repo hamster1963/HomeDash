@@ -5,6 +5,8 @@ import React from "react";
 
 import { SSEConnectProvider } from "@/app/home/utils/sseContext";
 
+import { Providers } from "./providers";
+
 const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({
   children,
@@ -14,7 +16,9 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning>
       <body className={inter.className}>
-        <SSEConnectProvider>{children}</SSEConnectProvider>
+        <SSEConnectProvider>
+          <Providers>{children}</Providers>
+        </SSEConnectProvider>
         <Analytics />
       </body>
     </html>

@@ -17,3 +17,6 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
+const semi = require("@douyinfe/semi-next").default({});
+module.exports = semi({});

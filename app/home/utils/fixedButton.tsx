@@ -1,28 +1,13 @@
 "use client";
 import { IconMoon, IconSun } from "@douyinfe/semi-icons";
 import { Button } from "@douyinfe/semi-ui";
-import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 const FixedButton = () => {
-  const [dark, setDark] = useState(false);
+  const { theme, setTheme } = useTheme();
   const switchMode = () => {
-    const body = document.body;
-    if (body.hasAttribute("theme-mode")) {
-      body.removeAttribute("theme-mode");
-      localStorage.setItem("theme-mode", "light");
-      setDark(false);
-    } else {
-      body.setAttribute("theme-mode", "dark");
-      localStorage.setItem("theme-mode", "dark");
-      setDark(true);
-    }
+    setTheme(theme === "dark" ? "light" : "dark");
   };
-
-  useEffect(() => {
-    const body = document.body;
-    const dark = body.hasAttribute("theme-mode");
-    setDark(dark);
-  }, []);
 
   return (
     <div
@@ -36,12 +21,12 @@ const FixedButton = () => {
     >
       <Button
         style={{ marginBottom: "10px" }}
-        icon={dark ? <IconSun /> : <IconMoon />}
+        icon={theme === "light" ? <IconMoon /> : <IconSun />}
         theme="light"
         aria-label="切换模式"
         onClick={switchMode}
       >
-        {dark ? "早安" : "晚安"}
+        {theme === "light" ? "晚安" : "早安"}
       </Button>
     </div>
   );
