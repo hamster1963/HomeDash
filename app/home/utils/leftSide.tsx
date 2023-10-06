@@ -57,7 +57,6 @@ function LeftSide() {
       <Nav
         isCollapsed={isNavCollapsed}
         onCollapseChange={(isCollapse) => toggleNav(isCollapse)}
-        className={"my-nav"}
         style={{ height: "100vh", width: navWidth }}
         renderWrapper={({ itemElement, props }) => {
           const itemKey = props.itemKey as string;
