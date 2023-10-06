@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@douyinfe/semi-icons": "^2.44.0",
-    "@douyinfe/semi-next": "^2.44.0",
     "@douyinfe/semi-ui": "^2.44.0",
     "@types/node": "20.8.2",
     "@types/react": "18.2.25",
