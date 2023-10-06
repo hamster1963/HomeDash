@@ -216,7 +216,7 @@ export default function InfoCardList() {
     <>
       <InfoCard
         backgroundColor={"rgba(var(--semi-light-blue-3), 0.1)"}
-        backgroundFillColor={"rgba(var(--semi-light-blue-3), 0.5)"}
+        backgroundFillColor={"rgba(var(--semi-light-blue-3), 0.3)"}
         icon={<IconGlobeStroke />}
         title={"代理服务"}
         moreIcon={<IconCalendarClock />}
@@ -236,7 +236,7 @@ export default function InfoCardList() {
       />
       <InfoCard
         backgroundColor={"rgba(var(--semi-light-green-3), 0.1)"}
-        backgroundFillColor={"rgba(var(--semi-light-green-3), 0.5)"}
+        backgroundFillColor={"rgba(var(--semi-light-green-3), 0.3)"}
         icon={<IconConnectionPoint2 />}
         title={"x-ui 面板"}
         moreIcon={<IconUser />}
@@ -251,7 +251,7 @@ export default function InfoCardList() {
       />
       <InfoCard
         backgroundColor={"rgba(var(--semi-cyan-3), 0.1)"}
-        backgroundFillColor={"rgba(var(--semi-cyan-3), 0.5)"}
+        backgroundFillColor={"rgba(var(--semi-cyan-3), 0.3)"}
         icon={<IconGithubLogo />}
         title={"Actions"}
         moreIcon={<IconCalendarClock />}
@@ -273,7 +273,7 @@ export default function InfoCardList() {
       />
       <InfoCard
         backgroundColor={"rgba(var(--semi-violet-3),0.1)"}
-        backgroundFillColor={"rgba(var(--semi-violet-3),0.5)"}
+        backgroundFillColor={"rgba(var(--semi-violet-3),0.3)"}
         icon={<IconBrackets />}
         title={"OpenAI"}
         moreIcon={<IconCalendarClock />}
