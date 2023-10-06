@@ -207,7 +207,7 @@ export default function InfoCardList() {
   return (
     <>
       <InfoCard
-        backgroundColor={"rgba(var(--semi-blue-4), 0.1)"}
+        backgroundColor={"rgba(var(--semi-blue-3), 0.1)"}
         icon={<IconGlobeStroke />}
         title={"代理服务"}
         moreIcon={<IconCalendarClock />}
@@ -226,7 +226,7 @@ export default function InfoCardList() {
         }
       />
       <InfoCard
-        backgroundColor={"rgba(var(--semi-red-3), 0.1)"}
+        backgroundColor={"rgba(var(--semi-light-green-3), 0.1)"}
         icon={<IconConnectionPoint2 />}
         title={"x-ui 面板"}
         moreIcon={<IconUser />}
