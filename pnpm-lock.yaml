@@ -30,8 +30,8 @@ dependencies:
     specifier: ^6.7.4
     version: 6.7.4(eslint@8.50.0)(typescript@5.2.2)
   '@vercel/analytics':
-    specifier: ^1.0.2
-    version: 1.0.2
+    specifier: ^1.1.0
+    version: 1.1.0
   eslint:
     specifier: 8.50.0
     version: 8.50.0
@@ -821,8 +821,10 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: false
 
-  /@vercel/analytics@1.0.2:
-    resolution: {integrity: sha512-BZFxVrv24VbNNl5xMxqUojQIegEeXMI6rX3rg1uVLYUEXsuKNBSAEQf4BWEcjQDp/8aYJOj6m8V4PUA3x/cxgg==}
+  /@vercel/analytics@1.1.0:
+    resolution: {integrity: sha512-k5ePYZPxitxxD1eJenPUUuH3qK+EtaA9OVD3oO0BRbyT/LarmZF0qdkptRSidip1arQxsTEIWvHbTuj1oksl+Q==}
+    dependencies:
+      server-only: 0.0.1
     dev: false
 
   /@webassemblyjs/ast@1.11.6:
@@ -1329,7 +1331,7 @@ packages:
       postcss-modules-values: 3.0.0
       postcss-value-parser: 4.2.0
       schema-utils: 2.7.1
-      semver: 7.5.4
+      semver: 7.3.2
       webpack: 5.88.2
     dev: false
 
@@ -3451,7 +3453,7 @@ packages:
       neo-async: 2.6.2
       sass: 1.69.0
       schema-utils: 3.3.0
-      semver: 7.5.4
+      semver: 7.3.2
       webpack: 5.88.2
     dev: false
 
@@ -3518,6 +3520,10 @@ packages:
     resolution: {integrity: sha512-owoXEFjWRllis8/M1Q+Cw5k8ZH40e3zhp/ovX+Xr/vi1qj6QesbyXXViFbpNvWvPNAD62SutwEXavefrLJWj7w==}
     dependencies:
       randombytes: 2.1.0
+    dev: false
+
+  /server-only@0.0.1:
+    resolution: {integrity: sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA==}
     dev: false
 
   /set-function-name@2.0.1:
