@@ -14,6 +14,7 @@ import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
 type InfoCardProps = {
   backgroundColor: string;
+  backgroundFillColor: string;
   icon: React.ReactNode;
   title: string;
   moreIcon: React.ReactNode;
@@ -26,6 +27,12 @@ type InfoCardProps = {
 
 export function InfoCard(props: InfoCardProps) {
   const { Title } = Typography;
+  // 计算进度百分比
+  const progressPercent =
+    props.value !== 0 ? Math.round((props.value / props.total) * 100) : 0;
+  // 使用线性渐变设置背景色
+  // 这里我们使用绿色表示进度，你可以根据需要更改颜色
+  const backgroundColor = `linear-gradient(90deg, ${props.backgroundFillColor} ${progressPercent}%, ${props.backgroundColor} ${progressPercent}%)`;
   return (
     <Card
       style={{
@@ -34,7 +41,8 @@ export function InfoCard(props: InfoCardProps) {
         margin: "10px",
         borderRadius: "10px",
         border: "none",
-        backgroundColor: props.backgroundColor,
+        // backgroundColor: props.backgroundColor,
+        backgroundImage: backgroundColor,
       }}
     >
       <div
@@ -140,7 +148,7 @@ export function InfoCard(props: InfoCardProps) {
           stroke={"rgba(var(--semi-grey-9), 1)"}
           orbitStroke={"rgba(var(--semi-grey-2), 0.5)"}
           style={{
-            height: "8px",
+            height: "4px",
           }}
           percent={
             props.value !== 0
@@ -207,7 +215,8 @@ export default function InfoCardList() {
   return (
     <>
       <InfoCard
-        backgroundColor={"rgba(var(--semi-blue-3), 0.1)"}
+        backgroundColor={"rgba(var(--semi-light-blue-3), 0.1)"}
+        backgroundFillColor={"rgba(var(--semi-light-blue-3), 0.5)"}
         icon={<IconGlobeStroke />}
         title={"代理服务"}
         moreIcon={<IconCalendarClock />}
@@ -227,6 +236,7 @@ export default function InfoCardList() {
       />
       <InfoCard
         backgroundColor={"rgba(var(--semi-light-green-3), 0.1)"}
+        backgroundFillColor={"rgba(var(--semi-light-green-3), 0.5)"}
         icon={<IconConnectionPoint2 />}
         title={"x-ui 面板"}
         moreIcon={<IconUser />}
@@ -241,6 +251,7 @@ export default function InfoCardList() {
       />
       <InfoCard
         backgroundColor={"rgba(var(--semi-cyan-3), 0.1)"}
+        backgroundFillColor={"rgba(var(--semi-cyan-3), 0.5)"}
         icon={<IconGithubLogo />}
         title={"Actions"}
         moreIcon={<IconCalendarClock />}
@@ -262,6 +273,7 @@ export default function InfoCardList() {
       />
       <InfoCard
         backgroundColor={"rgba(var(--semi-violet-3),0.1)"}
+        backgroundFillColor={"rgba(var(--semi-violet-3),0.5)"}
         icon={<IconBrackets />}
         title={"OpenAI"}
         moreIcon={<IconCalendarClock />}
