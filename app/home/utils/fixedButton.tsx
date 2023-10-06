@@ -2,12 +2,21 @@
 import { IconMoon, IconSun } from "@douyinfe/semi-icons";
 import { Button } from "@douyinfe/semi-ui";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const FixedButton = () => {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const switchMode = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div
