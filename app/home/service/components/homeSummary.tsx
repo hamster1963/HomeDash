@@ -100,10 +100,12 @@ const homeCardDataSchema = z.object({
 });
 
 export default function HomeSummary() {
-  const data = SSEDataFetch(
+  const homeInfoGetData = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetHomeDataSSE",
   );
-  const homeCardValidation = homeCardDataSchema.safeParse(data?.homeData);
+  const homeCardValidation = homeCardDataSchema.safeParse(
+    homeInfoGetData?.homeData,
+  );
 
   return (
     <>

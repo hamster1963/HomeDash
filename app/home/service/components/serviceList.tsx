@@ -162,10 +162,12 @@ const serviceInfoSchema = z.object({
 });
 
 export default function ServiceList() {
-  const data = SSEDataFetch(
+  const serviceListGetData = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetUptimeDataSSE",
   );
-  const uptimeValidation = serviceInfoSchema.safeParse(data?.uptimeData);
+  const uptimeValidation = serviceInfoSchema.safeParse(
+    serviceListGetData?.uptimeData,
+  );
   return (
     <>
       <div

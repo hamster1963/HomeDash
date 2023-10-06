@@ -12,10 +12,12 @@ const xuiDetailDataSchema = z.object({
 
 export default function XuiSummary() {
   const { Title } = Typography;
-  const data = SSEDataFetch(
+  const xuiGetData = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetXuiDataSSE",
   );
-  const xuiDetailValidation = xuiDetailDataSchema.safeParse(data?.xuiData);
+  const xuiDetailValidation = xuiDetailDataSchema.safeParse(
+    xuiGetData?.xuiData,
+  );
   const placeholder = (
     <div>
       <Skeleton.Title style={{ width: 50 }} />

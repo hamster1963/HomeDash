@@ -20,10 +20,10 @@ const xuiDataSchema = z.object({
 });
 
 export default function XuiTable() {
-  const data = SSEDataFetch(
+  const xuiTableGetData = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetXuiDataSSE",
   );
-  const xuiValidation = xuiDataSchema.safeParse(data?.xuiData);
+  const xuiValidation = xuiDataSchema.safeParse(xuiTableGetData?.xuiData);
 
   const columns = [
     {

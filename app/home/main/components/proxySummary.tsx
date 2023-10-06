@@ -17,11 +17,11 @@ const nodeInfoSchema = z.object({
 
 export default function ProxySummary() {
   const { Title } = Typography;
-  const data = SSEDataFetch(
+  const proxyGetData = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetNetworkDataSSE",
   );
-  const proxyValidation = proxyInfoSchema.safeParse(data?.proxyNetwork);
-  const nodeValidation = nodeInfoSchema.safeParse(data?.nodeInfo);
+  const proxyValidation = proxyInfoSchema.safeParse(proxyGetData?.proxyNetwork);
+  const nodeValidation = nodeInfoSchema.safeParse(proxyGetData?.nodeInfo);
 
   const { ProxyNetworkSpeedList, setProxyNetworkSpeedList } = useSSEContext();
 
@@ -46,7 +46,7 @@ export default function ProxySummary() {
       setProxyNetworkSpeedList(currentList);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, [proxyGetData]);
 
   const placeholder = (
     <div>

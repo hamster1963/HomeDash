@@ -81,11 +81,11 @@ const serviceSummarySchema = z.object({
 });
 
 export default function ServiceSummary() {
-  const data = SSEDataFetch(
+  const serviceGetData = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetDockerMonitorSSE",
   );
   const serviceSummaryValidation = serviceSummarySchema.safeParse(
-    data?.dockerData,
+    serviceGetData?.dockerData,
   );
 
   const today = new Date().toISOString().split("T")[0];

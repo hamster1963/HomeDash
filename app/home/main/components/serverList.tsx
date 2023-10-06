@@ -178,7 +178,7 @@ function ServerCard(props: ServerCardProps) {
 }
 
 export default function Server() {
-  const data = SSEDataFetch(
+  const serverGetData = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetNetworkDataSSE",
   );
   return (
@@ -187,8 +187,8 @@ export default function Server() {
         marginBottom: "20px",
       }}
     >
-      {data ? (
-        data?.serverInfo.map((server: ServerCardProps) => (
+      {serverGetData ? (
+        serverGetData?.serverInfo.map((server: ServerCardProps) => (
           <ServerCard
             key={server.id}
             id={server.id}
