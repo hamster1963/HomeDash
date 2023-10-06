@@ -1,8 +1,10 @@
 import {
-  IconCode,
+  IconBrackets,
+  IconCalendarClock,
   IconConnectionPoint2,
   IconGithubLogo,
   IconGlobeStroke,
+  IconUser,
 } from "@douyinfe/semi-icons";
 import { Card, Progress, Typography } from "@douyinfe/semi-ui";
 import React from "react";
@@ -46,7 +48,7 @@ export function InfoCard(props: InfoCardProps) {
           style={{
             display: "flex",
             justifyContent: "space-between",
-            alignItems: "baseline",
+            alignItems: "center",
           }}
         >
           <div
@@ -171,6 +173,11 @@ const GitHubInfoSchema = z.object({
   total_minutes_used: z.number(),
 });
 
+const OpenaiUsageInfoSchema = z.object({
+  monthly_usage: z.number(),
+  next_bill_day: z.number(),
+});
+
 export default function InfoCardList() {
   const coffeeGetData = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetNetworkDataSSE",
@@ -190,13 +197,20 @@ export default function InfoCardList() {
     githubGetData?.GitHubActionData,
   );
 
+  const openaiGetData = SSEDataFetch(
+    process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetOpenaiUsageDataSSE",
+  );
+  const openaiValidation = OpenaiUsageInfoSchema.safeParse(
+    openaiGetData?.OpenaiUsageData,
+  );
+
   return (
     <>
       <InfoCard
         backgroundColor={"rgba(var(--semi-blue-0), 0.5)"}
         icon={<IconGlobeStroke />}
         title={"代理服务"}
-        moreIcon={<IconCode />}
+        moreIcon={<IconCalendarClock />}
         value={
           coffeeValidation.success ? Number(coffeeValidation.data.usedBound) : 0
         }
@@ -215,7 +229,7 @@ export default function InfoCardList() {
         backgroundColor={"rgba(var(--semi-purple-0), 0.5)"}
         icon={<IconConnectionPoint2 />}
         title={"x-ui 面板"}
-        moreIcon={<IconCode />}
+        moreIcon={<IconUser />}
         value={xuiValidation.success ? xuiValidation.data.down_total : 0}
         unit={"GB"}
         name={"下载流量"}
@@ -229,13 +243,13 @@ export default function InfoCardList() {
         backgroundColor={"rgba(var(--semi-orange-0), 0.5)"}
         icon={<IconGithubLogo />}
         title={"Actions"}
-        moreIcon={<IconCode />}
+        moreIcon={<IconCalendarClock />}
         value={
           githubValidation.success
             ? githubValidation.data.total_minutes_used
             : 0
         }
-        unit={"Minutes"}
+        unit={"Minute"}
         name={"已用构建时间"}
         total={
           githubValidation.success ? githubValidation.data.included_minutes : 0
@@ -248,22 +262,18 @@ export default function InfoCardList() {
       />
       <InfoCard
         backgroundColor={"rgba(var(--semi-lime-0), 0.5)"}
-        icon={<IconGithubLogo />}
-        title={"Actions"}
-        moreIcon={<IconCode />}
+        icon={<IconBrackets />}
+        title={"OpenAI"}
+        moreIcon={<IconCalendarClock />}
         value={
-          githubValidation.success
-            ? githubValidation.data.total_minutes_used
-            : 0
+          openaiValidation.success ? openaiValidation.data.monthly_usage : 0
         }
-        unit={"Minutes"}
-        name={"已用构建时间"}
-        total={
-          githubValidation.success ? githubValidation.data.included_minutes : 0
-        }
+        unit={"Dollar"}
+        name={"使用量"}
+        total={openaiValidation.success ? 50 : 0}
         moreInfo={
-          "重置: " +
-          (githubValidation.success ? githubValidation.data.next_bill_day : 0) +
+          "账单: " +
+          (openaiValidation.success ? openaiValidation.data.next_bill_day : 0) +
           "天"
         }
       />
