@@ -1,5 +1,3 @@
-import "../../style.css";
-
 import { Descriptions, Skeleton, Typography } from "@douyinfe/semi-ui";
 import React, { useEffect } from "react";
 import { z } from "zod";

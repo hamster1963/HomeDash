@@ -1,5 +1,3 @@
-import "../../style.css";
-
 import { Descriptions, Skeleton } from "@douyinfe/semi-ui";
 import React, { useEffect } from "react";
 import { z } from "zod";
@@ -15,10 +13,12 @@ const NetworkInfoSchema = z.object({
 });
 
 export default function NetworkSummary() {
-  const data = SSEDataFetch(
+  const networkGetData = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetNetworkDataSSE",
   );
-  const networkValidation = NetworkInfoSchema.safeParse(data?.homeNetwork);
+  const networkValidation = NetworkInfoSchema.safeParse(
+    networkGetData?.homeNetwork,
+  );
 
   const { setSSEConnect, HomeNetworkSpeedList, setHomeNetworkSpeedList } =
     useSSEContext();
@@ -45,14 +45,16 @@ export default function NetworkSummary() {
       setHomeNetworkSpeedList(currentList);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, [networkGetData]);
 
   useEffect(() => {
-    if (data) {
+    if (networkValidation.success) {
       setSSEConnect(true);
+    } else {
+      setSSEConnect(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
+  }, [networkGetData]);
 
   const placeholder = (
     <div>

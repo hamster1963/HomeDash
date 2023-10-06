@@ -1,7 +1,5 @@
 "use client";
 
-import "../style.css";
-
 import { Typography } from "@douyinfe/semi-ui";
 
 import HomeSummary from "@/app/home/service/components/homeSummary";
