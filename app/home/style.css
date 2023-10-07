@@ -33,3 +33,18 @@
 .semi-descriptions-double-medium .semi-descriptions-item {
     padding-right: 20px;
 }
+
+
+.fixedButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    flex-direction: row;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background-color: rgba(var(--semi-grey-0), 0.2);
+    padding: 3px;
+    border-radius: 20px;
+}

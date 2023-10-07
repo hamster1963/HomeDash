@@ -19,19 +19,7 @@ const FixedButton = () => {
   }
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        bottom: "20px",
-        right: "20px",
-        display: "flex",
-        flexDirection: "row",
-        backdropFilter: "blur(10px)",
-        backgroundColor: "rgba(255, 255, 255, 0.2)",
-        padding: "3px",
-        borderRadius: "20px",
-      }}
-    >
+    <div className={"fixedButton"}>
       <Button
         style={{ borderRadius: "50%" }}
         icon={<IconSun />}
