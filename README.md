@@ -5,8 +5,8 @@
 <strong>Demo地址: https://home.buycoffee.top</strong>
 
 
-![screen-shot-one](/.github/CleanShot1-new.png)
-![screen-shot-two](/.github/CleanShot2-new.png)
+![screen-shot-one](/.github/CleanShot1.png)
+![screen-shot-two](/.github/CleanShot2.png)
 </div>
 
 ## 一键部署前端
@@ -39,5 +39,5 @@ pnpm dev
 ```
 
 ## 同时也兼容了黑色模式！
-![screen-shot-three](/.github/CleanShot3.png)
-![screen-shot-four](/.github/CleanShot4.png)
+![screen-shot-three](/.github/CleanShot3-new.png)
+![screen-shot-four](/.github/CleanShot4-new.png)
