@@ -14,11 +14,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning>
+    <html>
       <body className={inter.className}>
-        <SSEConnectProvider>
-          <Providers>{children}</Providers>
-        </SSEConnectProvider>
+        <Providers>
+          <SSEConnectProvider>{children}</SSEConnectProvider>
+        </Providers>
         <Analytics />
       </body>
     </html>
