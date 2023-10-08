@@ -82,5 +82,5 @@ jobs:
                 GIT_TAG=${{env.CURRENT_VERSION}}
                 GIT_COMMIT_LOG=${{env.GIT_COMMIT_LOG}}
                 BUILD_TIME=${{env.BUILD_TIME}}
-                NEXT_PUBLIC_GO_API_BASE_URL=${{secrets.NEXT_PUBLIC_GO_API_BASE_URL}}
+                PROD_ENV=${{secrets.PROD_ENV}}
             
