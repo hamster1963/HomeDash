@@ -18,13 +18,15 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-RUN yarn build
+ARG PROD_ENV=""
+# Appends to .env.production
+RUN printf "$PROD_ENV" >> .env.production
+
+RUN pnpm build
 
 
 FROM base AS runner
 WORKDIR /app
-
-ARG PROD_ENV=""
 
 ENV NODE_ENV production
 ENV NEXT_TELEMETRY_DISABLED 1
@@ -37,8 +39,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Appends to .env.production
-RUN printf "$PROD_ENV" >> .env.production
+
 
 USER nextjs
 
