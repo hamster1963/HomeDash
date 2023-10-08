@@ -18,11 +18,11 @@ export default function DashboardLayout({
   // 从 SSEContext 中获取侧边栏状态及其 setter 函数
   const { isNavCollapsed } = useSSEContext();
 
+  // 避免页面初始化时侧边栏闪烁的问题
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
   }, []);
-
   if (!mounted) {
     return null;
   }

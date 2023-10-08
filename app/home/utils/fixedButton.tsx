@@ -10,6 +10,7 @@ const FixedButton = () => {
   const switchMode = (theme: string) => {
     setTheme(theme);
   };
+  // 避免按钮闪烁的问题
   useEffect(() => {
     setMounted(true);
   }, []);
