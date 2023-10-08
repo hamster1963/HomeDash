@@ -1,0 +1,86 @@
+name: Build and push Docker image
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  changelog:
+    name: Generate Changelog
+    runs-on: ubuntu-latest
+    outputs:
+      release_body: ${{ steps.git-cliff.outputs.content }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Generate a changelog
+        uses: orhun/git-cliff-action@v2
+        id: git-cliff
+        with:
+          config: git-cliff/cliff.toml
+          args: -vv --latest --strip 'footer'
+        env:
+          OUTPUT: CHANGES.md
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          body: ${{ steps.git-cliff.outputs.content }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+
+  build-and-push:
+    runs-on: ubuntu-latest
+    needs: changelog
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Login to AliYun Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: registry.cn-guangzhou.aliyuncs.com
+          username: ${{ secrets.ALI_USERNAME }}
+          password: ${{ secrets.ALI_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            ghcr.io/${{ github.repository }}
+            registry.cn-guangzhou.aliyuncs.com/hamster-home/homedash
+          tags: |
+            type=raw,value=latest
+            type=ref,event=tag
+
+      - name: Print environment variables
+        run: |
+          echo "${{env.GIT_COMMIT_LOG}}"
+          echo "${{env.BUILD_TIME}}"
+          echo "${{env.CURRENT_VERSION}}"
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+                GIT_TAG=${{env.CURRENT_VERSION}}
+                GIT_COMMIT_LOG=${{env.GIT_COMMIT_LOG}}
+                BUILD_TIME=${{env.BUILD_TIME}}
+                NEXT_PUBLIC_GO_API_BASE_URL=${{secrets.NEXT_PUBLIC_GO_API_BASE_URL}}
+            

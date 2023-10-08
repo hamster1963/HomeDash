@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  // 针对Docker部署
+  output: "standalone",
   transpilePackages: [
     "@douyinfe/semi-ui",
     "@douyinfe/semi-icons",
