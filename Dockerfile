@@ -22,7 +22,7 @@ ARG PROD_ENV=""
 # Appends to .env.production
 RUN printf "$PROD_ENV" >> .env.production
 
-RUN pnpm build
+RUN yarn build
 
 
 FROM base AS runner
