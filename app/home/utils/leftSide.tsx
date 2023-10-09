@@ -13,7 +13,7 @@ import { useSSEContext } from "@/app/home/utils/sseContext";
 
 const routerMap: Record<string, string> = {
   Home: "/home/main",
-  Network: "/home/network",
+  Network: "/home/xui",
   Service: "/home/service",
 };
 

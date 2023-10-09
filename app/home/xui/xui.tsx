@@ -1,12 +1,11 @@
 "use client";
-
 import { Typography } from "@douyinfe/semi-ui";
 import React from "react";
 
-import XuiSummary from "@/app/home/network/components/xuiDetail";
-import XuiTable from "@/app/home/network/components/xuiTable";
+import XuiSummary from "@/app/home/xui/components/xuiDetail";
+import XuiTable from "@/app/home/xui/components/xuiTable";
 
-export default function NetWork() {
+export default function XuiContent() {
   const { Title } = Typography;
   return (
     <>
