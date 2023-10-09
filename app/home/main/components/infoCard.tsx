@@ -240,9 +240,13 @@ export default function InfoCardList() {
         icon={<IconConnectionPoint2 />}
         title={"x-ui 面板"}
         moreIcon={<IconUser />}
-        value={xuiValidation.success ? xuiValidation.data.down_total : 0}
+        value={
+          xuiValidation.success
+            ? xuiValidation.data.down_total + xuiValidation.data.up_total
+            : 0
+        }
         unit={"GB"}
-        name={"下载流量"}
+        name={"已用流量"}
         total={xuiValidation.success ? 1000 : 0}
         moreInfo={
           "用户数: " +
