@@ -106,18 +106,24 @@ export default function XuiTable() {
   ];
 
   return (
-    <Table
+    <div
       style={{
-        marginLeft: "30px",
-        marginTop: "10px",
-        minWidth: "600px",
-        maxWidth: "95%",
+        overflow: "scroll",
       }}
-      loading={!xuiValidation.success}
-      columns={columns}
-      dataSource={xuiValidation.success ? xuiValidation.data.user_list : []}
-      pagination={false}
-      sticky={true}
-    />
+    >
+      <Table
+        style={{
+          marginLeft: "30px",
+          marginTop: "10px",
+          minWidth: "600px",
+          maxWidth: "95%",
+        }}
+        loading={!xuiValidation.success}
+        columns={columns}
+        dataSource={xuiValidation.success ? xuiValidation.data.user_list : []}
+        pagination={false}
+        sticky={true}
+      />
+    </div>
   );
 }
