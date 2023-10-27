@@ -11,7 +11,7 @@
   "dependencies": {
     "@douyinfe/semi-icons": "^2.45.2",
     "@douyinfe/semi-ui": "^2.45.2",
-    "@types/node": "20.8.8",
+    "@types/node": "20.8.9",
     "@types/react": "18.2.32",
     "@types/react-dom": "18.2.14",
     "@typescript-eslint/eslint-plugin": "^6.9.0",
