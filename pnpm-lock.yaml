@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@douyinfe/semi-icons':
-    specifier: ^2.45.2
-    version: 2.45.2(react@18.2.0)
+    specifier: ^2.45.3
+    version: 2.45.3(react@18.2.0)
   '@douyinfe/semi-ui':
     specifier: ^2.45.3
     version: 2.45.3(react-dom@18.2.0)(react@18.2.0)
@@ -167,15 +167,6 @@ packages:
       lodash: 4.17.21
       memoize-one: 5.2.1
       scroll-into-view-if-needed: 2.2.31
-    dev: false
-
-  /@douyinfe/semi-icons@2.45.2(react@18.2.0):
-    resolution: {integrity: sha512-G7gOawv1F0hdlCF8ARkhGc5oj3ytEtb4qBhkTbj4K/G+W966TiDcv/4JvBPUwT2Z/woEl7DmvwB7U6WBASzv2Q==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      classnames: 2.3.2
-      react: 18.2.0
     dev: false
 
   /@douyinfe/semi-icons@2.45.3(react@18.2.0):
