@@ -45,6 +45,7 @@ export default function MainContent() {
               shape="circle"
               style={{
                 marginLeft: "5px",
+                pointerEvents: "none",
               }}
             >
               SSE 已连接
@@ -58,6 +59,7 @@ export default function MainContent() {
               shape="circle"
               style={{
                 marginLeft: "5px",
+                pointerEvents: "none",
               }}
             >
               SSE 未连接
@@ -73,6 +75,7 @@ export default function MainContent() {
             }}
             style={{
               marginLeft: "5px",
+              cursor: "pointer",
             }}
           >
             GitHub
