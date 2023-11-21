@@ -10,6 +10,8 @@ type ServerCardProps = {
   memory: number;
   disk: number;
   uptime: number;
+  up: number;
+  down: number;
 };
 
 const placeholder = (
@@ -68,8 +70,8 @@ function ServerCard(props: ServerCardProps) {
                   props.cpu > 80
                     ? "rgba(var(--semi-red-5), 1)"
                     : props.cpu > 50
-                    ? "rgba(var(--semi-orange-5), 1)"
-                    : "rgba(var(--semi-green-5), 1)"
+                      ? "rgba(var(--semi-orange-5), 1)"
+                      : "rgba(var(--semi-green-5), 1)"
                 }
                 percent={props.cpu}
                 type="circle"
@@ -106,8 +108,8 @@ function ServerCard(props: ServerCardProps) {
                   props.memory > 80
                     ? "rgba(var(--semi-red-5), 1)"
                     : props.memory > 50
-                    ? "rgba(var(--semi-orange-5), 1)"
-                    : "rgba(var(--semi-green-5), 1)"
+                      ? "rgba(var(--semi-orange-5), 1)"
+                      : "rgba(var(--semi-green-5), 1)"
                 }
                 percent={props.memory}
                 type="circle"
@@ -144,8 +146,8 @@ function ServerCard(props: ServerCardProps) {
                   props.disk > 80
                     ? "rgba(var(--semi-red-5), 1)"
                     : props.disk > 50
-                    ? "rgba(var(--semi-orange-5), 1)"
-                    : "rgba(var(--semi-green-5), 1)"
+                      ? "rgba(var(--semi-orange-5), 1)"
+                      : "rgba(var(--semi-green-5), 1)"
                 }
                 percent={props.disk}
                 type="circle"
@@ -153,6 +155,28 @@ function ServerCard(props: ServerCardProps) {
               />
               {props.disk}%
             </div>
+          ) : (
+            <Skeleton
+              placeholder={placeholder}
+              loading={true}
+              active
+            ></Skeleton>
+          )}
+        </Descriptions.Item>
+        <Descriptions.Item itemKey="上传">
+          {props.status === "online" ? (
+            props.up.toFixed(2) + "mb/s"
+          ) : (
+            <Skeleton
+              placeholder={placeholder}
+              loading={true}
+              active
+            ></Skeleton>
+          )}
+        </Descriptions.Item>
+        <Descriptions.Item itemKey="下载">
+          {props.status === "online" ? (
+            props.down.toFixed(2) + "mb/s"
           ) : (
             <Skeleton
               placeholder={placeholder}
@@ -198,6 +222,8 @@ export default function Server() {
             memory={server.memory}
             disk={server.disk}
             uptime={server.uptime}
+            up={server.up}
+            down={server.down}
           />
         ))
       ) : (
@@ -210,6 +236,8 @@ export default function Server() {
           memory={0}
           disk={0}
           uptime={0}
+          up={0}
+          down={0}
         />
       )}
     </div>
