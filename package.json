@@ -11,11 +11,11 @@
   "dependencies": {
     "@douyinfe/semi-icons": "^2.47.0",
     "@douyinfe/semi-ui": "^2.47.0",
-    "@types/node": "20.9.1",
+    "@types/node": "20.9.2",
     "@types/react": "18.2.37",
     "@types/react-dom": "18.2.15",
-    "@typescript-eslint/eslint-plugin": "^6.11.0",
-    "@typescript-eslint/parser": "^6.11.0",
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "@typescript-eslint/parser": "^6.12.0",
     "@vercel/analytics": "^1.1.1",
     "eslint": "8.54.0",
     "eslint-config-next": "14.0.3",
@@ -28,10 +28,10 @@
     "prettier": "^3.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "recharts": "^2.9.3",
+    "recharts": "^2.10.1",
     "sharp": "^0.32.6",
     "swr": "^2.2.4",
-    "typescript": "5.2.2",
+    "typescript": "5.3.2",
     "typewriter-effect": "^2.21.0",
     "zod": "^3.22.4"
   }
