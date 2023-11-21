@@ -63,7 +63,7 @@ function LeftSide() {
           const href = routerMap[itemKey] as string;
           return (
             <div style={{ marginBottom: "15px" }}>
-              <Link style={{ textDecoration: "none" }} href={href} prefetch={false}>
+              <Link style={{ textDecoration: "none" }} href={href} prefetch={true} replace={true} passHref={true} shallow={true}>
                 <div>{itemElement}</div>
               </Link>
             </div>
