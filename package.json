@@ -13,7 +13,7 @@
     "@douyinfe/semi-ui": "^2.47.0",
     "@types/node": "20.9.3",
     "@types/react": "18.2.38",
-    "@types/react-dom": "18.2.16",
+    "@types/react-dom": "18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.12.0",
     "@typescript-eslint/parser": "^6.12.0",
     "@vercel/analytics": "^1.1.1",
