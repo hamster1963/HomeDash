@@ -1,24 +1,21 @@
-import {
-  IconHome,
-  IconSemiLogo,
-  IconServer,
-  IconUserGroup,
-} from "@douyinfe/semi-icons";
+import { IconSemiLogo } from "@douyinfe/semi-icons";
+import { IconBanner, IconList, IconToken } from "@douyinfe/semi-icons-lab";
 import { Nav } from "@douyinfe/semi-ui";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useMemo } from "react";
 
 import { useSSEContext } from "@/app/home/utils/sseContext";
 
 const routerMap: Record<string, string> = {
-  Home: "/home/main",
-  Network: "/home/xui",
-  Service: "/home/service",
+  home: "/home/main",
+  network: "/home/xui",
+  service: "/home/service",
 };
 
 function LeftSide() {
   const pathname = usePathname();
+  const router = useRouter();
 
   const selectedKeys = useMemo(() => {
     const keys = Object.keys(routerMap);
@@ -58,29 +55,19 @@ function LeftSide() {
         isCollapsed={isNavCollapsed}
         onCollapseChange={(isCollapse) => toggleNav(isCollapse)}
         style={{ height: "100vh", width: navWidth }}
-        renderWrapper={({ itemElement, props }) => {
-          const itemKey = props.itemKey as string;
-          const href = routerMap[itemKey] as string;
-          return (
-            <div style={{ marginBottom: "15px" }}>
-              <Link style={{ textDecoration: "none" }} href={href} prefetch={true} replace={true} passHref={true} shallow={true}>
-                <div>{itemElement}</div>
-              </Link>
-            </div>
-          );
-        }}
         footer={{ collapseButton: true }}
-        items={[
-          { itemKey: "Home", text: "概览", icon: <IconHome /> },
-          { itemKey: "Service", text: "服务监控", icon: <IconServer /> },
-          { itemKey: "Network", text: "用户列表", icon: <IconUserGroup /> },
-        ]}
-        defaultSelectedKeys={selectedKeys}
+        onClick={(data) => {
+          router.push(routerMap[data.itemKey as string]!);
+        }}
+        selectedKeys={selectedKeys}
       >
         <Nav.Header
           logo={<IconSemiLogo style={{ height: "36px", fontSize: 36 }} />}
           text={"Hamster's Home"}
         />
+        <Nav.Item itemKey={"home"} text={"概览"} icon={<IconBanner />} />
+        <Nav.Item itemKey={"service"} text={"服务监控"} icon={<IconToken />} />
+        <Nav.Item itemKey={"network"} text={"用户列表"} icon={<IconList />} />
       </Nav>
     </div>
   );

@@ -31,7 +31,7 @@ export function InfoCard(props: InfoCardProps) {
   const progressPercent =
     props.value !== 0 ? Math.round((props.value / props.total) * 100) : 0;
   // 使用线性渐变设置背景色
-  // 这里我们使用绿色表示进度，你可以根据需要更改颜色
+  // 可以根据需要更改颜色
   const backgroundColor = `linear-gradient(90deg, ${props.backgroundFillColor} ${progressPercent}%, ${props.backgroundColor} ${progressPercent}%)`;
   return (
     <Card
