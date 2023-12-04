@@ -48,6 +48,11 @@ function LeftSide() {
       window.removeEventListener("resize", handleResize);
     };
   }, [toggleNav]);
+  useEffect(() => {
+    router.prefetch("/home/main");
+    router.prefetch("/home/xui");
+    router.prefetch("/home/service");
+  }, [router]);
 
   return (
     <div style={{ position: "fixed", top: 0, left: 0, bottom: 0 }}>
