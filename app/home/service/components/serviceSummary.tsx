@@ -49,8 +49,8 @@ export function ServiceCard(props: ServiceCardProps) {
             Number(((runningValue / totalValue) * 100).toFixed(0)) < 80
               ? "rgba(var(--semi-orange-5), 1)"
               : Number(((runningValue / totalValue) * 100).toFixed(0)) < 50
-              ? "rgba(var(--semi-red-5), 1)"
-              : "rgba(var(--semi-green-5), 1)"
+                ? "rgba(var(--semi-red-5), 1)"
+                : "rgba(var(--semi-green-5), 1)"
           }
           type="circle"
           strokeWidth={10}
@@ -89,7 +89,7 @@ export default function ServiceSummary() {
   );
 
   const today = new Date().toISOString().split("T")[0];
-  const date2: string = "2023-12-16";
+  const date2: string = "2024-12-16";
   const daysBetween: number = getDaysBetweenDates(today!.toString(), date2);
 
   return (
@@ -149,8 +149,8 @@ export default function ServiceSummary() {
         }
       />
       <ServiceCard
-        title={"证书有效期"}
-        totalValue={90}
+        title={"Cloudflare Tunnel"}
+        totalValue={365}
         runningValue={daysBetween}
       />
     </div>
