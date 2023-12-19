@@ -18,7 +18,7 @@
     "@typescript-eslint/eslint-plugin": "^6.14.0",
     "@typescript-eslint/parser": "^6.14.0",
     "@vercel/analytics": "^1.1.1",
-    "eslint": "8.55.0",
+    "eslint": "8.56.0",
     "eslint-config-next": "14.0.4",
     "eslint-config-turbo": "^1.11.2",
     "eslint-plugin-prettier": "^5.0.1",
