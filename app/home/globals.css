@@ -23,6 +23,8 @@ time, mark, audio, video {
     border: 0;
     font: inherit;
     vertical-align: baseline;
+    /* Disable tap highlights on iOS */
+    -webkit-tap-highlight-color: transparent;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,

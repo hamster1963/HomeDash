@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@douyinfe/semi-icons": "^2.49.1",
-    "@douyinfe/semi-icons-lab": "^2.49.0",
+    "@douyinfe/semi-icons-lab": "^2.49.1",
     "@douyinfe/semi-ui": "^2.49.1",
     "@types/node": "20.10.5",
     "@types/react": "18.2.45",
@@ -21,7 +21,7 @@
     "eslint": "8.56.0",
     "eslint-config-next": "14.0.4",
     "eslint-config-turbo": "^1.11.2",
-    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-prettier": "^5.1.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "next": "14.0.4",
