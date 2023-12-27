@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@douyinfe/semi-icons": "^2.49.1",
+    "@douyinfe/semi-icons": "^2.49.2",
     "@douyinfe/semi-icons-lab": "^2.49.2",
     "@douyinfe/semi-ui": "^2.49.2",
     "@types/node": "20.10.5",

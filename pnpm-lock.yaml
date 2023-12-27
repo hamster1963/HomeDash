@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@douyinfe/semi-icons':
-    specifier: ^2.49.1
-    version: 2.49.1(react@18.2.0)
+    specifier: ^2.49.2
+    version: 2.49.2(react@18.2.0)
   '@douyinfe/semi-icons-lab':
     specifier: ^2.49.2
     version: 2.49.2(react-dom@18.2.0)(react@18.2.0)
@@ -180,15 +180,6 @@ packages:
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /@douyinfe/semi-icons@2.49.1(react@18.2.0):
-    resolution: {integrity: sha512-d2YdR0Z3pqygWNdGB7M97cqi0dec+mWHcLL2C4Yd9I0VJCPWnNd88dWVPTNPU2GCx9hEA8qL9aFawUR24s5p1Q==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      classnames: 2.3.2
-      react: 18.2.0
     dev: false
 
   /@douyinfe/semi-icons@2.49.2(react@18.2.0):
