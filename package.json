@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@douyinfe/semi-icons": "^2.49.2",
-    "@douyinfe/semi-icons-lab": "^2.49.2",
+    "@douyinfe/semi-icons-lab": "^2.50.0",
     "@douyinfe/semi-ui": "^2.49.2",
     "@types/node": "20.10.5",
     "@types/react": "18.2.46",
