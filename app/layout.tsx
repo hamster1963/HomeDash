@@ -18,7 +18,6 @@ export default function RootLayout({
         <Providers>
           <SSEConnectProvider>{children}</SSEConnectProvider>
         </Providers>
-        <Analytics />
       </body>
     </html>
   );
