@@ -82,20 +82,20 @@ const HomeCard = ({ type, status, value, img }: HomeCardProps) => {
 
 const homeCardDataSchema = z.object({
   AirConditioner: z.object({
-    state: z.boolean(),
-    temp: z.number(),
+    state: z.boolean().nullable(),
+    temp: z.number().nullable(),
   }),
   Humidifier: z.object({
-    state: z.boolean(),
-    humidity: z.number(),
+    state: z.boolean().nullable(),
+    humidity: z.number().nullable(),
   }),
   AirPurifier: z.object({
-    state: z.boolean(),
-    pm25: z.number(),
+    state: z.boolean().nullable(),
+    pm25: z.number().nullable(),
   }),
   Light: z.object({
-    state: z.boolean(),
-    brightness: z.number(),
+    state: z.boolean().nullable(),
+    brightness: z.number().nullable(),
   }),
 });
 
@@ -125,11 +125,12 @@ export default function HomeSummary() {
           type={"空调"}
           status={
             homeCardValidation.success
-              ? homeCardValidation.data.AirConditioner.state
+              ? homeCardValidation.data.AirConditioner.state!
               : false
           }
           value={
-            homeCardValidation.success
+            homeCardValidation.success &&
+            homeCardValidation.data.AirConditioner.temp
               ? homeCardValidation.data.AirConditioner.temp + "°C"
               : "离线中"
           }
@@ -140,11 +141,12 @@ export default function HomeSummary() {
           type={"加湿器"}
           status={
             homeCardValidation.success
-              ? homeCardValidation.data.Humidifier.state
+              ? homeCardValidation.data.Humidifier.state!
               : false
           }
           value={
-            homeCardValidation.success
+            homeCardValidation.success &&
+            homeCardValidation.data.Humidifier.humidity
               ? homeCardValidation.data.Humidifier.humidity + "%"
               : "离线中"
           }
@@ -155,11 +157,12 @@ export default function HomeSummary() {
           type={"空气净化器"}
           status={
             homeCardValidation.success
-              ? homeCardValidation.data.AirPurifier.state
+              ? homeCardValidation.data.AirPurifier.state!
               : false
           }
           value={
-            homeCardValidation.success
+            homeCardValidation.success &&
+            homeCardValidation.data.AirPurifier.pm25
               ? homeCardValidation.data.AirPurifier.pm25 + "ug/m³"
               : "离线中"
           }
@@ -169,11 +172,12 @@ export default function HomeSummary() {
           type={"卧室床头灯"}
           status={
             homeCardValidation.success
-              ? homeCardValidation.data.Light.state
+              ? homeCardValidation.data.Light.state!
               : false
           }
           value={
-            homeCardValidation.success
+            homeCardValidation.success &&
+            homeCardValidation.data.Light.brightness
               ? homeCardValidation.data.Light.brightness + "%"
               : "离线中"
           }
