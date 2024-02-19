@@ -181,9 +181,8 @@ const GitHubInfoSchema = z.object({
   total_minutes_used: z.number(),
 });
 
-const OpenaiUsageInfoSchema = z.object({
-  monthly_usage: z.number(),
-  next_bill_day: z.number(),
+const BoceCountSchema = z.object({
+  boce_count: z.number(),
 });
 
 export default function InfoCardList() {
@@ -204,12 +203,11 @@ export default function InfoCardList() {
   const githubValidation = GitHubInfoSchema.safeParse(
     githubGetData?.GitHubActionData,
   );
-
-  const openaiGetData = SSEDataFetch(
-    process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetOpenaiUsageDataSSE",
+  const boceCountData = SSEDataFetch(
+    process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetBoceCountSSE",
   );
-  const openaiValidation = OpenaiUsageInfoSchema.safeParse(
-    openaiGetData?.OpenaiUsageData,
+  const boceCountValidation = BoceCountSchema.safeParse(
+    boceCountData?.boceCount,
   );
 
   return (
@@ -279,19 +277,15 @@ export default function InfoCardList() {
         backgroundColor={"rgba(var(--semi-violet-3),0.1)"}
         backgroundFillColor={"rgba(var(--semi-violet-3),0.3)"}
         icon={<IconBrackets />}
-        title={"OpenAI"}
+        title={"拨测总数"}
         moreIcon={<IconCalendarClock />}
         value={
-          openaiValidation.success ? openaiValidation.data.monthly_usage : 0
+          boceCountValidation.success ? boceCountValidation.data.boce_count : 0
         }
         unit={"Dollar"}
         name={"使用量"}
-        total={openaiValidation.success ? 50 : 0}
-        moreInfo={
-          "账单: " +
-          (openaiValidation.success ? openaiValidation.data.next_bill_day : 0) +
-          "天"
-        }
+        total={boceCountValidation.success ? 10000 : 0}
+        moreInfo={"自建拨测服务"}
       />
     </>
   );
