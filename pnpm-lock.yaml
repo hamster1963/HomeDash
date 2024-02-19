@@ -30,8 +30,8 @@ dependencies:
     specifier: ^7.0.1
     version: 7.0.1(eslint@8.56.0)(typescript@5.3.3)
   '@vercel/analytics':
-    specifier: ^1.2.0
-    version: 1.2.0(next@14.1.0)(react@18.2.0)
+    specifier: ^1.2.1
+    version: 1.2.1(next@14.1.0)(react@18.2.0)
   eslint:
     specifier: 8.56.0
     version: 8.56.0
@@ -916,8 +916,8 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: false
 
-  /@vercel/analytics@1.2.0(next@14.1.0)(react@18.2.0):
-    resolution: {integrity: sha512-Q9hduY6+i73Is1m57Y3OlawleeYVi4cvuh/0j6IwmSndMOE4+BKkMwjnwz+7xnqfZCanipIG6+q+zHalH9X0Zg==}
+  /@vercel/analytics@1.2.1(next@14.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-ZB5gDPCQvHu0DcBbywIwMm5aY9mTV8mBl7Mmk8QD84JqBnuYbsNCDnnDuzblNjd82tDtRjAqruZ0mzNm6MAWpA==}
     peerDependencies:
       next: '>= 13'
       react: ^18 || ^19
