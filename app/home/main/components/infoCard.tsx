@@ -1,4 +1,5 @@
 import {
+  IconBolt,
   IconBrackets,
   IconCalendarClock,
   IconConnectionPoint2,
@@ -206,9 +207,7 @@ export default function InfoCardList() {
   const boceCountData = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetBoceCountSSE",
   );
-  const boceCountValidation = BoceCountSchema.safeParse(
-    boceCountData?.boceCount,
-  );
+  const boceCountValidation = BoceCountSchema.safeParse(boceCountData);
 
   return (
     <>
@@ -278,14 +277,14 @@ export default function InfoCardList() {
         backgroundFillColor={"rgba(var(--semi-violet-3),0.3)"}
         icon={<IconBrackets />}
         title={"拨测总数"}
-        moreIcon={<IconCalendarClock />}
+        moreIcon={<IconBolt />}
         value={
           boceCountValidation.success ? boceCountValidation.data.boce_count : 0
         }
-        unit={"Dollar"}
-        name={"使用量"}
+        unit={"Count"}
+        name={"任务数"}
         total={boceCountValidation.success ? 10000 : 0}
-        moreInfo={"自建拨测服务"}
+        moreInfo={"拨测服务"}
       />
     </>
   );
