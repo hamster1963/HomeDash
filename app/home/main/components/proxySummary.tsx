@@ -60,6 +60,7 @@ export default function ProxySummary() {
       <div
         className={"newDescription"}
         style={{
+          gap: "20px",
           display: "flex",
           marginLeft: "10px",
           marginRight: "10px",
