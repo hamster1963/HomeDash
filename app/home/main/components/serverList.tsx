@@ -44,7 +44,7 @@ function ServerCard(props: ServerCardProps) {
             style={{
               display: "flex",
               flexWrap: "wrap",
-              columnGap: "50px",
+              columnGap: "40px",
             }}
           >
             <NewDescription
@@ -63,6 +63,10 @@ function ServerCard(props: ServerCardProps) {
               }
             />
             <NewDescription
+              style={{
+                width: "110px",
+                overflow: "hidden",
+              }}
               keyString={"CPU占用"}
               value={
                 props.status === "online" ? (
@@ -99,6 +103,10 @@ function ServerCard(props: ServerCardProps) {
               }
             />
             <NewDescription
+              style={{
+                width: "110px",
+                overflow: "hidden",
+              }}
               keyString={"内存占用"}
               value={
                 props.status === "online" ? (
@@ -135,6 +143,10 @@ function ServerCard(props: ServerCardProps) {
               }
             />
             <NewDescription
+              style={{
+                width: "110px",
+                overflow: "hidden",
+              }}
               keyString={"存储占用"}
               value={
                 props.status === "online" ? (
@@ -171,6 +183,10 @@ function ServerCard(props: ServerCardProps) {
               }
             />
             <NewDescription
+              style={{
+                width: "110px",
+                overflow: "hidden",
+              }}
               keyString={"上传"}
               value={
                 props.status === "online" ? (
@@ -185,6 +201,10 @@ function ServerCard(props: ServerCardProps) {
               }
             />
             <NewDescription
+              style={{
+                width: "110px",
+                overflow: "hidden",
+              }}
               keyString={"下载"}
               value={
                 props.status === "online" ? (
