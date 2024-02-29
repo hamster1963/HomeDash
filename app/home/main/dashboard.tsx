@@ -5,6 +5,7 @@ import {
   IconUploadError,
 } from "@douyinfe/semi-icons";
 import { Tag, Typography } from "@douyinfe/semi-ui";
+import { useTheme } from "next-themes";
 import React from "react";
 
 import InfoCardList from "@/app/home/main/components/infoCard";
@@ -16,6 +17,7 @@ import { useSSEContext } from "@/app/home/utils/sseContext";
 export default function MainContent() {
   const { Title } = Typography;
   const { SSEConnect } = useSSEContext();
+  const { resolvedTheme } = useTheme();
 
   return (
     <>
@@ -102,14 +104,30 @@ export default function MainContent() {
             flex: 1,
           }}
         >
-          <Title
-            heading={3}
+          <section
             style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "start",
+              flexWrap: "wrap",
               marginLeft: "20px",
+              marginRight: "20px",
             }}
           >
-            家庭网络
-          </Title>
+            <Title heading={3}>家庭网络</Title>
+            <picture>
+              <img
+                src={
+                  resolvedTheme === "light"
+                    ? "/AdguardHome.png"
+                    : "/AdguardHome-dark.png"
+                }
+                width={"130px"}
+                alt={"AdGuardHome"}
+              />
+            </picture>
+          </section>
+
           <NetworkSummary />
         </div>
 
@@ -124,14 +142,27 @@ export default function MainContent() {
             minWidth: "200px",
           }}
         >
-          <Title
-            heading={3}
+          <section
             style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "start",
+              flexWrap: "wrap",
               marginLeft: "20px",
+              marginRight: "20px",
             }}
           >
-            科学上网
-          </Title>
+            <Title heading={3}>科学上网</Title>
+            <picture>
+              <img
+                src={
+                  resolvedTheme === "light" ? "/kuromi.png" : "/kuromi-dark.png"
+                }
+                width={"110px"}
+                alt={"AdGuardHome"}
+              />
+            </picture>
+          </section>
           <ProxySummary />
         </div>
       </div>

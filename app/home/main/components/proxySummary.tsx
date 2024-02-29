@@ -98,6 +98,10 @@ export default function ProxySummary() {
           }
         />
         <NewDescription
+          style={{
+            width: "105px",
+            overflow: "hidden",
+          }}
           keyString={"上传速率"}
           value={
             proxyValidation.success ? (
@@ -112,6 +116,10 @@ export default function ProxySummary() {
           }
         />
         <NewDescription
+          style={{
+            width: "105px",
+            overflow: "hidden",
+          }}
           keyString={"下载速率"}
           value={
             proxyValidation.success ? (

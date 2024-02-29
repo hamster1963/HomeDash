@@ -13,12 +13,24 @@ const NetworkInfoSchema = z.object({
   txSpeedMbps: z.number(),
 });
 
+const AdGuardInfoSchema = z.object({
+  AvgProcessingTime: z.number(),
+  NumBlockedFiltering: z.number(),
+  NumDnsQueries: z.number(),
+});
+
 export default function NetworkSummary() {
   const networkGetData = SSEDataFetch(
     process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetNetworkDataSSE",
   );
   const networkValidation = NetworkInfoSchema.safeParse(
     networkGetData?.homeNetwork,
+  );
+  const adguardGetData = SSEDataFetch(
+    process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetAdGuardInfoSSE",
+  );
+  const adguardValidation = AdGuardInfoSchema.safeParse(
+    adguardGetData?.adGuardInfo,
   );
 
   const { setSSEConnect, HomeNetworkSpeedList, setHomeNetworkSpeedList } =
@@ -90,6 +102,10 @@ export default function NetworkSummary() {
           }
         />
         <NewDescription
+          style={{
+            width: "105px",
+            overflow: "hidden",
+          }}
           keyString={"上传速率"}
           value={
             networkValidation.success ? (
@@ -104,6 +120,10 @@ export default function NetworkSummary() {
           }
         />
         <NewDescription
+          style={{
+            width: "105px",
+            overflow: "hidden",
+          }}
           keyString={"下载速率"}
           value={
             networkValidation.success ? (
@@ -117,6 +137,55 @@ export default function NetworkSummary() {
             )
           }
         />
+        <section
+          style={{
+            columnGap: "20px",
+            display: "flex",
+          }}
+        >
+          <NewDescription
+            keyString={"DNS查询数"}
+            value={
+              adguardValidation.success ? (
+                adguardValidation.data.NumDnsQueries
+              ) : (
+                <Skeleton
+                  placeholder={placeholder}
+                  loading={true}
+                  active
+                ></Skeleton>
+              )
+            }
+          />
+          <NewDescription
+            keyString={"拦截数"}
+            value={
+              adguardValidation.success ? (
+                adguardValidation.data.NumBlockedFiltering
+              ) : (
+                <Skeleton
+                  placeholder={placeholder}
+                  loading={true}
+                  active
+                ></Skeleton>
+              )
+            }
+          />
+          <NewDescription
+            keyString={"处理时间"}
+            value={
+              adguardValidation.success ? (
+                adguardValidation.data.AvgProcessingTime + "ms"
+              ) : (
+                <Skeleton
+                  placeholder={placeholder}
+                  loading={true}
+                  active
+                ></Skeleton>
+              )
+            }
+          />
+        </section>
       </div>
       <NetworkChart
         data={HomeNetworkSpeedList}
