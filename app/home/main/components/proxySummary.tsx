@@ -1,8 +1,9 @@
-import { Descriptions, Skeleton, Typography } from "@douyinfe/semi-ui";
+import { Skeleton, Typography } from "@douyinfe/semi-ui";
 import React, { useEffect } from "react";
 import { z } from "zod";
 
 import NetworkChart from "@/app/home/main/components/networkChart";
+import NewDescription from "@/app/home/main/components/NewDescription";
 import { useSSEContext } from "@/app/home/utils/sseContext";
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
@@ -13,6 +14,7 @@ const proxyInfoSchema = z.object({
 
 const nodeInfoSchema = z.object({
   nodeName: z.string(),
+  nodeLatency: z.string(),
 });
 
 export default function ProxySummary() {
@@ -53,40 +55,77 @@ export default function ProxySummary() {
       <Skeleton.Title style={{ width: 50 }} />
     </div>
   );
-  const networkSummaryData = [
-    {
-      key: "当前节点",
-      value: nodeValidation.success ? (
-        <Title heading={5}>{nodeValidation.data.nodeName.slice(1, -1)}</Title>
-      ) : (
-        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
-      ),
-    },
-    {
-      key: "上传速率",
-      value: proxyValidation.success ? (
-        proxyValidation.data.txSpeedMbps + "mb/s"
-      ) : (
-        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
-      ),
-    },
-    {
-      key: "下载速率",
-      value: proxyValidation.success ? (
-        proxyValidation.data.rxSpeedMbps + "mb/s"
-      ) : (
-        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
-      ),
-    },
-  ];
   return (
     <>
-      <Descriptions
-        className="mainDescription"
-        data={networkSummaryData}
-        row
-        size="medium"
-      />
+      <div
+        className={"newDescription"}
+        style={{
+          display: "flex",
+          marginLeft: "10px",
+          marginRight: "10px",
+          flexWrap: "wrap",
+        }}
+      >
+        <NewDescription
+          keyString={"当前节点"}
+          value={
+            nodeValidation.success ? (
+              <Title heading={5}>
+                {nodeValidation.data.nodeName.slice(1, -1)}
+              </Title>
+            ) : (
+              <Skeleton
+                placeholder={placeholder}
+                loading={true}
+                active
+              ></Skeleton>
+            )
+          }
+        />
+        <NewDescription
+          keyString={"延迟"}
+          value={
+            nodeValidation.success ? (
+              nodeValidation.data.nodeLatency + "ms"
+            ) : (
+              <Skeleton
+                placeholder={placeholder}
+                loading={true}
+                active
+              ></Skeleton>
+            )
+          }
+        />
+        <NewDescription
+          keyString={"上传速率"}
+          value={
+            proxyValidation.success ? (
+              proxyValidation.data.txSpeedMbps + "mb/s"
+            ) : (
+              <Skeleton
+                placeholder={placeholder}
+                loading={true}
+                active
+              ></Skeleton>
+            )
+          }
+        />
+        <NewDescription
+          keyString={"下载速率"}
+          value={
+            proxyValidation.success ? (
+              proxyValidation.data.rxSpeedMbps + "mb/s"
+            ) : (
+              <Skeleton
+                placeholder={placeholder}
+                loading={true}
+                active
+              ></Skeleton>
+            )
+          }
+        />
+      </div>
+
       <NetworkChart
         data={ProxyNetworkSpeedList}
         keyString={"speed"}

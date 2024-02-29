@@ -1,13 +1,10 @@
-.mainDescription {
-    padding: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+.newDescription {
     border-radius: 5px;
     background-color: transparent;
     transition: border-radius 0.5s ease, background-color 0.3s ease;
 }
 
-.mainDescription:hover {
+.newDescription:hover {
     border-radius: 15px;
     background-color: rgba(var(--semi-grey-0), 1);
 }

@@ -1,8 +1,9 @@
-import { Descriptions, Skeleton } from "@douyinfe/semi-ui";
+import { Skeleton } from "@douyinfe/semi-ui";
 import React, { useEffect } from "react";
 import { z } from "zod";
 
 import NetworkChart from "@/app/home/main/components/networkChart";
+import NewDescription from "@/app/home/main/components/NewDescription";
 import { useSSEContext } from "@/app/home/utils/sseContext";
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
@@ -62,41 +63,60 @@ export default function NetworkSummary() {
     </div>
   );
 
-  const networkSummaryData = [
-    {
-      key: "设备数",
-      value: networkValidation.success ? (
-        networkValidation.data.deviceCount
-      ) : (
-        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
-      ),
-    },
-    {
-      key: "上传速率",
-      value: networkValidation.success ? (
-        networkValidation.data.txSpeedMbps + "mb/s"
-      ) : (
-        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
-      ),
-    },
-    {
-      key: "下载速率",
-      value: networkValidation.success ? (
-        networkValidation.data.rxSpeedMbps + "mb/s"
-      ) : (
-        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
-      ),
-    },
-  ];
-
   return (
     <>
-      <Descriptions
-        className="mainDescription"
-        data={networkSummaryData}
-        row
-        size="medium"
-      />
+      <div
+        className={"newDescription"}
+        style={{
+          display: "flex",
+          marginLeft: "10px",
+          marginRight: "10px",
+          flexWrap: "wrap",
+        }}
+      >
+        <NewDescription
+          keyString={"设备数"}
+          value={
+            networkValidation.success ? (
+              networkValidation.data.deviceCount
+            ) : (
+              <Skeleton
+                placeholder={placeholder}
+                loading={true}
+                active
+              ></Skeleton>
+            )
+          }
+        />
+        <NewDescription
+          keyString={"上传速率"}
+          value={
+            networkValidation.success ? (
+              networkValidation.data.txSpeedMbps + "mb/s"
+            ) : (
+              <Skeleton
+                placeholder={placeholder}
+                loading={true}
+                active
+              ></Skeleton>
+            )
+          }
+        />
+        <NewDescription
+          keyString={"下载速率"}
+          value={
+            networkValidation.success ? (
+              networkValidation.data.rxSpeedMbps + "mb/s"
+            ) : (
+              <Skeleton
+                placeholder={placeholder}
+                loading={true}
+                active
+              ></Skeleton>
+            )
+          }
+        />
+      </div>
       <NetworkChart
         data={HomeNetworkSpeedList}
         keyString={"speed"}
