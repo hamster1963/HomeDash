@@ -15,7 +15,7 @@ import Server from "@/app/home/main/components/serverList";
 import { useSSEContext } from "@/app/home/utils/sseContext";
 
 export default function MainContent() {
-  const { Title } = Typography;
+  const { Title, Text } = Typography;
   const { SSEConnect } = useSSEContext();
   const { resolvedTheme } = useTheme();
 
@@ -98,7 +98,7 @@ export default function MainContent() {
             paddingTop: "10px",
             border: "1px solid rgba(var(--semi-grey-1), 1)",
             borderRadius: "15px",
-            minWidth: "200px",
+            minWidth: "220px",
             marginRight: "20px",
             marginBottom: "10px",
             flex: 1,
@@ -139,7 +139,7 @@ export default function MainContent() {
             flex: 1,
             marginRight: "20px",
             marginBottom: "10px",
-            minWidth: "200px",
+            minWidth: "220px",
           }}
         >
           <section
@@ -153,15 +153,45 @@ export default function MainContent() {
             }}
           >
             <Title heading={3}>科学上网</Title>
-            <picture>
-              <img
-                src={
-                  resolvedTheme === "light" ? "/kuromi.png" : "/kuromi-dark.png"
-                }
-                width={"110px"}
-                alt={"AdGuardHome"}
-              />
-            </picture>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <picture>
+                <img
+                  src={
+                    resolvedTheme === "light"
+                      ? "/kuromi.png"
+                      : "/kuromi-dark.png"
+                  }
+                  width={"110px"}
+                  alt={"kuromi"}
+                />
+              </picture>
+              <Text
+                strong
+                style={{
+                  marginLeft: "5px",
+                  marginRight: "5px",
+                }}
+              >
+                &
+              </Text>
+              <picture>
+                <img
+                  src={
+                    resolvedTheme === "light"
+                      ? "/coffee.png"
+                      : "/coffee-dark.png"
+                  }
+                  width={"60px"}
+                  alt={"coffee"}
+                />
+              </picture>
+            </div>
           </section>
           <ProxySummary />
         </div>

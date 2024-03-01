@@ -4,6 +4,7 @@ import { z } from "zod";
 
 import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
+
 const xuiDetailDataSchema = z.object({
   user_count: z.number(),
   up_total: z.number(),
