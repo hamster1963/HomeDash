@@ -46,3 +46,15 @@
     padding: 3px;
     border-radius: 20px;
 }
+
+
+.responsive-divider {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    .responsive-divider {
+        display: none;
+    }
+}
+

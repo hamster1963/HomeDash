@@ -11,7 +11,7 @@ const NetworkInfoSchema = z.object({
   deviceCount: z.number(),
   rxSpeedMbps: z.number(),
   txSpeedMbps: z.number(),
-});
+})
 
 const AdGuardInfoSchema = z.object({
   AvgProcessingTime: z.number(),
@@ -45,7 +45,7 @@ export default function NetworkSummary() {
       currentList.push({
         speed: Number(
           networkValidation.data.rxSpeedMbps +
-            networkValidation.data.txSpeedMbps,
+          networkValidation.data.txSpeedMbps,
         ),
       });
 

@@ -2,21 +2,22 @@
 import { Typography } from "@douyinfe/semi-ui";
 import React from "react";
 
-import XuiSummary from "@/app/home/xui/components/xuiDetail";
-import XuiTable from "@/app/home/xui/components/xuiTable";
+import SurgeStatus from "@/app/home/surge/surgeStatus";
+import SurgeTraffic from "@/app/home/surge/surgeTraffic";
 
-export default function XuiContent() {
+export default function SurgeContent() {
   const { Title } = Typography;
+
   return (
     <>
       <Title
         heading={2}
         style={{ marginTop: "30px", marginLeft: "30px", marginBottom: "30px" }}
       >
-        🚀 代理用户列表
+        🎛️️ Surge 网关状态
       </Title>
-      <XuiSummary />
-      <XuiTable />
+      <SurgeTraffic />
+      <SurgeStatus />
     </>
   );
 }

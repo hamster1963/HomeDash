@@ -1,5 +1,10 @@
 import { IconSemiLogo } from "@douyinfe/semi-icons";
-import { IconBanner, IconList, IconToken } from "@douyinfe/semi-icons-lab";
+import {
+  IconBanner,
+  IconList,
+  IconProgress,
+  IconToken,
+} from "@douyinfe/semi-icons-lab";
 import { Nav } from "@douyinfe/semi-ui";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
@@ -11,6 +16,7 @@ const routerMap: Record<string, string> = {
   home: "/home/main",
   network: "/home/xui",
   service: "/home/service",
+  surge: "/home/surge",
 };
 
 function LeftSide() {
@@ -52,6 +58,7 @@ function LeftSide() {
     router.prefetch("/home/main");
     router.prefetch("/home/xui");
     router.prefetch("/home/service");
+    router.prefetch("/home/surge");
   }, [router]);
 
   return (
@@ -73,6 +80,7 @@ function LeftSide() {
         <Nav.Item itemKey={"home"} text={"概览"} icon={<IconBanner />} />
         <Nav.Item itemKey={"service"} text={"服务监控"} icon={<IconToken />} />
         <Nav.Item itemKey={"network"} text={"用户列表"} icon={<IconList />} />
+        <Nav.Item itemKey={"surge"} text={"Surge"} icon={<IconProgress />} />
       </Nav>
     </div>
   );
