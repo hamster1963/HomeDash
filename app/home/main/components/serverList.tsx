@@ -22,7 +22,7 @@ const placeholder = (
   </div>
 );
 
-function ServerCard(props: ServerCardProps) {
+export function ServerCard(props: ServerCardProps) {
   return (
     <>
       <div>
