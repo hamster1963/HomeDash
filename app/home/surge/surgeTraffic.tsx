@@ -1,8 +1,33 @@
 import { Descriptions, Skeleton, Typography } from "@douyinfe/semi-ui";
 import React from "react";
+import { z } from "zod";
+
+import { SSEDataFetch } from "@/app/home/utils/sseFetch";
+
+export const surgeTrafficDataSchema = z.object({
+  traffic: z.object({
+    out_current_speed: z.number(),
+    in_current_speed: z.number(),
+    direct: z.number(),
+    proxy: z.number(),
+    total: z.number(),
+    start_days: z.number(),
+  }),
+  connected_device: z.number(),
+  enhanced_mode_status: z.boolean(),
+  system_proxy_status: z.boolean(),
+  now_node: z.string(),
+  node_latency: z.number(),
+});
 
 function SurgeTraffic() {
   const { Title, Text } = Typography;
+  const surgeGetData = SSEDataFetch(
+    process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetSurgeInfoSSE",
+  );
+  const surgeValidation = surgeTrafficDataSchema.safeParse(
+    surgeGetData?.surgeInfo,
+  );
   const placeholder = (
     <div>
       <Skeleton.Title style={{ width: 50 }} />
@@ -11,7 +36,7 @@ function SurgeTraffic() {
   const surgeTrafficDataOne = [
     {
       key: "上传速度",
-      value: (
+      value: surgeValidation.success ? (
         <div
           style={{
             display: "flex",
@@ -27,7 +52,7 @@ function SurgeTraffic() {
               fontWeight: "lighter",
             }}
           >
-            5.45
+            {surgeValidation.data.traffic.out_current_speed.toFixed(2)}
           </Text>
           <Text
             style={{
@@ -38,11 +63,13 @@ function SurgeTraffic() {
             Mb/s
           </Text>
         </div>
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
       ),
     },
     {
       key: "下载速度",
-      value: (
+      value: surgeValidation.success ? (
         <div
           style={{
             display: "flex",
@@ -58,7 +85,7 @@ function SurgeTraffic() {
               fontWeight: "lighter",
             }}
           >
-            101.23
+            {surgeValidation.data.traffic.in_current_speed.toFixed(2)}
           </Text>
           <Text
             style={{
@@ -69,32 +96,35 @@ function SurgeTraffic() {
             Mb/s
           </Text>
         </div>
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
       ),
     },
   ];
   const surgeTrafficDataTwo = [
     {
       key: "节点",
-      value: (
+      value: surgeValidation.success ? (
         <Title
           heading={2}
           style={{
             fontWeight: "lighter",
           }}
         >
-          🇺🇸 US Americano
+          {surgeValidation.data.now_node}
         </Title>
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
       ),
     },
     {
       key: "延迟",
-      value: (
+      value: surgeValidation.success ? (
         <div
           style={{
             display: "flex",
             flexDirection: "row",
             alignItems: "baseline",
-            // justifyContent: "stretch",
             gap: "5px",
           }}
         >
@@ -104,7 +134,7 @@ function SurgeTraffic() {
               fontWeight: "lighter",
             }}
           >
-            89
+            {surgeValidation.data.node_latency.toFixed(2)}
           </Text>
           <Text
             style={{
@@ -115,11 +145,13 @@ function SurgeTraffic() {
             ms
           </Text>
         </div>
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
       ),
     },
     {
       key: "流量占比",
-      value: (
+      value: surgeValidation.success ? (
         <div
           style={{
             display: "flex",
@@ -132,17 +164,21 @@ function SurgeTraffic() {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "50%",
+              width:
+                (surgeValidation.data.traffic.direct /
+                  surgeValidation.data.traffic.total) *
+                  100 +
+                "%",
             }}
           >
             <Text
               style={{
-                fontSize: "15px",
+                fontSize: "12px",
                 fontWeight: "lighter",
                 color: "rgba(var(--semi-grey-6), 1)",
               }}
             >
-              32GB
+              {surgeValidation.data.traffic.direct.toFixed(2) + "GB"}
             </Text>
             <div
               style={{
@@ -162,17 +198,21 @@ function SurgeTraffic() {
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "50%",
+              width:
+                (surgeValidation.data.traffic.proxy /
+                  surgeValidation.data.traffic.total) *
+                  100 +
+                "%",
             }}
           >
             <Text
               style={{
-                fontSize: "15px",
+                fontSize: "12px",
                 fontWeight: "lighter",
                 color: "rgba(var(--semi-green-6), 1)",
               }}
             >
-              32GB
+              {surgeValidation.data.traffic.proxy.toFixed(2) + "GB"}
             </Text>
             <div
               style={{
@@ -187,6 +227,8 @@ function SurgeTraffic() {
             ></div>
           </div>
         </div>
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
       ),
     },
   ];

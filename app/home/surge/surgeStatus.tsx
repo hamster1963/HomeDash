@@ -8,9 +8,17 @@ import { Divider, Progress, Typography } from "@douyinfe/semi-ui";
 import React from "react";
 
 import SurgeCard from "@/app/home/surge/components/surgeCard";
+import { surgeTrafficDataSchema } from "@/app/home/surge/surgeTraffic";
+import { SSEDataFetch } from "@/app/home/utils/sseFetch";
 
 function SurgeStatus() {
   const { Title, Text } = Typography;
+  const surgeGetData = SSEDataFetch(
+    process.env.NEXT_PUBLIC_GO_API_BASE_URL + "/GetSurgeInfoSSE",
+  );
+  const surgeValidation = surgeTrafficDataSchema.safeParse(
+    surgeGetData?.surgeInfo,
+  );
   return (
     <section
       style={{
@@ -56,7 +64,11 @@ function SurgeStatus() {
             }}
           >
             <IconDisc />
-            已启用
+            {surgeValidation.success
+              ? surgeValidation.data.system_proxy_status
+                ? "已启用"
+                : "已禁用"
+              : "..."}
           </Text>
         </div>
         <Title heading={1}>系统代理</Title>
@@ -94,7 +106,11 @@ function SurgeStatus() {
             }}
           >
             <IconSafe />
-            已启用
+            {surgeValidation.success
+              ? surgeValidation.data.enhanced_mode_status
+                ? "已开启"
+                : "已关闭"
+              : "..."}
           </Text>
         </div>
         <Title heading={1}>增强模式</Title>
@@ -137,7 +153,11 @@ function SurgeStatus() {
           <Progress
             orbitStroke={"rgba(var(--semi-grey-1), 1)"}
             stroke={"rgba(var(--semi-green-5), 1)"}
-            percent={40}
+            percent={
+              surgeValidation.success
+                ? (surgeValidation.data.connected_device / 230) * 100
+                : 100
+            }
             type="circle"
             size="small"
           />
@@ -155,7 +175,9 @@ function SurgeStatus() {
             marginTop: "20px",
           }}
         >
-          144
+          {surgeValidation.success
+            ? surgeValidation.data.connected_device
+            : "..."}
           <Text
             style={{
               color: "rgba(var(--semi-green-5), 1)",
@@ -202,7 +224,9 @@ function SurgeStatus() {
               marginTop: "20px",
             }}
           >
-            3
+            {surgeValidation.success
+              ? surgeValidation.data.traffic.start_days.toFixed(2)
+              : "..."}
             <Text
               style={{
                 fontSize: "15px",
