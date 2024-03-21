@@ -225,7 +225,7 @@ function SurgeStatus() {
             }}
           >
             {surgeValidation.success
-              ? surgeValidation.data.traffic.start_days.toFixed(2)
+              ? surgeValidation.data.traffic.start_days.toFixed(1)
               : "..."}
             <Text
               style={{
