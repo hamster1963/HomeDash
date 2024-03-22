@@ -13,6 +13,11 @@ export const surgeTrafficDataSchema = z.object({
     total: z.number(),
     start_days: z.number(),
   }),
+  mac_mini_info: z.object({
+    tcp_conn_count: z.number(),
+    udp_conn_count: z.number(),
+    process_count: z.number(),
+  }),
   connected_device: z.number(),
   enhanced_mode_status: z.boolean(),
   system_proxy_status: z.boolean(),
@@ -43,6 +48,7 @@ function SurgeTraffic() {
             flexDirection: "row",
             alignItems: "baseline",
             gap: "5px",
+            width: "140px",
           }}
         >
           <Text
@@ -75,6 +81,7 @@ function SurgeTraffic() {
             display: "flex",
             flexDirection: "row",
             alignItems: "baseline",
+            width: "140px",
             gap: "5px",
           }}
         >
@@ -94,6 +101,84 @@ function SurgeTraffic() {
             }}
           >
             Mb/s
+          </Text>
+        </div>
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+      ),
+    },
+    {
+      key: "TCP连接数",
+      value: surgeValidation.success ? (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "baseline",
+            gap: "5px",
+            width: "100px",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: "50px",
+              lineHeight: "50px",
+              fontWeight: "lighter",
+            }}
+          >
+            {surgeValidation.data.mac_mini_info.tcp_conn_count}
+          </Text>
+        </div>
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+      ),
+    },
+    {
+      key: "UDP连接数",
+      value: surgeValidation.success ? (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "baseline",
+            gap: "5px",
+            width: "50px",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: "50px",
+              lineHeight: "50px",
+              fontWeight: "lighter",
+            }}
+          >
+            {surgeValidation.data.mac_mini_info.udp_conn_count}
+          </Text>
+        </div>
+      ) : (
+        <Skeleton placeholder={placeholder} loading={true} active></Skeleton>
+      ),
+    },
+    {
+      key: "进程数",
+      value: surgeValidation.success ? (
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "baseline",
+            gap: "5px",
+            width: "50px",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: "50px",
+              lineHeight: "50px",
+              fontWeight: "lighter",
+            }}
+          >
+            {surgeValidation.data.mac_mini_info.process_count}
           </Text>
         </div>
       ) : (
