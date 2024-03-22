@@ -9,8 +9,8 @@ dependencies:
     specifier: ^2.54.1
     version: 2.54.1(react@18.2.0)
   '@douyinfe/semi-icons-lab':
-    specifier: ^2.54.1
-    version: 2.54.1(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2.55.0
+    version: 2.55.0(react-dom@18.2.0)(react@18.2.0)
   '@douyinfe/semi-ui':
     specifier: ^2.54.1
     version: 2.54.1(react-dom@18.2.0)(react@18.2.0)
@@ -173,8 +173,8 @@ packages:
       scroll-into-view-if-needed: 2.2.31
     dev: false
 
-  /@douyinfe/semi-icons-lab@2.54.1(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-dcwiabfm5QQ6NKncf//vTydH6Kb2tUoFWBBWyD+f9Aik2ZPEUqLQKDjMo8BD9HY/5hTZVeg6OSKY6x9y53lodA==}
+  /@douyinfe/semi-icons-lab@2.55.0(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-KzMSHzwFx427MkAksIU1aabSb22zVAXEu70GcrGS9ikcEhhj6IGMYDuS4zfcJzehwCXA0KdbCldhh87/89bltA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
