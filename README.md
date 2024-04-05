@@ -1,4 +1,14 @@
+<div align="center">
+<strong>项目因技术栈选择问题已归档，重构中...</strong>
+<br>
+<strong>新重构 HomeDash 地址: https://dash.buycoffee.top</strong>
+    
+![screen-shot-new](/.github/new-home.png)
+<br>
+</div>
+
 <h1 align="center">HomeDash</h1>
+
 <div align="center">
 <strong>HomeDash 是一个基于 Next.js 和 Semi-design 的仪表盘</strong>
 <br>
