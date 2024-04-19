@@ -11,7 +11,7 @@
   "dependencies": {
     "@douyinfe/semi-icons": "^2.55.0",
     "@douyinfe/semi-icons-lab": "^2.55.0",
-    "@douyinfe/semi-ui": "^2.55.0",
+    "@douyinfe/semi-ui": "^2.56.3",
     "@types/node": "20.11.30",
     "@types/react": "18.2.69",
     "@types/react-dom": "18.2.22",
